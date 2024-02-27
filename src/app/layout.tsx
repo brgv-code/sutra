@@ -21,7 +21,7 @@ export default function RootLayout({
 				<div className='flex flex-col h-lvh justify-between'>
 					{' '}
 					<Navbar />{' '}
-					<div className='w-[60%] flex justify-center m-auto p-auto align-start'>
+					<div className='w-screen h-screen flex justify-center m-auto p-auto align-start'>
 						{children}
 					</div>
 					<div className='flex justify-center'>
