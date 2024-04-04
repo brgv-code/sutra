@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
+import { TopCategories } from '@/components/top-categories'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -18,15 +18,18 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<div className='flex flex-col h-lvh justify-between'>
+				<div className='flex  flex-col h-lvh justify-between '>
 					{' '}
 					<Navbar />{' '}
-					<div className='w-screen h-screen flex justify-center m-auto p-auto align-start'>
+					<div className=' border border-red-700 flex justify-center relative align-start'>
 						{children}
+						<div className='absolute right-48 top-56 mt-16 '>
+							Top Categories <TopCategories />
+						</div>
 					</div>
-					<div className='flex justify-center'>
+					{/* <div className='flex justify-center'>
 						<Footer />
-					</div>
+					</div> */}
 				</div>
 			</body>
 		</html>

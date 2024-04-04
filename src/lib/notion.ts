@@ -4,6 +4,16 @@ const notion = new Client({
 	auth: process.env.NOTION_CMS,
 })
 
+interface Tags {
+	id: string
+	name: string
+	multi_select: MultiSelectTags[]
+}
+interface MultiSelectTags {
+	id: string
+	name: string
+	color: string
+}
 function getToday(datestring: string) {
 	const months = [
 		'January',
@@ -33,9 +43,11 @@ function getToday(datestring: string) {
 
 	return today
 }
-const getPageMetaData = post => {
-	const getTags = tags => {
-		const allTags = tags.map(tag => {
+const getPageMetaData = (post: any) => {
+	const getTags = (tags: Tags) => {
+		console.log(tags, 'tags')
+		const multiSelectTags = tags.multi_select
+		const allTags = multiSelectTags.map(tag => {
 			return tag.name
 		})
 
@@ -45,12 +57,19 @@ const getPageMetaData = post => {
 	return {
 		id: post.id,
 		title: post.properties.Name,
+		slug: post.properties.Slug,
+		tags: getTags(post.properties.Tags),
+		published: post.properties.Published,
+		created: getToday(post.created_time),
+		content: post.properties.Content,
 	}
 }
 
 export const getAllPublished = async () => {
+	const databaseId = process.env.DATABASE_ID || ''
+
 	const posts = await notion.databases.query({
-		database_id: process.env.DATABASE_ID,
+		database_id: databaseId,
 
 		sorts: [
 			{
@@ -63,6 +82,8 @@ export const getAllPublished = async () => {
 	const allPosts = posts.results
 
 	return allPosts.map(post => {
-		return getPageMetaData(post)
+		const p = getPageMetaData(post)
+		console.log(p, 'p')
+		return p
 	})
 }

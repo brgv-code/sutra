@@ -17,7 +17,7 @@ function Footer() {
 	//TODO: Screensaver animation between backgrounds
 	//TODO: Detect right click and hide/show, drag and drop elements to save items on dock just like mac
 	return (
-		<div className='mb-12'>
+		<div className='mb-12 fixed  bottom-0'>
 			<div className='px-3 py-2 gap-4 rounded-2xl border-red-600 flex backdrop-blur-3xl shadow-lg ring-1 ring-black/5 bg-white/0.9'>
 				<Link
 					href='/'

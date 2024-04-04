@@ -11,6 +11,33 @@ module.exports = {
 	],
 	prefix: '',
 	theme: {
+		colors: {
+			blue: {
+				500: '#3b82f6',
+				600: '#2563eb',
+			},
+			red: {
+				500: '#ef4444',
+				600: '#dc2626',
+			},
+			green: {
+				500: '#10b981',
+				600: '#059669',
+			},
+			pink: {
+				500: '#ec4899',
+				600: '#d946ef',
+			},
+			purple: {
+				500: '#8b5cf6',
+				600: '#7c3aed',
+			},
+			yellow: {
+				500: '#f59e0b',
+				600: '#d97706',
+			},
+			white: '#ffffff',
+		},
 		container: {
 			center: true,
 			padding: '2rem',
@@ -55,9 +82,9 @@ module.exports = {
 				},
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)',
+				lg: '20px',
+				md: '10px',
+				sm: '5px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -72,6 +99,11 @@ module.exports = {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+			},
+			transitionDuration: {
+				500: '500ms',
+				800: '800ms',
+				2000: '2000ms',
 			},
 		},
 	},
