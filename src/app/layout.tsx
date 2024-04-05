@@ -21,7 +21,7 @@ export default function RootLayout({
 				<div className='flex  flex-col h-lvh justify-between '>
 					{' '}
 					<Navbar />{' '}
-					<div className=' border border-red-700 flex justify-center relative align-start'>
+					<div className=' border border-red-700 flex justify-center relative align-start pb-12'>
 						{children}
 						<div className='absolute right-48 top-56 mt-16 '>
 							Top Categories <TopCategories />

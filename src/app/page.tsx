@@ -22,8 +22,8 @@ export default async function Home() {
 				{data.map((item, index) => (
 					<Blog
 						key={index}
-						title={item.title.title[0].plain_text}
-						content={item.content.rich_text[0].plain_text}
+						title={item.title.title[0]?.plain_text}
+						content={item.content.rich_text[0]?.plain_text}
 						date={item.created}
 					></Blog>
 				))}
