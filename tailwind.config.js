@@ -12,6 +12,10 @@ module.exports = {
 	prefix: '',
 	theme: {
 		colors: {
+			primary: '#731F35',
+			bg: {
+				dark: '#0D0D0D',
+			},
 			blue: {
 				500: '#3b82f6',
 				600: '#2563eb',
@@ -99,6 +103,8 @@ module.exports = {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+
+				'spin-slow': 'spin 5s linear infinite',
 			},
 			transitionDuration: {
 				500: '500ms',

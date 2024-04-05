@@ -1,9 +1,8 @@
 import { BlogCard, BlogCardProps } from '../../../components/ui/blog-card'
-const Blog: React.FC<BlogCardProps> = ({ title, content, date }) => {
+const Blog: React.FC<BlogCardProps> = ({ title, content, date, cover }) => {
 	return (
-		<div className=' grid grid-cols-1 lg:grid-cols-2 place-content-start gap-8 px-0'>
-			<BlogCard title={title} content={content} date={date} />
-			<BlogCard title={title} content={content} date={date} />
+		<div className=' '>
+			<BlogCard title={title} content={content} date={date} cover={cover} />
 		</div>
 	)
 }

@@ -45,7 +45,6 @@ function getToday(datestring: string) {
 }
 const getPageMetaData = (post: any) => {
 	const getTags = (tags: Tags) => {
-		console.log(tags, 'tags')
 		const multiSelectTags = tags.multi_select
 		const allTags = multiSelectTags.map(tag => {
 			return tag.name
@@ -62,6 +61,10 @@ const getPageMetaData = (post: any) => {
 		published: post.properties.Published,
 		created: getToday(post.created_time),
 		content: post.properties.Content,
+		cover: post.properties.Cover,
+		words: post.properties.Words,
+		reading_time: post.properties.Reading_time,
+		references: post.properties.References,
 	}
 }
 
