@@ -18,18 +18,18 @@ function HeroSection() {
 		<section className='bg-transparent pr-8 py-12'>
 			<div className='flex flex-col items-start'>
 				<h4 className='mb-6'>Hi, my name is</h4>
-				<h1 className='text-7xl  mb-6 text-[#F2C335] font-mono font-extrabold	'>
+				<h1 className='text-7xl  mb-6 text-[#F2C335]   font-mono font-extrabold	'>
 					Bhargav{' '}
 				</h1>
 				{/* <NameAnimation /> */}
-				<p className='text-lg font-light mb-6 text-[#233554]'>
+				{/* <p className='text-lg font-light mb-6 text-[#233554]'>
 					Crafting Digital Experiences
 				</p>
 				<p className='text-lg font-light mb-6'>
 					<span className='text-[#595959]'>Engineer</span> |{' '}
 					<span className='text-[#262626]'>Photographer</span> |
 					<span className='text-[#D9D0C7]'>Creator</span>
-				</p>
+				</p> */}
 			</div>
 		</section>
 	)

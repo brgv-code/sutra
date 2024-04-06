@@ -20,3 +20,9 @@ html {
 .stroke-animate {
 	animation: strokeAnimation 6s ease forwards;
 }
+
+.bg-clip-text {
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

@@ -4,10 +4,10 @@ import HeroSection from './hero/page'
 
 export default async function Home() {
 	const data = await getAllPublished()
-	console.log(
-		data.map(i => i.cover),
-		'data',
-	)
+	// console.log(
+	// 	data.map(i => i.cover),
+	// 	'data',
+	// )
 	return (
 		<div className='w-1/2 '>
 			<HeroSection />
@@ -25,6 +25,7 @@ export default async function Home() {
 							content={item.content.rich_text[0]?.plain_text}
 							date={item.created}
 							cover={item.cover.files[0].file.url}
+							tags={item.tags}
 						></Blog>
 					))}
 				</div>

@@ -1,20 +1,20 @@
 import Image from 'next/image'
 import { TagChip } from './tag-chip'
+import { MultiSelectTags } from '@/lib/notion'
 export type BlogCardProps = {
 	title: string
 	date: string
 	content: string
 	cover: string
+	tags: MultiSelectTags[]
 }
 export const BlogCard: React.FC<BlogCardProps> = ({
 	title,
 	date,
 	content,
 	cover,
+	tags,
 }) => {
-	// make the transitions smoother
-	console.log(cover, 'cover')
-
 	return (
 		<article className='group mt-4 mb-36 relative hover:scale-100   duration-500 transition-all'>
 			<Image
@@ -25,9 +25,19 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 				height={0}
 				className='h-56 w-full   rounded-md  shadow-xl  group-hover:scale-105 duration-500 transition-all ease-in-out'
 			/>
-			<div className='m-4 p-3 absolute -translate-y-14 group-hover:-translate-y-20 transition-all duration-500 ease-in-out rounded-md backdrop-blur-md bg-gradient-to-b from-white/[.1] to-transparent justify-center'>
-				<TagChip text='React' color1='blue' color2='red' />
-				<TagChip text='Typescript' color1='red' color2='green' />
+			<div
+				className='mr-12 p-4 w-full absolute -translate-y-14 group-hover:-translate-y-20 transition-all duration-500 ease-in-out 
+            rounded-md backdrop-blur-md bg-gradient-to-b from-white/[.1] to-transparent justify-center'
+			>
+				{tags?.map((tag, index) => (
+					<TagChip
+						key={index}
+						text={tag.name}
+						color1={tag.color}
+						color2='red'
+					/>
+				))}
+				{/* <TagChip text='Typescript' color1='red' color2='green' /> */}
 				<a href='#'>
 					<h3 className='text-lg font-medium text-white'>{title}</h3>
 				</a>
