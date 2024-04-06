@@ -1,5 +1,7 @@
 'use client'
 
+import { TagChip } from '../../components/ui/tag-chip'
+
 function HeroSection() {
 	return (
 		// <div className='flex flex-col items-center justify-center h-1/4'>
@@ -25,11 +27,17 @@ function HeroSection() {
 				{/* <p className='text-lg font-light mb-6 text-[#233554]'>
 					Crafting Digital Experiences
 				</p>
+                
 				<p className='text-lg font-light mb-6'>
 					<span className='text-[#595959]'>Engineer</span> |{' '}
 					<span className='text-[#262626]'>Photographer</span> |
 					<span className='text-[#D9D0C7]'>Creator</span>
 				</p> */}
+				<p>
+					I live in 📍 Berlin. A full time master student and an Intern at
+					<TagChip text='Foundamental' color1='blue' color2='black' />
+					Foundamental
+				</p>
 			</div>
 		</section>
 	)

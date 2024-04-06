@@ -23,10 +23,10 @@ export default function RootLayout({
 					<Navbar />{' '}
 					<div className='  flex justify-center relative align-start pb-12'>
 						{children}
-						<div className='absolute right-12 top-56 mt-16 '>
-							<span className='absolute right-36 bottom-12'>
-								Top Categories
-							</span>{' '}
+						<span className='absolute  right-56 m-16 top-64'>
+							Top Categories
+						</span>{' '}
+						<div className='absolute right-48 top-72 mt-16 '>
 							<TopCategories />
 						</div>
 					</div>

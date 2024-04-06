@@ -9,15 +9,15 @@ export default async function Home() {
 	// 	'data',
 	// )
 	return (
-		<div className='w-1/2 '>
+		<div className='w-1/2'>
 			<HeroSection />
 
 			<div className='mt-24 '>
-				<div className=' flex justify-between'>
+				<div className=' flex justify-between w-1/2'>
 					<span className=''>Recent Posts</span>
-					<span className=''>{data.length} Posts</span>
+					{/* <span className=''>{data.length} Posts</span> */}
 				</div>
-				<div className='grid  lg:grid-cols-2  gap-8 px-0'>
+				<div className='grid  lg:grid-cols-1  gap-8 px-0'>
 					{data.map((item, index) => (
 						<Blog
 							key={index}
