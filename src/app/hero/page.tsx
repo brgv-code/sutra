@@ -33,11 +33,8 @@ function HeroSection() {
 					<span className='text-[#262626]'>Photographer</span> |
 					<span className='text-[#D9D0C7]'>Creator</span>
 				</p> */}
-				<p>
-					I live in 📍 Berlin. A full time master student and an Intern at
-					<TagChip text='Foundamental' color1='blue' color2='black' />
-					Foundamental
-				</p>
+				<p>I live in 📍 Berlin. A full time master student and an Intern at </p>
+				<TagChip text='Foundamental' color1='blue' color2='black' />
 			</div>
 		</section>
 	)

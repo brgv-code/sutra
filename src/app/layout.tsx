@@ -1,8 +1,7 @@
+import Navbar from '@/components/Navbar/Navbar'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar/Navbar'
-import { TopCategories } from '@/components/top-categories'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -23,12 +22,12 @@ export default function RootLayout({
 					<Navbar />{' '}
 					<div className='  flex justify-center relative align-start pb-12'>
 						{children}
-						<span className='absolute  right-56 m-16 top-64'>
+						{/* <span className='absolute  right-56 m-16 top-64'>
 							Top Categories
 						</span>{' '}
 						<div className='absolute right-48 top-72 mt-16 '>
 							<TopCategories />
-						</div>
+						</div> */}
 					</div>
 					{/* <div className='flex justify-center'>
 						<Footer />

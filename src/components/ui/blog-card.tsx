@@ -1,6 +1,6 @@
+import { MultiSelectTags } from '@/lib/notion'
 import Image from 'next/image'
 import { TagChip } from './tag-chip'
-import { MultiSelectTags } from '@/lib/notion'
 export type BlogCardProps = {
 	title: string
 	date: string
@@ -16,7 +16,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	tags,
 }) => {
 	return (
-		<article className='group w-1/2 mt-4 mb-36 relative hover:scale-100   duration-500 transition-all'>
+		<article className='group mt-4 mb-36 relative hover:scale-100   duration-500 transition-all'>
 			<Image
 				alt=''
 				src={cover}
