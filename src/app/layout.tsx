@@ -1,8 +1,7 @@
+import Navbar from '@/components/Navbar/Navbar'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar/Navbar'
-import { TopCategories } from '@/components/top-categories'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,15 +20,45 @@ export default function RootLayout({
 				<div className='flex  flex-col h-lvh justify-between '>
 					{' '}
 					<Navbar />{' '}
-					<div className=' border border-red-700 flex justify-center relative align-start pb-12'>
+					<div className='  flex justify-center relative align-start pb-12'>
 						{children}
-						<div className='absolute right-48 top-56 mt-16 '>
-							Top Categories <TopCategories />
-						</div>
+						{/* <span className='absolute  right-56 m-16 top-64'>
+							Top Categories
+						</span>{' '}
+						<div className='absolute right-48 top-72 mt-16 '>
+							<TopCategories />
+						</div> */}
 					</div>
 					{/* <div className='flex justify-center'>
 						<Footer />
 					</div> */}
+				</div>
+				<div className=' circle fixed right-48 bottom-12 mt-16'>
+					{/* generate a circle with letter B */}
+					{/* Put the characters Contact around this circle */}
+
+					<div className='rounded-full'>
+						Contact &nbsp;&nbsp;●&nbsp;&nbsp; Contact
+					</div>
+					<svg
+						width='100'
+						height='100'
+						viewBox='0 0 100 100'
+						xmlns='http://www.w3.org/2000/svg'
+					>
+						<circle cx='50' cy='50' r='50' fill='black' />
+						<text
+							x='50%'
+							y='50%'
+							dy='.3em'
+							textAnchor='middle'
+							fill='white'
+							fontSize='3em'
+							fontFamily='Arial'
+						>
+							B
+						</text>
+					</svg>
 				</div>
 			</body>
 		</html>

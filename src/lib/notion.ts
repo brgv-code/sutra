@@ -4,12 +4,12 @@ const notion = new Client({
 	auth: process.env.NOTION_CMS,
 })
 
-interface Tags {
+export interface Tags {
 	id: string
 	name: string
 	multi_select: MultiSelectTags[]
 }
-interface MultiSelectTags {
+export interface MultiSelectTags {
 	id: string
 	name: string
 	color: string
@@ -45,13 +45,13 @@ function getToday(datestring: string) {
 }
 const getPageMetaData = (post: any) => {
 	const getTags = (tags: Tags) => {
-		console.log(tags, 'tags')
 		const multiSelectTags = tags.multi_select
+		console.log(JSON.stringify(tags, null, 2), 'tags')
 		const allTags = multiSelectTags.map(tag => {
 			return tag.name
 		})
 
-		return allTags
+		return multiSelectTags
 	}
 
 	return {
@@ -62,6 +62,10 @@ const getPageMetaData = (post: any) => {
 		published: post.properties.Published,
 		created: getToday(post.created_time),
 		content: post.properties.Content,
+		cover: post.properties.Cover,
+		words: post.properties.Words,
+		reading_time: post.properties.Reading_time,
+		references: post.properties.References,
 	}
 }
 

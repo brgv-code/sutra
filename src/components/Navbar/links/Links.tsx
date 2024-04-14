@@ -30,7 +30,7 @@ function Links() {
 				const { id, url, text } = link
 				return (
 					<Link href={url} key={id}>
-						{text}
+						{/* {text} */}
 					</Link>
 				)
 			})}

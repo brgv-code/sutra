@@ -10,7 +10,7 @@ export const TopCategories = () => {
 		{ name: 'Travel', color1: 'purple', color2: 'purple' },
 	]
 	return (
-		<div className='grid grid-rows-2 gap-2'>
+		<div className='grid grid-cols-3 gap-2'>
 			{categories.map((category, index) => (
 				<TagChip
 					key={index}
