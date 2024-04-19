@@ -1,7 +1,7 @@
-import Navbar from '@/components/Navbar/Navbar'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/Navbar/Navbar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -33,9 +33,9 @@ export default function RootLayout({
 						<Footer />
 					</div> */}
 				</div>
-				<div className=' circle fixed right-48 bottom-12 mt-16'>
+				{/* <div className=' circle fixed right-48 bottom-12 mt-16'>
 					{/* generate a circle with letter B */}
-					{/* Put the characters Contact around this circle */}
+				{/* Put the characters Contact around this circle 
 
 					<div className='rounded-full'>
 						Contact &nbsp;&nbsp;●&nbsp;&nbsp; Contact
@@ -59,7 +59,7 @@ export default function RootLayout({
 							B
 						</text>
 					</svg>
-				</div>
+				</div> */}
 			</body>
 		</html>
 	)

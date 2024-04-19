@@ -3,16 +3,16 @@ import React from 'react'
 
 const ProfileSection: React.FC = () => {
 	return (
-		<div className=' '>
+		<div className=' bg-black/50 '>
 			<div className=' backdrop-blur-xl backdrop-filter bg-white/[0.05] text-white rounded-lg p-8 '>
 				{/* <Image
-					src='/bg.jpg'
+					src='/bg.webp'
 					alt=''
 					sizes='100vw'
 					width={0}
 					height={0}
 					className=' h-72  z-[-1]  w-full  rounded-md  shadow-xl border-b-8   '
-				/> */}
+				/>{' '} */}
 				{/* <div className='-translate-y-16'> */}
 				<div className='mb-4 '>
 					<Image

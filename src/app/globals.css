@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 html {
-	background-color: #111d2e;
+	background-color: #000000;
 	color: white;
 	::-webkit-scrollbar {
 		display: none;

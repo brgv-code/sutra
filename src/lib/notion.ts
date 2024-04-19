@@ -9,6 +9,25 @@ export interface Tags {
 	name: string
 	multi_select: MultiSelectTags[]
 }
+
+export interface Content {
+	text: string
+	annotations: string
+}
+
+export interface Notion_Data {
+	content: any
+	id: any
+	title: any
+	slug: any
+	tags: MultiSelectTags[]
+	published: any
+	created: string
+	cover: any
+	words: any
+	reading_time: any
+	references: any
+}
 export interface MultiSelectTags {
 	id: string
 	name: string
@@ -43,13 +62,28 @@ function getToday(datestring: string) {
 
 	return today
 }
+
+const getContent = (content: any) => {
+	const text = content.rich_text.map((item: any) => {
+		const annotations = getAnnotations(item.annotations)
+		return { text: item.text.content, annotations: annotations }
+	})
+
+	return text
+}
+
+const getAnnotations = (annotations: any) => {
+	const { bold, italic, strikethrough, underline, code } = annotations
+
+	return { bold, italic, strikethrough, underline, code }
+}
+
 const getPageMetaData = (post: any) => {
 	const getTags = (tags: Tags) => {
 		const multiSelectTags = tags.multi_select
-		console.log(JSON.stringify(tags, null, 2), 'tags')
-		const allTags = multiSelectTags.map(tag => {
-			return tag.name
-		})
+		// const allTags = multiSelectTags.map(tag => {
+		// 	return tag.name
+		// })
 
 		return multiSelectTags
 	}
@@ -68,6 +102,7 @@ const getPageMetaData = (post: any) => {
 		references: post.properties.References,
 	}
 }
+//set a return type for the funtion
 
 export const getAllPublished = async () => {
 	const databaseId = process.env.DATABASE_ID || ''
@@ -84,10 +119,13 @@ export const getAllPublished = async () => {
 	})
 
 	const allPosts = posts.results
-
 	return allPosts.map(post => {
 		const p = getPageMetaData(post)
-		console.log(p, 'p')
-		return p
+		const c = getContent(p.content)
+
+		return {
+			...p,
+			content: c,
+		}
 	})
 }
