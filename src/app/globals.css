@@ -1,13 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html {
+* {
 	background-color: #000000;
 	color: white;
 	::-webkit-scrollbar {
 		display: none;
 	}
 }
+
 /* 
 .comet {
 	position: absolute;

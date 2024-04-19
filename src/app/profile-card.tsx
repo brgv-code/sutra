@@ -3,8 +3,8 @@ import React from 'react'
 
 const ProfileSection: React.FC = () => {
 	return (
-		<div className=' bg-black/50 '>
-			<div className=' backdrop-blur-xl backdrop-filter bg-white/[0.05] text-white rounded-lg p-8 '>
+		<div className='  '>
+			<div className='   rounded-lg p-8 '>
 				{/* <Image
 					src='/bg.webp'
 					alt=''

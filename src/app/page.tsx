@@ -6,9 +6,8 @@ import ProfileSection from './profile-card'
 export default async function Home() {
 	const data = await getAllPublished()
 
-	console.log(JSON.stringify(data, null, 2))
 	return (
-		<div className='w-1/2 mt-12 border-red-500 border'>
+		<div className='w-1/2 mt-12 backdrop-blur-3xl bg-white/80 backdrop-filter border-red-500 border'>
 			{/* <HeroSection /> */}
 			<ProfileSection />
 			<div className=' flex border-blue-900 p-5 border justify-between w-full'>
