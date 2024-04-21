@@ -1,21 +1,21 @@
 import { BlogCard } from '@/components/ui/blog-card'
 import { getAllPublished } from '@/lib/notion'
-
 import ProfileSection from './profile-card'
 
 export default async function Home() {
 	const data = await getAllPublished()
 
 	return (
-		<div className='w-1/2 mt-12 backdrop-blur-3xl bg-white/80 backdrop-filter border-red-500 border'>
+		<div className='w-1/2 mt-12 backdrop-blur-3xl  backdrop-filter '>
 			{/* <HeroSection /> */}
 			<ProfileSection />
-			<div className=' flex border-blue-900 p-5 border justify-between w-full'>
+			<div className=' flex  p-5  justify-between w-full'>
 				<span className=''>Recent Posts</span>
 				<span className=''>{data.length} Posts</span>
 			</div>
-			<div className=' border-yellow-900 border'>
-				<div className='grid mt-24 lg:grid-cols-2 border-red-900 border w-full grid-cols-1 gap-8 px-0'>
+
+			<div className=' '>
+				<div className='grid  lg:grid-cols-2  w-full grid-cols-1 gap-8 px-0'>
 					{data.map((item, index) => (
 						<BlogCard
 							key={index}

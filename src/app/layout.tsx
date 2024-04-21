@@ -17,7 +17,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<div className='flex  flex-col h-lvh justify-between '>
+				<div className='flex  flex-col h-full justify-between '>
 					{' '}
 					<Navbar />{' '}
 					<div className='  flex justify-center relative align-start pb-12'>

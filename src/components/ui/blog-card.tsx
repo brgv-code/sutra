@@ -43,14 +43,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 
 	return (
 		<Link href={`/blog/${encodeURIComponent(title)}`} onClick={handleClick}>
-			<article className='group mt-4 mb-36 relative hover:scale-100 duration-500 transition-all hover:cursor-pointer'>
+			<article className='group b-shadow mt-4 mb-36 relative hover:scale-100 duration-500 transition-all hover:cursor-pointer'>
 				<Image
 					alt=''
 					src={cover}
 					sizes='100vw'
 					width={0}
 					height={0}
-					className='h-56 w-full rounded-md shadow-xl group-hover:scale-105 duration-500 transition-all ease-in-out'
+					className='h-56 w-full rounded-2xl  shadow-xl group-hover:scale-105 duration-500 transition-all ease-in-out'
 				/>
 				<div
 					className=' p-4 w-full absolute -translate-y-14 group-hover:-translate-y-20 transition-all duration-500 ease-in-out 
