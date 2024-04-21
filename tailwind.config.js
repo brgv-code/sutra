@@ -1,3 +1,5 @@
+const { Amiri } = require('next/font/google')
+
 module.exports = {
 	darkMode: ['class'],
 	mode: 'jit',
@@ -344,6 +346,7 @@ module.exports = {
 			DEFAULT: '1',
 		},
 		fontFamily: {
+			lora: ['Lora', 'serif'],
 			sans: [
 				'ui-sans-serif',
 				'system-ui',

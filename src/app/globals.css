@@ -95,6 +95,17 @@ body::before {
 	left: 22%;
 	right: 20%;
 }
+
+pre code {
+	display: block;
+	background: none;
+	white-space: pre;
+	-webkit-overflow-scrolling: touch;
+	overflow-x: scroll;
+	max-width: 100%;
+	min-width: 100px;
+	padding: 0;
+}
 /* .hero-bg-tiles::before {
 	content: '';
 	position: absolute;

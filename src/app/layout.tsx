@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fira_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar/Navbar'
-const inter = Inter({ subsets: ['latin'] })
+const fira = Fira_Mono({
+	weight: ['400', '500', '700'],
+	subsets: ['latin-ext'],
+})
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -16,7 +19,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
+			<body className={fira.className}>
 				<div className='flex  flex-col h-full justify-between '>
 					{' '}
 					<Navbar />{' '}

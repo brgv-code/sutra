@@ -1,11 +1,17 @@
-import { Link } from 'lucide-react'
+import Link from 'next/link'
 
 interface CustomLinkProps {
-	children: React.ReactNode
 	text: string
 	url: string
 }
-const CustomLink: React.FC<CustomLinkProps> = ({ children, text, url }) => {
-	return <Link href={url}>{text}</Link>
+const CustomLink: React.FC<CustomLinkProps> = ({ text, url }) => {
+	return (
+		<Link
+			className='underline italic  decoration-green-700 decoration-4 underline-offset-4  text-lg mx-2 bg-gradient-to-r from-[#1b7783] to-[#1e8d50] text-transparent bg-clip-text'
+			href={url}
+		>
+			{text}
+		</Link>
+	)
 }
 export default CustomLink
