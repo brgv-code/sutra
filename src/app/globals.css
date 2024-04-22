@@ -516,3 +516,110 @@ pre code {
 .mac-close.red {
 	background-color: #e77670;
 }
+
+/* circular text */
+.circle {
+	position: fixed;
+	width: 140px;
+	height: 140px;
+	margin: 20px;
+	bottom: 0;
+	right: 0;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: rotate 10s linear infinite;
+}
+
+.circle span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transform-origin: center 70px;
+	transform: rotate(var(--angle));
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+/* Dynamically generate CSS for each letter */
+.circle span:nth-child(1) {
+	--angle: 0deg;
+}
+.circle span:nth-child(2) {
+	--angle: 15deg;
+}
+.circle span:nth-child(3) {
+	--angle: 30deg;
+}
+.circle span:nth-child(4) {
+	--angle: 45deg;
+}
+.circle span:nth-child(5) {
+	--angle: 60deg;
+}
+.circle span:nth-child(6) {
+	--angle: 75deg;
+}
+.circle span:nth-child(7) {
+	--angle: 90deg;
+}
+.circle span:nth-child(8) {
+	--angle: 105deg;
+}
+.circle span:nth-child(9) {
+	--angle: 120deg;
+}
+.circle span:nth-child(10) {
+	--angle: 135deg;
+}
+.circle span:nth-child(11) {
+	--angle: 150deg;
+}
+.circle span:nth-child(12) {
+	--angle: 165deg;
+}
+.circle span:nth-child(13) {
+	--angle: 180deg;
+}
+.circle span:nth-child(14) {
+	--angle: 195deg;
+}
+.circle span:nth-child(15) {
+	--angle: 210deg;
+}
+.circle span:nth-child(16) {
+	--angle: 225deg;
+}
+.circle span:nth-child(17) {
+	--angle: 240deg;
+}
+.circle span:nth-child(18) {
+	--angle: 255deg;
+}
+.circle span:nth-child(19) {
+	--angle: 270deg;
+}
+.circle span:nth-child(20) {
+	--angle: 285deg;
+}
+.circle span:nth-child(21) {
+	--angle: 300deg;
+}
+.circle span:nth-child(22) {
+	--angle: 315deg;
+}
+.circle span:nth-child(23) {
+	--angle: 330deg;
+}
+.circle span:nth-child(24) {
+	--angle: 345deg;
+}

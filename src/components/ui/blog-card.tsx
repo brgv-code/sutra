@@ -41,22 +41,22 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 
 	return (
 		<Link href={`/blog/${encodeURIComponent(id)}`} onClick={handleClick}>
-			<article className='group b-shadow mt-4 mb-36 relative hover:scale-100 duration-500 transition-all hover:cursor-pointer'>
+			<article className='group b-shadow  mt-4 mb-36 relative hover:scale-100 duration-500 transition-all hover:cursor-pointer'>
 				<Image
 					alt=''
 					src={cover}
 					sizes='100vw'
 					width={0}
 					height={0}
-					className='h-56 w-full rounded-2xl  shadow-xl group-hover:scale-105 duration-500 transition-all ease-in-out'
+					className='h-56 w-full rounded-2xl opacity-70 shadow-xl group-hover:scale-105 duration-500 transition-all ease-in-out'
 				/>
 				<div
-					className=' p-4 w-full absolute -translate-y-14 group-hover:-translate-y-20 transition-all duration-500 ease-in-out 
-                rounded-md backdrop-blur-md bg-gradient-to-b from-white/[.1] to-transparent justify-center'
+					className=' p-4 w-[90%] absolute -translate-y-14 group-hover:-translate-y-20 transition-all duration-500 ease-in-out 
+                rounded-md backdrop-blur-2xl bg-white/[.1] min-h-40  m-auto left-6  '
 				>
 					{tags?.map((tag, index) => <TagChip key={index} text={tag} />)}
-					<h3 className='text-lg font-medium text-white'>{title}</h3>
-					<div className='mt-3'>
+					<h3 className='text-lg font-medium text-white py-3'>{title}</h3>
+					<div className='mt-3 bottom-5 absolute'>
 						<span className='text-sm/relaxed text-gray-500'>{date}</span>{' '}
 						<span className='text-sm/relaxed text-gray-500'>|</span>{' '}
 						<span className='text-sm/relaxed text-gray-500'>

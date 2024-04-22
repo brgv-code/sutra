@@ -30,7 +30,7 @@ export const TagChip: React.FC<TagChipProps> = ({ text, color1, color2 }) => {
 	// const toColor = toColorClasses[color2]
 	return (
 		<div
-			className={`inline-block select-none rounded-lg px-2 py-0.2 font-sans text-xs 
+			className={`inline-block select-none  rounded-lg mx-2 px-3 py-0.5 font-sans text-xs 
           font-bold uppercase  bg-[#595959]`}
 		>
 			<span className=''>{text}</span>

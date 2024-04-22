@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Fira_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar/Navbar'
+import RotatingText from '../components/ui/rotating-text'
 const fira = Fira_Mono({
 	weight: ['400', '500', '700'],
 	subsets: ['latin-ext'],
@@ -31,15 +32,13 @@ export default function RootLayout({
 						<div className='absolute right-48 top-72 mt-16 '>
 							<TopCategories />
 						</div> */}
+						<RotatingText />
 					</div>
 					{/* <div className='flex justify-center'>
 						<Footer />
 					</div> */}
 				</div>
 				{/* <div className=' circle fixed right-48 bottom-12 mt-16'>
-					{/* generate a circle with letter B */}
-				{/* Put the characters Contact around this circle 
-
 					<div className='rounded-full'>
 						Contact &nbsp;&nbsp;●&nbsp;&nbsp; Contact
 					</div>
