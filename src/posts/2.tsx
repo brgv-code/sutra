@@ -3,7 +3,7 @@ import CustomBold from '@/components/ui/custom-bold'
 import CustomLink from '@/components/ui/custom-links'
 import CodeBlock from '../components/ui/custom-code-block'
 
-export const Post2: React.FC = () => {
+const Post2: React.FC = () => {
 	//TODO add react live code some point
 	//TODO add react-code-block
 	return (
@@ -14,7 +14,7 @@ export const Post2: React.FC = () => {
 			</CustomBold>
 			{/* <h1 className='text-4xl font-bold mb-4'>My Blog Post</h1> */}
 
-			<p className='mb-4 text-lg font-fira'>
+			<div className='mb-4 text-lg font-fira'>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae
 				velit euismod, ultrices nunc id, aliquet nisl. Sed euismod, mauris id
 				tincidunt aliquam, elit nunc tincidunt nunc, vitae tincidunt nunc lectus
@@ -31,7 +31,8 @@ export const Post2: React.FC = () => {
 				euismod, mauris id tincidunt aliquam, elit nunc tincidunt nunc, vitae
 				tincidunt nunc lectus nec nunc. Sed auctor, nunc at efficitur ultrices,
 				nunc elit
-			</p>
+			</div>
 		</div>
 	)
 }
+export default Post2
