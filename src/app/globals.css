@@ -23,6 +23,10 @@ html {
 	}
 }
 
+:root {
+	--direction: 1;
+}
+
 /* body {
 	background-image: url('/bg-tile.svg');
 	background-position: 50% 0;
@@ -538,7 +542,7 @@ pre code {
 	height: 100%;
 	text-align: center;
 	transform-origin: center 70px;
-	transform: rotate(var(--angle));
+	transform: rotate(calc(var(--angle) * var(--direction)));
 }
 
 @keyframes rotate {
@@ -546,7 +550,7 @@ pre code {
 		transform: rotate(0deg);
 	}
 	to {
-		transform: rotate(-360deg);
+		transform: rotate(calc(-360deg * var(--direction)));
 	}
 }
 

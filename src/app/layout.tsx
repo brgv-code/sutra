@@ -32,7 +32,12 @@ export default function RootLayout({
 						<div className='absolute right-48 top-72 mt-16 '>
 							<TopCategories />
 						</div> */}
-						<RotatingText />
+						<RotatingText
+							text='Contact'
+							repeat={3}
+							divider={'.'}
+							direction='counterclockwise'
+						/>
 					</div>
 					{/* <div className='flex justify-center'>
 						<Footer />
