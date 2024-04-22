@@ -1,5 +1,4 @@
 'use client'
-import { MultiSelectTags } from '@/lib/notion'
 import Link from 'next/link'
 import React from 'react'
 import { TagChip } from './tag-chip'
@@ -11,7 +10,7 @@ export type BlogCardProps = {
 	date: string
 	content: string
 	cover: string
-	tags: MultiSelectTags[]
+	tags: string[]
 	id: string
 	reading_time: string
 }
@@ -42,7 +41,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	}
 
 	return (
-		<Link href={`/blog/${encodeURIComponent(title)}`} onClick={handleClick}>
+		<Link href={`/blog/${encodeURIComponent(id)}`} onClick={handleClick}>
 			<article className='group b-shadow mt-4 mb-36 relative hover:scale-100 duration-500 transition-all hover:cursor-pointer'>
 				<Image
 					alt=''
@@ -56,14 +55,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 					className=' p-4 w-full absolute -translate-y-14 group-hover:-translate-y-20 transition-all duration-500 ease-in-out 
                 rounded-md backdrop-blur-md bg-gradient-to-b from-white/[.1] to-transparent justify-center'
 				>
-					{tags?.map((tag, index) => (
-						<TagChip
-							key={index}
-							text={tag.name}
-							color1={tag.color}
-							color2='red'
-						/>
-					))}
+					{tags?.map((tag, index) => <TagChip key={index} text={tag} />)}
 					<h3 className='text-lg font-medium text-white'>{title}</h3>
 					<div className='mt-3'>
 						<span className='text-sm/relaxed text-gray-500'>{date}</span>{' '}

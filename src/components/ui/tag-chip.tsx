@@ -1,7 +1,7 @@
 type TagChipProps = {
 	text: string
-	color1: string
-	color2: string
+	color1?: string
+	color2?: string
 }
 
 const fromColorClasses: { [key: string]: string } = {
@@ -26,8 +26,8 @@ const toColorClasses: { [key: string]: string } = {
 }
 
 export const TagChip: React.FC<TagChipProps> = ({ text, color1, color2 }) => {
-	const fromColor = fromColorClasses[color1]
-	const toColor = toColorClasses[color2]
+	// const fromColor = fromColorClasses[color1]
+	// const toColor = toColorClasses[color2]
 	return (
 		<div
 			className={`inline-block select-none rounded-lg px-2 py-0.2 font-sans text-xs 
