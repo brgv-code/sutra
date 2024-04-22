@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
 const links = [
-	// {
-	// 	id: 1,
-	// 	text: 'Home',
-	// 	url: '/',
-	// },
+	{
+		id: 1,
+		text: 'Home',
+		url: '/',
+	},
 	{
 		id: 2,
 		text: 'About',

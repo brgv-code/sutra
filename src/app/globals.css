@@ -4,9 +4,22 @@
 html {
 	background-color: #0d0d0f;
 
+	animation: gradient 1s ease infinite;
+
 	color: white;
 	::-webkit-scrollbar {
 		background-color: #0d0d0f;
+	}
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
 	}
 }
 
@@ -328,7 +341,7 @@ pre code {
 		hsl(178, 100%, 44%),
 		hsl(209, 100%, 44%)
 	);
-	filter: blur(35px);
+	/* filter: blur(35px); */
 }
 .btn-background-2 {
 	animation: btn-background-2-animation 8s infinite;
@@ -351,7 +364,7 @@ pre code {
 		hsl(0, 84%, 61%),
 		hsl(47, 95%, 57%)
 	);
-	filter: blur(35px);
+	/* filter: blur(35px); */
 }
 .btn-background-3 {
 	animation: btn-background-3-animation 8s infinite;
@@ -374,7 +387,8 @@ pre code {
 		hsl(330, 100%, 50%),
 		hsl(270, 67%, 46%)
 	);
-	filter: blur(35px);
+	/* filter: blur(35px); */
+	/* this makes the glow spread behind the button */
 }
 
 .btn-text {
@@ -383,7 +397,7 @@ pre code {
 	justify-content: center;
 	align-items: center;
 	color: white;
-	background-color: black;
+	background-color: #0d0d0f;
 	margin: 1px;
 	border-radius: 5px;
 	padding: 0.75rem 3rem;
