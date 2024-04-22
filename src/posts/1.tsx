@@ -8,11 +8,34 @@ const PostOne = () => {
 
 	return (
 		<>
+			{/* <p className='flex justify-between'>
+					<span>Date: {date}</span> <span> Reading Time: {reading_time} </span>
+					<CustomBold>bold text</CustomBold>
+				</p>
+				<br />
+				<br /> */}
+			{/* <h1 className='text-3xl text-blue-700 p-8 mb-8 '>{title}</h1>
+			 */}
+			{/* <span className='self-center'>
+					<CustomBold gradientColors={['red', 'purple']}> {title}</CustomBold>
+				</span>
+				<Image
+					src={cover}
+					alt=''
+					sizes='100vw'
+					width={0}
+					height={0}
+					className='opacity-60 max-h-80 w-4/5 rounded-md m-auto mt-12 shadow-xl group-hover:scale-105 duration-500 transition-all ease-in-out'
+				></Image> */}
+			{/* <p className='p-8 text-lg'>{content}</p>
+			 */}
+			<p className='flex justify-between'>
+				<span>Date: {'26 Jan 2024'}</span> <span> Reading Time: {'2m'} </span>
+			</p>
+			<br />
+			<br />
 			<div className='container mx-auto'>
-				<CustomBold gradientColors={['red', 'purple']}>
-					{' '}
-					My Blog Post
-				</CustomBold>
+				<CustomBold> My Blog Post</CustomBold>
 				{/* <h1 className='text-4xl font-bold mb-4'>My Blog Post</h1> */}
 
 				<div className='mb-4 text-lg font-fira'>

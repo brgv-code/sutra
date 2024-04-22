@@ -18,7 +18,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
 	}
 
 	return (
-		<div className='b-shadow p-4 my-12 overflow-x-auto overflow-visible w-3/4 m-auto group'>
+		<div className='b-shadow p-4 my-12 overflow-x-auto overflow-visible w-3/4 m-auto group '>
 			<div className='flex justify-between'>
 				<div className='flex items-start gap-2 mb-4'>
 					{' '}

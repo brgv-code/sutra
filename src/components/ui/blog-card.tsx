@@ -4,7 +4,6 @@ import React from 'react'
 import { TagChip } from './tag-chip'
 import { useBlogStore } from '@/store/BlogStore/blog.store'
 import Image from 'next/image'
-
 export type BlogCardProps = {
 	title: string
 	date: string
