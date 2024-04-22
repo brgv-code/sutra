@@ -27,7 +27,7 @@ const ProfileSection: React.FC = () => {
 				<div className='mb-2 flex space-between text-2xl font-bold '>
 					<CustomBold>Bhargav </CustomBold>
 					<Image
-						src='/Twitter_Verified_Badge.svg'
+						src='/t_2.svg'
 						alt={''}
 						width={25}
 						height={25}

@@ -43,6 +43,9 @@ export default function BlogDetails() {
 
 	return (
 		<>
+			{/* <div className='text-[#e77670] flex cursor-pointer hover:bg-slate-800 hover:rounded-full w-8 h-8'>
+				<MoveLeft className='self-center m-auto' />
+			</div> */}
 			<div className='fixed flex flex-col  items-center left-[4%] bottom-[40%]'>
 				<button className='btn mb-4'>
 					<div className='btn-background-wrapper'>

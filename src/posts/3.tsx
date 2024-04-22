@@ -3,7 +3,7 @@ import CustomBold from '@/components/ui/custom-bold'
 import CustomLink from '@/components/ui/custom-links'
 import CodeBlock from '../components/ui/custom-code-block'
 
-export const Post3: React.FC = () => {
+const Post3: React.FC = () => {
 	//TODO add react live code some point
 	//TODO add react-code-block
 	return (
@@ -35,3 +35,4 @@ export const Post3: React.FC = () => {
 		</div>
 	)
 }
+export default Post3
