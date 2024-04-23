@@ -1,10 +1,9 @@
 import { BlogCard } from '@/components/ui/blog-card'
-import { getAllPublished } from '@/lib/notion'
 import ProfileSection from './profile-card'
 import { PostLists } from '@/lib/utils'
 
 export default async function Home() {
-	const data = await getAllPublished()
+	// const data = await getAllPublished()
 
 	return (
 		<div className='w-1/2 mt-12 backdrop-blur-3xl  backdrop-filter '>
@@ -12,7 +11,7 @@ export default async function Home() {
 			<ProfileSection />
 			<div className=' flex  p-5  justify-between w-full'>
 				<span className=''>Recent Posts</span>
-				<span className=''>{data.length} Posts</span>
+				<span className=''>{PostLists.length} Posts</span>
 			</div>
 
 			<div className=' '>
