@@ -17,7 +17,7 @@ const RotatingText: React.FC<RotatingTextProps> = ({
 	const repeatedText = Array(repeat)
 		.fill([...splitText, divider])
 		.flat()
-
+	//make the size and positiong of the circle dynamic
 	const directionValue = direction === 'clockwise' ? 1 : -1
 	if (directionValue === -1) repeatedText.reverse()
 	return (

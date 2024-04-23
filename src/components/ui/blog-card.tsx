@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import React from 'react'
 import { TagChip } from './tag-chip'
-import { useBlogStore } from '@/store/BlogStore/blog.store'
 import Image from 'next/image'
 export type BlogCardProps = {
 	title: string
@@ -23,20 +22,20 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	tags,
 	reading_time,
 }) => {
-	const setTitle = useBlogStore(state => state.setTitle)
-	const setDate = useBlogStore(state => state.setDate)
-	const setContent = useBlogStore(state => state.setContent)
-	const setCover = useBlogStore(state => state.setCover)
-	const setTags = useBlogStore(state => state.setTags)
-	const setReadingTime = useBlogStore(state => state.setReadingTime)
+	// const setTitle = useBlogStore(state => state.setTitle)
+	// const setDate = useBlogStore(state => state.setDate)
+	// const setContent = useBlogStore(state => state.setContent)
+	// const setCover = useBlogStore(state => state.setCover)
+	// const setTags = useBlogStore(state => state.setTags)
+	// const setReadingTime = useBlogStore(state => state.setReadingTime)
 
 	const handleClick = () => {
-		setTitle(title)
-		setDate(date)
-		setContent(content)
-		setCover(cover)
-		setTags(tags)
-		setReadingTime(reading_time)
+		// setTitle(title)
+		// setDate(date)
+		// setContent(content)
+		// setCover(cover)
+		// setTags(tags)
+		// setReadingTime(reading_time)
 	}
 
 	return (

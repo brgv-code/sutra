@@ -1,14 +1,13 @@
 // hooks/useFetchData.ts
 import { useEffect } from 'react'
-import { useBlogStore } from '@/store/BlogStore/blog.store'
 import { getAllPublished } from '../notion'
 
 export const useFetchData = () => {
-	const setTitle = useBlogStore(state => state.setTitle)
-	const setDate = useBlogStore(state => state.setDate)
-	const setContent = useBlogStore(state => state.setContent)
-	const setCover = useBlogStore(state => state.setCover)
-	const setTags = useBlogStore(state => state.setTags)
+	// const setTitle = useBlogStore(state => state.setTitle)
+	// const setDate = useBlogStore(state => state.setDate)
+	// const setContent = useBlogStore(state => state.setContent)
+	// const setCover = useBlogStore(state => state.setCover)
+	// const setTags = useBlogStore(state => state.setTags)
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -29,5 +28,5 @@ export const useFetchData = () => {
 		}
 
 		fetchData()
-	}, [setTitle, setDate, setContent, setCover, setTags])
+	}, [])
 }
