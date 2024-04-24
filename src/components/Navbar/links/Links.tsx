@@ -16,27 +16,27 @@ const links = [
 		text: 'Projects',
 		url: '/projects/',
 	},
-	// {
-	// 	id: 4,
-	// 	text: 'Blog',
-	// 	url: '/blog/',
-	// },
-	// {
-	// 	id: 5,
-	// 	text: 'Resume',
-	// 	url: '/resume/',
-	// },
+	{
+		id: 4,
+		text: 'Goals',
+		url: '/goals/',
+	},
+	{
+		id: 5,
+		text: 'Books',
+		url: '/books/',
+	},
 	{
 		id: 6,
 		text: 'Photography',
 		url: '/photography/',
 	},
 
-	// {
-	// 	id: 4,
-	// 	text: 'Contact',
-	// 	url: '/contact/',
-	// },
+	{
+		id: 7,
+		text: 'Notes',
+		url: '/notes/',
+	},
 ]
 
 function Links() {
