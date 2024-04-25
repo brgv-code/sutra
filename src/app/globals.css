@@ -50,8 +50,8 @@ html {
 	background-image: linear-gradient(
 		to right,
 		rgb(0, 0, 0, 1) 0%,
-		rgba(0, 0, 0, 0) 30%,
-		rgba(0, 0, 0, 0) 75%,
+		 rgba(0, 0, 0, 0) 30%, 
+		 rgba(0, 0, 0, 0) 75%, 
 		rgb(0, 0, 0, 1) 100%
 	);
 	pointer-events: none; /* So it doesn't interfere with interactions 

@@ -48,6 +48,11 @@ module.exports = {
 				600: '#d97706',
 			},
 			white: '#ffffff',
+			toast: {
+				error: '#e77670',
+				info: '#5073b8',
+				success: '#6fba82',
+			},
 		},
 		animation: {
 			none: 'none',
@@ -204,6 +209,7 @@ module.exports = {
 			fuchsia: colors.fuchsia,
 			pink: colors.pink,
 			rose: colors.rose,
+			toast: colors.toast,
 		}),
 		columns: {
 			auto: 'auto',

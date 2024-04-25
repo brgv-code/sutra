@@ -3,6 +3,9 @@ import Link from 'next/link'
 import React from 'react'
 import { TagChip } from './tag-chip'
 import Image from 'next/image'
+import toast from 'react-hot-toast'
+import { tailwindColors } from '@/lib/tailwindColors'
+import ToastNotification from './toast-notification'
 export type BlogCardProps = {
 	title: string
 	date: string
@@ -29,17 +32,31 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	// const setTags = useBlogStore(state => state.setTags)
 	// const setReadingTime = useBlogStore(state => state.setReadingTime)
 
-	const handleClick = () => {
-		// setTitle(title)
-		// setDate(date)
-		// setContent(content)
-		// setCover(cover)
-		// setTags(tags)
-		// setReadingTime(reading_time)
-	}
+	// const handleClick = () => {
+	// 	// setTitle(title)
+	// 	// setDate(date)
+	// 	// setContent(content)
+	// 	// setCover(cover)
+	// 	// setTags(tags)
+	// 	// setReadingTime(reading_time)
+	// 	return {
+	// 		toast('Opened a blog')
+	// 	}
+	// }
 
 	return (
-		<Link href={`/blog/${encodeURIComponent(id)}`} onClick={handleClick}>
+		<Link
+			href={`/blog/${encodeURIComponent(id)}`}
+			onClick={() =>
+				toast.custom(
+					<ToastNotification
+						message={'Hello'}
+						icon={'/t_1.svg'}
+						color={tailwindColors.toast.success}
+					/>,
+				)
+			}
+		>
 			<article className='group b-shadow  mt-4 mb-36 relative hover:scale-100 duration-500 transition-all hover:cursor-pointer'>
 				<Image
 					alt=''
