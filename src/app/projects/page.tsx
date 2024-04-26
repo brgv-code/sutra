@@ -33,17 +33,10 @@ const ProjectList = async () => {
 
 		return today
 	}
-	console.log(
-		response.map(res => res),
-		'response',
-	)
-	const sortedProjects = response.sort(
-		(a, b) => Number(a.created_at) - Number(b.created_at),
-	)
 
 	return (
 		<div className='grid grid-cols-1 w-1/2'>
-			{sortedProjects.map((project, index) => (
+			{response.map((project, index) => (
 				<div
 					key={index}
 					className='b-shadow rounded p-4 m-4 flex justify-between'
