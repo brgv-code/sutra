@@ -20,8 +20,6 @@ export async function fetchProjects(): Promise<Project[] | null> {
 	}
 	const json = (await response.json()) as GitHubRepos
 
-	console.log(json, 'hello')
-
 	const extractLanguages = async (url: string): Promise<LanguageUsage> => {
 		const languages = await fetch(
 			`https://api.github.com/repos/brgv-code/${url}/languages`,
@@ -30,7 +28,7 @@ export async function fetchProjects(): Promise<Project[] | null> {
 		const fetchUrl: LanguageUsage = await languages.json()
 		return fetchUrl
 	}
-	
+
 	const projectPromises = json
 		.map(repo => {
 			if (!repo.topics.includes('portfolio')) return null
