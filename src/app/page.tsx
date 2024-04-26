@@ -15,7 +15,7 @@ export default async function Home() {
 			</div>
 
 			<div className=' '>
-				<div className='grid  lg:grid-cols-2  w-full grid-cols-1 gap-8 px-0'>
+				<div className='grid grid-cols-1  px-0'>
 					{/* {data.map((item, index) => (
 						<BlogCard
 							key={index}
