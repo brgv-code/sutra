@@ -13,6 +13,7 @@
 		"@radix-ui/react-navigation-menu": "^1.1.4",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
+		"emoji-regex": "^10.3.0",
 		"isomorphic-dompurify": "^2.7.0",
 		"lucide-react": "^0.303.0",
 		"next": "14.0.4",

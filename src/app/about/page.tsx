@@ -1,6 +1,6 @@
 const About = () => {
 	return (
-		<div className='b-shadow'>
+		<div className='b-shadow w-1/2'>
 			<section>
 				<h2>Introduction</h2>
 				<img src='memoji1.svg' alt='Introduction Image' />

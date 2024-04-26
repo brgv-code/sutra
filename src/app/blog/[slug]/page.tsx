@@ -46,7 +46,7 @@ export default function BlogDetails() {
 			{/* <div className='text-[#e77670] flex cursor-pointer hover:bg-slate-800 hover:rounded-full w-8 h-8'>
 				<MoveLeft className='self-center m-auto' />
 			</div> */}
-			<div className='fixed flex flex-col  items-center left-[4%] bottom-[40%]'>
+			{/* <div className='fixed flex flex-col   items-center left-[4%] bottom-[40%]'>
 				<button className='btn mb-4'>
 					<div className='btn-background-wrapper'>
 						<div className='btn-background btn-background-1'></div>
@@ -63,8 +63,8 @@ export default function BlogDetails() {
 						</CustomChip>
 					))}
 				</div>
-			</div>
-			<div className='w-1/2 flex flex-col min-h-screen mb-12 p-6 b-shadow'>
+			</div> */}
+			<div className='w-1/2 flex flex-col min-h-screen mt-12 mb-12 p-6 b-shadow'>
 				{/* <p className='flex justify-between'>
 					<span>Date: {date}</span> <span> Reading Time: {reading_time} </span>
 					<CustomBold>bold text</CustomBold>

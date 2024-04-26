@@ -8,7 +8,7 @@ html {
 
 	color: white;
 	::-webkit-scrollbar {
-		background-color: #0d0d0f;
+		display: none;
 	}
 }
 @keyframes gradient {

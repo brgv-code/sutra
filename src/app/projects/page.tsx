@@ -1,54 +1,82 @@
-const projects = [
-	{
-		title: 'Project 1',
-		githubLink: 'https://github.com/project1',
-		websiteLink: 'https://project1.com',
-	},
-	{
-		title: 'Project 2',
-		githubLink: 'https://github.com/project2',
-		websiteLink: 'https://project2.com',
-	},
-	{
-		title: 'Project 3',
-		githubLink: 'https://github.com/project3',
-		websiteLink: 'https://project3.com',
-	},
-	{
-		title: 'Project 4',
-		githubLink: 'https://github.com/project4',
-		websiteLink: 'https://project4.com',
-	},
-	{
-		title: 'Project 5',
-		githubLink: 'https://github.com/project5',
-		websiteLink: 'https://project5.com',
-	},
-]
+import { fetchProjects } from '@/lib/projects'
+import { Github, Link } from 'lucide-react'
 
-const ProjectList = () => {
+const ProjectList = async () => {
+	const response = await fetchProjects()
+	if (response == null) return
+	function getToday(datestring: Date) {
+		const months = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December',
+		]
+
+		let date = new Date()
+
+		if (datestring) {
+			date = new Date(datestring)
+		}
+
+		const day = date.getDate()
+		const month = months[date.getMonth()]
+		const year = date.getFullYear()
+		let today = `${month} ${day}, ${year}`
+
+		return today
+	}
+	console.log(
+		response.map(res => res),
+		'response',
+	)
+	const sortedProjects = response.sort(
+		(a, b) => Number(a.created_at) - Number(b.created_at),
+	)
+
 	return (
-		<div className='grid grid-cols-2 gap-4'>
-			{projects.map((project, index) => (
-				<div key={index} className='b-shadow rounded p-4'>
-					<h2 className='text-xl font-bold mb-2'>{project.title}</h2>
-					<p>This is a dummy project title</p>
-					<div className='flex space-x-4'>
-						<a
-							href={project.githubLink}
-							target='_blank'
-							rel='noopener noreferrer'
-						>
-							<img src='/t_1.svg' alt='GitHub' className='w-6 h-6' />
-						</a>
-						<a
-							href={project.websiteLink}
-							target='_blank'
-							rel='noopener noreferrer'
-						>
-							<img src='/t_2.svg' alt='Website' className='w-6 h-6' />
-						</a>
+		<div className='grid grid-cols-1 w-1/2'>
+			{sortedProjects.map((project, index) => (
+				<div
+					key={index}
+					className='b-shadow rounded p-4 m-4 flex justify-between'
+				>
+					<div className='flex flex-col'>
+						<h2 className='text-xl font-bold mb-2 '>
+							<span className='mr-2'> {project.icon}</span> {project.name}
+						</h2>
+						<p>{project.description}</p>
 					</div>
+					<div className='flex flex-col justify-between'>
+						<div className='flex justify-end space-x-4 '>
+							<a href={project.url} target='_blank' rel='noopener noreferrer'>
+								<Link />
+							</a>
+							<a
+								href={project.homepage}
+								target='_blank'
+								rel='noopener noreferrer'
+							>
+								<Github />
+							</a>
+						</div>
+						{/* TODO: fix the fontsof languages */}
+						{/* <div className=''>
+							<p className='text-sm'>
+								{project.languages && Object.keys(project.languages)}
+							</p>
+						</div> */}
+						{getToday(project.created_at)}
+					</div>
+
+					{/* {project.languages_url} */}
 				</div>
 			))}
 		</div>
