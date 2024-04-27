@@ -23,7 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={fira.className}>
-				<div className='flex  flex-col h-full justify-between '>
+				<div className='flex relative flex-col h-100vh w-100vw justify-between '>
 					{' '}
 					<Navbar /> <Toaster position='top-right' />
 					<div className='  flex justify-center relative align-start pb-12'>
@@ -45,6 +45,7 @@ export default function RootLayout({
 						<Footer />
 					</div> */}
 				</div>
+
 				{/* <div className=' circle fixed right-48 bottom-12 mt-16'>
 					<div className='rounded-full'>
 						Contact &nbsp;&nbsp;●&nbsp;&nbsp; Contact

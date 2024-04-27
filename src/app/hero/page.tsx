@@ -1,5 +1,5 @@
 'use client'
-
+import Image from 'next/image'
 import { TagChip } from '../../components/ui/tag-chip'
 
 function HeroSection() {
@@ -19,10 +19,17 @@ function HeroSection() {
 		// </div>
 		<section className='bg-transparent pr-8 py-12'>
 			<div className='flex flex-col items-start'>
-				<h4 className='mb-6'>Hi, my name is</h4>
+				<Image
+					src={'/berlin_3.webp'}
+					width={960}
+					height={200}
+					alt={''}
+					className='backdrop-filter'
+				/>
+				{/* <h4 className='mb-6'>Hi, my name is</h4>
 				<h1 className='text-7xl  mb-6 text-[#F2C335]   font-mono font-extrabold	'>
 					Bhargav{' '}
-				</h1>
+				</h1> */}
 				{/* <NameAnimation /> */}
 				{/* <p className='text-lg font-light mb-6 text-[#233554]'>
 					Crafting Digital Experiences
@@ -33,8 +40,8 @@ function HeroSection() {
 					<span className='text-[#262626]'>Photographer</span> |
 					<span className='text-[#D9D0C7]'>Creator</span>
 				</p> */}
-				<p>I live in 📍 Berlin. A full time master student and an Intern at </p>
-				<TagChip text='Foundamental' color1='blue' color2='black' />
+				{/* <p>I live in 📍 Berlin. A full time master student and an Intern at </p>
+				<TagChip text='Foundamental' color1='blue' color2='black' /> */}
 			</div>
 		</section>
 	)
