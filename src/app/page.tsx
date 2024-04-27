@@ -1,6 +1,8 @@
 import { BlogCard } from '@/components/ui/blog-card'
 import ProfileSection from './profile-card'
 import { PostLists } from '@/lib/utils'
+import RotatingText from '@/components/ui/rotating-text'
+import HeroSection from './hero/page'
 
 export default async function Home() {
 	// const data = await getAllPublished()

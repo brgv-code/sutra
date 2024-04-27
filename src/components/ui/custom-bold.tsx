@@ -2,12 +2,14 @@ import React from 'react'
 
 interface CustomBoldProps {
 	gradientColors?: string[]
-	children: React.ReactNode // Add this line
+	children: React.ReactNode
+	fontSize?: string
 }
 
 const CustomBold: React.FC<CustomBoldProps> = ({
 	gradientColors,
 	children,
+	fontSize = '3xl',
 }) => {
 	const defaultGradientColors = ['#1b7783', '#1e8d50']
 	const colors = gradientColors || defaultGradientColors
@@ -17,11 +19,12 @@ const CustomBold: React.FC<CustomBoldProps> = ({
 		WebkitTextFillColor: 'transparent',
 		fontWeight: 'bold',
 		borderRadius: '10px',
+		lineHeight: 'normal',
 	}
 
 	return (
 		<span
-			className='text-3xl backdrop-blur-xl rounded-2xl'
+			className={`text-${fontSize} backdrop-blur-xl rounded-2xl`}
 			style={gradientStyle}
 		>
 			{children}
