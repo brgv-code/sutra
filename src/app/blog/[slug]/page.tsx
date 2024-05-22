@@ -1,5 +1,6 @@
 'use client'
 import CustomChip from '@/components/ui/custom-chip'
+import { Metadata } from 'next'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -25,6 +26,16 @@ const ChipColors = [
 	'gray',
 	'black',
 ]
+
+// how to make use of the generateMetadata funtion in client component. alternative
+//extract the parts which require client side rendering and put them in a separate file and use meta data here
+//TODO: use the opengraph.tsx compoent to use the title above the thumnail for x
+
+// export async function generateStaticParams() {
+// 	const router = useParams<{ slug: string }>()
+// 	const { slug } = router
+// 	const response = await import('@/posts/' + slug + '.tsx')
+// }
 export default function BlogDetails() {
 	const router = useParams<{ slug: string }>()
 	const { slug } = router
