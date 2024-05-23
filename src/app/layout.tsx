@@ -78,6 +78,9 @@ export default function RootLayout({
 						</text>
 					</svg>
 				</div> */}
+				<div className='noise'>
+
+				</div>
 			</body>
 		</html>
 	)

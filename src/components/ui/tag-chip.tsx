@@ -1,3 +1,4 @@
+import Image from 'next/image'
 type TagChipProps = {
 	text: string
 	color1?: string
@@ -24,16 +25,25 @@ const toColorClasses: { [key: string]: string } = {
 
 	// Add more colors as needed
 }
+const textToLogo: { [key: string]: string } = {
+	react: '/tags/react.svg',
+	nextjs: '/tags/nextjs1.svg',
+	tailwind: '/tags/tailwind.svg',
+	graphql: '/tags/graphql.svg',
+	edgedb: '/tags/edb_logo_green.svg',
+	nestjs: '/tags/nestjs.svg',
+
+	// Add more colors as needed
+}
 
 export const TagChip: React.FC<TagChipProps> = ({ text, color1, color2 }) => {
 	// const fromColor = fromColorClasses[color1]
 	// const toColor = toColorClasses[color2]
 	return (
-		<div
-			className={`inline-block select-none  rounded-lg mx-2 px-3 py-0.5 font-sans text-xs 
-          font-bold uppercase  bg-[#595959]`}
-		>
-			<span className=''>{text}</span>
+		<div className='text-white'>
+			{/* <span className='text-[7px]'>{text}</span>
+			 */}
+			<Image width={25} height={25} alt={text} src={textToLogo[text]} />
 		</div>
 	)
 }
