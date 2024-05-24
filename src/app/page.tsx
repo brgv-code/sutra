@@ -1,19 +1,21 @@
 import { BlogCard } from '@/components/ui/blog-card'
 import ProfileSection from './profile-card'
 import { PostLists } from '@/lib/utils'
-import RotatingText from '@/components/ui/rotating-text'
-import HeroSection from './hero/page'
+import { Metadata } from 'next'
 
+export const metadata: Metadata = {
+	title: 'Home',
+}
 export default async function Home() {
 	// const data = await getAllPublished()
 
 	return (
-		<div className='w-1/2 mt-12 backdrop-blur-3xl  backdrop-filter '>
+		<div className='w-1/2 mt-12  '>
 			{/* <HeroSection /> */}
 			<ProfileSection />
 			<div className=' flex  p-5  justify-between w-full'>
-				<span className=''>Recent Posts</span>
-				<span className=''>{PostLists.length} Posts</span>
+				<span className=''>Recents</span>
+				{/* <span className=''>{PostLists.length} Posts</span> */}
 			</div>
 
 			<div className=' '>

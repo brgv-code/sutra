@@ -9,10 +9,18 @@ const fira = Fira_Mono({
 	subsets: ['latin-ext'],
 })
 //make this dynamic for page wise
+//add dynamic icons for each page
 //TODO: some analytics with splitbee
 export const metadata: Metadata = {
-	title: 'Bhargav | Portfolio',
-	description: 'A portfolio website for Bhargav',
+	title: {
+		default: 'Sutra | Portfolio',
+		template: '%s | Sutra ',
+	},
+	description:
+		'A portfolio website for Bhargav. Software developer based in Berlin,Germany.',
+	twitter: {
+		card: 'summary_large_image',
+	},
 }
 
 export default function RootLayout({
@@ -70,6 +78,9 @@ export default function RootLayout({
 						</text>
 					</svg>
 				</div> */}
+				<div className='noise'>
+
+				</div>
 			</body>
 		</html>
 	)
