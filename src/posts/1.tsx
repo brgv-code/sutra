@@ -29,44 +29,45 @@ const PostOne = () => {
 					<br />
 					<div className='px-2 py-2'>
 						{' '}
-						I'm still a newbie in this, trust me it is not so easy to move away
-						from the comfort which I had with Visual Studio Code. But as they
-						say, nothing grows in comfort zone. So here I am, question my life
-						choices about why I switched to tmux and neovim. I know I would
+						I&apos;m still a newbie in this, trust me it is not so easy to move
+						away from the comfort which I had with Visual Studio Code. But as
+						they say, nothing grows in comfort zone. So here I am, question my
+						life choices about why I switched to tmux and neovim. I know I would
 						thank myself for this in future.
 					</div>
 					<br />
 					<div className='px-4 pb-2'>
-						Like most of the newbie developers, VS Code was my first IDE. It's a
-						great tool, packed with features and an extensive plugin ecosystem.
-						But over time, I started feeling its limitations. I will write a
-						seperate blog post about the problems I faced. Maybe it's a fault at
-						my end, or the software has actually become slow, I am not sure. I
-						saw my collegue using neovim for the past few months and honestly I
-						wanted to give it a try, mainly because of the speed and performance
-						it provides. So, I decided to take the plunge and dive into the
-						world of Tmux and Neovim. Here's how it went.
+						Like most of the newbie developers, VS Code was my first IDE.
+						It&apos;s a great tool, packed with features and an extensive plugin
+						ecosystem. But over time, I started feeling its limitations. I will
+						write a seperate blog post about the problems I faced. Maybe
+						it&apos;s a fault at my end, or the software has actually become
+						slow, I am not sure. I saw my collegue using neovim for the past few
+						months and honestly I wanted to give it a try, mainly because of the
+						speed and performance it provides. So, I decided to take the plunge
+						and dive into the world of Tmux and Neovim. Here&apos;s how it went.
 					</div>
 					<br />
 					<div className='px-4 pb-2'>
-						First, let's talk about why I decided to leave VS Code behind. Don’t
-						get me wrong; it’s a fantastic IDE and perfect for many developers.
-						But here were my main gripes: performance issues, especially when I
-						had multiple extensions running or when working on large projects,
-						were killing my productivity. VS Code, being an Electron-based
-						application, can be quite the resource hog, eating up RAM and CPU.
-						Occasionally, it would freeze, making me restart and sometimes lose
-						my unsaved work – super annoying. Additionally, I had to install
-						tons of plugins to get the functionality I needed, and sometimes
-						they didn't play well together, adding to the bloat and slowness.
-						Despite these issues, VS Code will always have a special place in my
-						heart. It’s user-friendly, feature-rich, and great for beginners.
-						But I wanted something faster and more efficient.
+						First, let&apos;s talk about why I decided to leave VS Code behind.
+						Don’t get me wrong; it’s a fantastic IDE and perfect for many
+						developers. But here were my main gripes: performance issues,
+						especially when I had multiple extensions running or when working on
+						large projects, were killing my productivity. VS Code, being an
+						Electron-based application, can be quite the resource hog, eating up
+						RAM and CPU. Occasionally, it would freeze, making me restart and
+						sometimes lose my unsaved work – super annoying. Additionally, I had
+						to install tons of plugins to get the functionality I needed, and
+						sometimes they didn&apos;t play well together, adding to the bloat
+						and slowness. Despite these issues, VS Code will always have a
+						special place in my heart. It’s user-friendly, feature-rich, and
+						great for beginners. But I wanted something faster and more
+						efficient.
 					</div>
 					<br />
 					<div className='px-4 pb-2'>
 						Enter Tmux and Neovim. I was initially drawn to Neovim because of
-						its speed and performance. It's a terminal-based editor,
+						its speed and performance. It&apos;s a terminal-based editor,
 						lightweight, and it handles large files without breaking a sweat.
 						Tmux, a terminal multiplexer, lets me create, access, and control
 						multiple terminal sessions from a single window. This combination
@@ -87,7 +88,8 @@ const PostOne = () => {
 						switch. With configuration files (init.vim for Neovim and .tmux.conf
 						for Tmux), I can tweak my setup to my heart’s content. Keybindings,
 						color schemes, plugins – everything is customizable. This level of
-						control is something I didn't realize I was missing until I had it.
+						control is something I didn&apos;t realize I was missing until I had
+						it.
 					</div>
 					<br />
 					<div className='px-4 pb-2'>
