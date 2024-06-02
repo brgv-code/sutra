@@ -5,7 +5,7 @@ import CustomBold from './custom-bold'
 export function ContactCard() {
 	// TODO add copy on hover and externallinks to social media
 	return (
-		<div className='flex flex-col h-full justify-between '>
+		<div className='flex flex-col justify-between h-[71vh] '>
 			<div className='w-full h-1/2   '>
 				<Image
 					src={'/berlin_dark.webp'}
@@ -20,7 +20,7 @@ export function ContactCard() {
 					sizes={'50vh'}
 					width={0}
 					height={0}
-					className='w-24 h-24  contact-border absolute top-[39%] border-b-slate-200 border-b left-5 contact-gradient '
+					className='w-24 h-24  contact-border absolute top-60 border-b-slate-200 border-b left-5 contact-gradient '
 					alt=''
 				/>
 			</div>

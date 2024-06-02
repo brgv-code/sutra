@@ -6,11 +6,11 @@ const links = [
 		text: 'Home',
 		url: '/',
 	},
-	// {
-	// 	id: 2,
-	// 	text: 'About',
-	// 	url: '/about/',
-	// },
+	{
+		id: 2,
+		text: 'About',
+		url: '/about/',
+	},
 	{
 		id: 3,
 		text: 'Projects',

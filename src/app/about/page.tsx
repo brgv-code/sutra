@@ -7,18 +7,18 @@ export const metadata: Metadata = {
 const About = () => {
 	return (
 		<div className='b-shadow w-1/2'>
-			<section>
-				<h2>Introduction</h2>
-				<Image
+			{/* <section>
+				<h2>Introduction</h2> */}
+			{/* <Image
 					src='memoji1.svg'
 					sizes={'100vh'}
 					alt='Introduction Image'
 					width={0}
 					height={0}
 					className='w-48 h-48 rounded-full'
-				/>
-				<p>Write a brief introduction about yourself here.</p>
-			</section>
+				/> */}
+			<p>Under construction</p>
+			{/* </section>
 
 			<section>
 				<h2>Work Experience</h2>
@@ -33,7 +33,7 @@ const About = () => {
 			<section>
 				<h2>Goals</h2>
 				<p>Write about your goals and aspirations here.</p>
-			</section>
+			</section> */}
 		</div>
 	)
 }

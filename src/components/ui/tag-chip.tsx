@@ -27,23 +27,22 @@ const toColorClasses: { [key: string]: string } = {
 }
 const textToLogo: { [key: string]: string } = {
 	react: '/tags/react.svg',
-	nextjs: '/tags/nextjs1.svg',
+	nextjs: '/tags/nextjsf.svg',
 	tailwind: '/tags/tailwind.svg',
 	graphql: '/tags/graphql.svg',
 	edgedb: '/tags/edb_logo_green.svg',
 	nestjs: '/tags/nestjs.svg',
 
-	// Add more colors as needed
 }
 
 export const TagChip: React.FC<TagChipProps> = ({ text, color1, color2 }) => {
 	// const fromColor = fromColorClasses[color1]
 	// const toColor = toColorClasses[color2]
 	return (
-		<div className='text-white'>
-			{/* <span className='text-[7px]'>{text}</span>
+		<div>
+    {/* <span className='text-[7px]'>{text}</span>
 			 */}
-			<Image width={25} height={25} alt={text} src={textToLogo[text]} />
-		</div>
+			<Image width={15} height={15} alt={text} className="opacity-50" src={textToLogo[text]} />
+  </div>
 	)
 }
