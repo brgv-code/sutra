@@ -41,7 +41,7 @@ const RotatingText: React.FC<RotatingTextProps> = ({
 				))}
 			</div>
 
-			<div className='invisible contact  group-hover:visible w-64 h-[70vh] transition duration-300 ease-in-out fixed hover:cursor-pointer  mt-16 mr-12 right-10  b-contact   p-2 rounded shadow text-sm'>
+			<div className='invisible contact  group-hover:visible w-64 h-[70vh] transition duration-300 ease-in-out fixed hover:cursor-pointer  mt-16 mr-12 right-10 top-0 b-contact   p-2 rounded shadow text-sm'>
 				<ContactCard />
 			</div>
 		</div>

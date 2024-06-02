@@ -50,22 +50,22 @@ const ProfileSection: React.FC = () => {
 					<div className='mb-4 text-start'>
 						<br />
 						Product focused developer. Bringing Loura to life @{' '}
-						<Link
-							href={
-								'https://foundamental-staging.webflow.io/people/bhargav-babu'
-							}
-							target='_blank'
-						>
-							F
-							<Image
-								width={18}
-								height={18}
-								src={'/foundamental_logo.png'}
-								alt={'Foundamental'}
-								className='inline-block'
-							/>
-							ndamental
-						</Link>
+						<span className='whitespace-nowrap'>
+							<Link
+								href={'https://www.foundamental.com/people/bhargav-babu'}
+								target='_blank'
+							>
+								Fou
+								{/* <Image
+									width={18}
+									height={18}
+									src={'/foundamental_logo.png'}
+									alt={'Foundamental'}
+									className='inline-block'
+								/> */}
+								ndamental
+							</Link>
+						</span>
 						{/* <CustomLink
 							decoration={false}
 							gradientColors={['#0FC2C0', '#023535']}
