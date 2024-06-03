@@ -22,6 +22,8 @@ const PostOne = () => {
 					width={0}
 					height={0}
 					alt={''}
+					loading='lazy'
+					blur-up={true}
 					className='m-auto p-auto w-[60%] my-4 opacity-80  rounded-lg'
 				/>
 				<div className='mb-4 text-md font-fira mt-4'>
@@ -85,11 +87,13 @@ const PostOne = () => {
 					<br />
 					<div className='px-4 pb-2'>
 						The customizability of Neovim and Tmux is another reason I made the
-						switch. With configuration files (init.vim for Neovim and .tmux.conf
-						for Tmux), I can tweak my setup to my heart’s content. Keybindings,
-						color schemes, plugins – everything is customizable. This level of
-						control is something I didn&apos;t realize I was missing until I had
-						it.
+						switch. With configuration files{' '}
+						<span className='text-red-900'>(</span> init.vim for Neovim and
+						.tmux.conf for Tmux
+						<span className='text-red-900'>)</span>, I can tweak my setup to my
+						heart’s content. Keybindings, color schemes, plugins – everything is
+						customizable. This level of control is something I didn&apos;t
+						realize I was missing until I had it.
 					</div>
 					<br />
 					<div className='px-4 pb-2'>

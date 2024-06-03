@@ -53,34 +53,34 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	const handleLinkCopy = () => {
 		console.log('hey')
 		navigator.clipboard.writeText(`https://bhargav.dev/blog/${id}`)
-		toast.custom(
-			<ToastNotification
-				message={'Copied the url'}
-				icon={'/t_1.svg'}
-				color={tailwindColors.toast.success}
-			/>,
-		)
-		toast.success('this working lmao')
+		// toast.custom(
+		// 	<ToastNotification
+		// 		message={'Copied the url'}
+		// 		icon={'/t_1.svg'}
+		// 		color={tailwindColors.toast.success}
+		// 	/>,
+		// )
+		// toast.success('this working lmao')
 	}
 	console.log(content, 'content')
 	return (
 		<div className='b-shadow rounded p-4 m-4 flex justify-between'>
 			<Link
 				href={`/blog/${encodeURIComponent(id)}`}
-				onClick={() =>
-					toast.custom(
-						<ToastNotification
-							message={'Hello'}
-							icon={'/t_1.svg'}
-							color={tailwindColors.toast.success}
-						/>,
-					)
-				}
+				// onClick={() =>
+				// 	// toast.custom(
+				// 	// 	<ToastNotification
+				// 	// 		message={'Hello'}
+				// 	// 		icon={'/t_1.svg'}
+				// 	// 		color={tailwindColors.toast.success}
+				// 	// 	/>,
+				// 	// )
+				// }
 			>
 				<div className='flex flex-col w-4/5'>
 					<h2 className='text-md font-bold mb-2 '>
-          {/* <span className='mr-2'> i</span> */}
-            {title}
+						{/* <span className='mr-2'> i</span> */}
+						{title}
 					</h2>
 					<p className='text-gray-400 mt-2 mb-4 text-xs'>
 						{content.split(' ').slice(0, 25).join(' ')}

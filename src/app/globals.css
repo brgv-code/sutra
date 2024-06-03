@@ -15,6 +15,16 @@ html {
 	--direction: 1;
 }
 
+.motion-div.glow {
+	filter: brightness(1.5);
+	transition: filter 0.5s;
+}
+
+.motion-div.fadeOut {
+	opacity: 0;
+	transition: opacity 0.5s ease-out;
+}
+
 /* body {
 	background-image: url('/bg-tile.svg');
 	background-position: 50% 0;
