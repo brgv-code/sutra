@@ -637,9 +637,9 @@ pre code {
 	border-bottom-width: 2px;
 }
 
-.contact-gradient {
+/* .contact-gradient {
 	background: linear-gradient(to bottom, transparent 55%, #0d0d0f 20%);
-}
+} */
 
 .b-contact {
 	border-bottom-right-radius: 0;
