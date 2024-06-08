@@ -1,37 +1,28 @@
+// components/CustomLink.tsx
+'use client'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import classNames from 'classnames'
+import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 
 interface CustomLinkProps {
-	text: string
-	url: string
-	gradientColors?: string[]
-	decoration?: boolean
+	href: string
+	children: React.ReactNode
+	fontSize?: string
+	fontColor?: string
+	underlineColor?: string
 }
-const CustomLink: React.FC<CustomLinkProps> = ({
-	text,
-	url,
-	gradientColors,
-	decoration = true,
-}) => {
-	const defaultGradientColors = ['#1b7783', '#1e8d50']
-	const colors = gradientColors || defaultGradientColors
-	const gradientStyle = {
-		background: `linear-gradient(to right, ${colors.join(', ')})`,
-		WebkitBackgroundClip: 'text',
-		WebkitTextFillColor: 'transparent',
-		fontWeight: 'bold',
-		borderRadius: '10px',
-		lineHeight: 'normal',
-		underline: decoration ? 'underline' : 'none',
-	}
+
+const CustomLink: React.FC<CustomLinkProps> = ({ href, children }) => {
+	const [show, setShow] = useState(false)
+
 	return (
-		<Link
-			className={`text-lg mx-2  text-transparent bg-clip-text  italic  `}
-			style={gradientStyle}
-			href={url}
-			target='_blank'
-		>
-			{text}
+		<Link href={href} target='_blank'>
+			<RoughNotation type='underline' color='#bf360c' show={true}>
+				{children}
+			</RoughNotation>
 		</Link>
 	)
 }
+
 export default CustomLink

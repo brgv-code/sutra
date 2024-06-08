@@ -639,17 +639,14 @@ pre code {
 .circle span:nth-child(24) {
 	--angle: 345deg;
 }
-
-.contact-border {
-	border-bottom-color: white;
-	border-bottom-right-radius: 50%;
-	border-bottom-left-radius: 50%;
-	border-bottom-width: 2px;
+.underline {
+	position: relative;
+	display: inline-block;
 }
 
-.contact-gradient {
+/* .contact-gradient {
 	background: linear-gradient(to bottom, transparent 55%, #0d0d0f 20%);
-}
+} */
 
 .b-contact {
 	border-bottom-right-radius: 0;

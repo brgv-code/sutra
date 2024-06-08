@@ -33,7 +33,8 @@ export default function RootLayout({
 			<body className={fira.className}>
 				<div className='flex relative flex-col h-100vh w-100vw justify-between '>
 					{' '}
-					<Navbar /> <Toaster position='top-right' />
+					<Navbar />
+					{/* <Toaster position='top-right' /> */}
 					<div className='  flex justify-center relative align-start pb-12'>
 						{children}
 						{/* <span className='absolute  right-56 m-16 top-64'>
@@ -42,12 +43,14 @@ export default function RootLayout({
 						<div className='absolute right-48 top-72 mt-16 '>
 							<TopCategories />
 						</div> */}
-						<RotatingText
-							text='Contact'
-							repeat={3}
-							divider={'.'}
-							direction='counterclockwise'
-						/>
+						<div className='hidden md:block'>
+							<RotatingText
+								text='Contact'
+								repeat={3}
+								divider={'.'}
+								direction='counterclockwise'
+							/>
+						</div>
 					</div>
 					{/* <div className='flex justify-center'>
 						<Footer />
