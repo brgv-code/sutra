@@ -2,7 +2,6 @@
 'use client'
 import React, { useState } from 'react'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
-import classNames from 'classnames'
 
 interface CustomHighlightProps {
 	children: React.ReactNode
