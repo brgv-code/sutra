@@ -3,6 +3,7 @@ import React from 'react'
 import CustomBold from '@/components/ui/custom-bold'
 import Link from 'next/link'
 import CustomLink from '@/components/ui/custom-links'
+import CustomHighlight from '../components/ui/custom-highlight'
 
 const ProfileSection: React.FC = () => {
 	return (
@@ -43,7 +44,8 @@ const ProfileSection: React.FC = () => {
 					</Link>
 					<div className='mb-4 md:text-start items-center'>
 						<br />
-						Product focused developer. Bringing Loura to life @{' '}
+						Product focused developer. Bringing{' '}
+						<CustomHighlight>Loura</CustomHighlight> to life @{' '}
 						<span className='whitespace-nowrap'>
 							{/* <Link
 								href={'https://www.foundamental.com/people/bhargav-babu'}
