@@ -2,6 +2,7 @@ import CustomBold from '@/components/ui/custom-bold'
 import CustomLink from '@/components/ui/custom-links'
 import CodeBlock from '../components/ui/custom-code-block'
 import Image from 'next/image'
+import CustomHighlight from '../components/ui/custom-highlight'
 const PostOne = () => {
 	//TODO add react live code some point TODO add react-code-block
 
@@ -14,7 +15,9 @@ const PostOne = () => {
 			<br />
 			<div className='container mx-auto'>
 				<span className='text-3xl text-red-900  font-extrabold italic'>#</span>
-				<CustomBold> Transitioning from VS Code to NeoVim</CustomBold>
+				<CustomLink href={'#'}>
+					<CustomBold> Transitioning from VS Code to NeoVim</CustomBold>
+				</CustomLink>
 
 				<Image
 					src='/blog1.webp'
