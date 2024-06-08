@@ -639,12 +639,9 @@ pre code {
 .circle span:nth-child(24) {
 	--angle: 345deg;
 }
-
-.contact-border {
-	border-bottom-color: white;
-	border-bottom-right-radius: 50%;
-	border-bottom-left-radius: 50%;
-	border-bottom-width: 2px;
+.underline {
+	position: relative;
+	display: inline-block;
 }
 
 /* .contact-gradient {

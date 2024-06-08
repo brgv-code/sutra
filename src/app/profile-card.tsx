@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import CustomBold from '@/components/ui/custom-bold'
 import Link from 'next/link'
+import CustomLink from '@/components/ui/custom-links'
 
 const ProfileSection: React.FC = () => {
 	return (
@@ -44,12 +45,14 @@ const ProfileSection: React.FC = () => {
 						<br />
 						Product focused developer. Bringing Loura to life @{' '}
 						<span className='whitespace-nowrap'>
-							<Link
+							{/* <Link
 								href={'https://www.foundamental.com/people/bhargav-babu'}
 								target='_blank'
-							>
-								<CustomBold fontSize='md'>Foundamental</CustomBold>
-							</Link>
+							> */}
+							<CustomLink href='https://www.foundamental.com/people/bhargav-babu'>
+								Foundamental
+							</CustomLink>
+							{/* </Link> */}
 						</span>{' '}
 						Ready to code, connect, and create something amazing!
 						<p className='mt-4 text-[9px] text-gray-400'>
