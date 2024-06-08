@@ -3,23 +3,23 @@ import CustomLink from '@/components/ui/custom-links'
 import CodeBlock from '../components/ui/custom-code-block'
 import Image from 'next/image'
 import CustomHighlight from '../components/ui/custom-highlight'
+import Heading from '@/components/ui/blog/heading'
+import Highlight from '@/components/ui/blog/highlight'
+import Subheading from '@/components/ui/blog/subheading'
+import Intro from '@/components/ui/blog/intro'
 const PostOne = () => {
 	//TODO add react live code some point TODO add react-code-block
 
 	return (
 		<div>
-			<p className='flex justify-between'>
-				<span>Date: {'01 June 2024'}</span> <span> Reading Time: {'4m'} </span>
-			</p>
 			<br />
 			<br />
 			<div className='container mx-auto'>
-				<span className='text-3xl text-red-900  font-extrabold italic'>#</span>
-				<CustomLink href={'#'}>
-					<CustomBold> Transitioning from VS Code to NeoVim</CustomBold>
-				</CustomLink>
-
-				<Image
+				<Heading>Transitioning from VS Code to NeoVim</Heading>
+				<p className='flex my-4 text-[#929293] text-md'>
+					<span> June 01,2024</span> <span> - 2min read </span>
+				</p>
+				{/* <Image
 					src='/blog1.webp'
 					sizes={'80vw'}
 					width={0}
@@ -28,37 +28,30 @@ const PostOne = () => {
 					loading='lazy'
 					blur-up={true}
 					className='m-auto p-auto w-[60%] my-4 opacity-80  rounded-lg'
-				/>
-				<div className='mb-4 text-md font-fira mt-4'>
-					Today I finally switched to neovim &#x1F973;.
+				/> */}
+				<div className='mb-4 text-sm font-fira mt-4 leading-loose'>
+					<Intro>
+						Today I finally switched to neovim &#x1F973;VisualStudio Code is my
+						first IDE. It&apos;s a great tool, packed with features and an
+						extensive plugin ecosystem. But over time, I started feeling its
+						limitations. I saw my collegue using neovim for the past few months
+						and honestly I wanted to give it a try, mainly because of the speed
+						and performance it provides. So, I decided to take the plunge and
+						dive into the world of Tmux and Neovim. Here&apos;s how it went.
+					</Intro>
 					<br />
-					<div className='px-2 py-2'>
-						{' '}
-						I&apos;m still a newbie in this, trust me it is not so easy to move
-						away from the comfort which I had with Visual Studio Code. But as
-						they say, nothing grows in comfort zone. So here I am, question my
-						life choices about why I switched to tmux and neovim. I know I would
-						thank myself for this in future.
-					</div>
-					<br />
-					<div className='px-4 pb-2'>
-						Like most of the newbie developers, VS Code was my first IDE.
-						It&apos;s a great tool, packed with features and an extensive plugin
-						ecosystem. But over time, I started feeling its limitations. I will
-						write a seperate blog post about the problems I faced. Maybe
-						it&apos;s a fault at my end, or the software has actually become
-						slow, I am not sure. I saw my collegue using neovim for the past few
-						months and honestly I wanted to give it a try, mainly because of the
-						speed and performance it provides. So, I decided to take the plunge
-						and dive into the world of Tmux and Neovim. Here&apos;s how it went.
-					</div>
-					<br />
-					<div className='px-4 pb-2'>
+					<Subheading>Problems with VS Code</Subheading>
+					<div className='px-4 pb-8'>
 						First, let&apos;s talk about why I decided to leave VS Code behind.
 						Don’t get me wrong; it’s a fantastic IDE and perfect for many
-						developers. But here were my main gripes: performance issues,
-						especially when I had multiple extensions running or when working on
-						large projects, were killing my productivity. VS Code, being an
+						developers. But here were my main gripes:{' '}
+						<CustomLink
+							href={'https://github.com/microsoft/vscode/issues/82846'}
+						>
+							performance issues
+						</CustomLink>{' '}
+						, especially when I had multiple extensions running or when working
+						on large projects, were killing my productivity. VS Code, being an
 						Electron-based application, can be quite the resource hog, eating up
 						RAM and CPU. Occasionally, it would freeze, making me restart and
 						sometimes lose my unsaved work – super annoying. Additionally, I had
@@ -69,7 +62,7 @@ const PostOne = () => {
 						great for beginners. But I wanted something faster and more
 						efficient.
 					</div>
-					<br />
+					<Subheading>Enter Vim</Subheading>
 					<div className='px-4 pb-2'>
 						Enter Tmux and Neovim. I was initially drawn to Neovim because of
 						its speed and performance. It&apos;s a terminal-based editor,
@@ -90,11 +83,9 @@ const PostOne = () => {
 					<br />
 					<div className='px-4 pb-2'>
 						The customizability of Neovim and Tmux is another reason I made the
-						switch. With configuration files{' '}
-						<span className='text-red-900'>(</span> init.vim for Neovim and
-						.tmux.conf for Tmux
-						<span className='text-red-900'>)</span>, I can tweak my setup to my
-						heart’s content. Keybindings, color schemes, plugins – everything is
+						switch. With configuration files <Highlight>init.vim</Highlight> for
+						Neovim and .tmux.conf for Tmux , I can tweak my setup to my heart’s
+						content. Keybindings, color schemes, plugins – everything is
 						customizable. This level of control is something I didn&apos;t
 						realize I was missing until I had it.
 					</div>

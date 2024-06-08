@@ -1,5 +1,5 @@
 import { BlogCard } from '@/components/ui/blog-card'
-import ProfileSection from './profile-card'
+import ProfileSection from '../components/ui/profile-card'
 import { PostLists } from '@/lib/utils'
 import { Metadata } from 'next'
 

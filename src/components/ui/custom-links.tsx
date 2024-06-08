@@ -14,11 +14,17 @@ interface CustomLinkProps {
 }
 
 const CustomLink: React.FC<CustomLinkProps> = ({ href, children }) => {
-	const [show, setShow] = useState(false)
+	const [show, setShow] = useState(true)
 
 	return (
-		<Link href={href} target='_blank'>
-			<RoughNotation type='underline' color='#bf360c' show={true}>
+		<Link
+			href={href}
+			target='_blank'
+			className='hover:no-underline'
+			onMouseEnter={() => setShow(false)}
+			onMouseLeave={() => setShow(true)}
+		>
+			<RoughNotation type='underline' color='#dcc42d' show={show}>
 				{children}
 			</RoughNotation>
 		</Link>
