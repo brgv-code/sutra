@@ -11,7 +11,7 @@ const CustomBold: React.FC<CustomBoldProps> = ({
 	children,
 	fontSize = '3xl',
 }) => {
-	const defaultGradientColors = ['#1b7783', '#1e8d50']
+	const defaultGradientColors = ['#fff', '#fff']
 	const colors = gradientColors || defaultGradientColors
 	const gradientStyle = {
 		background: `linear-gradient(to right, ${colors.join(', ')})`,

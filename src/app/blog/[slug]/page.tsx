@@ -1,7 +1,8 @@
 'use client'
 import CustomChip from '@/components/ui/custom-chip'
+import { Undo2 } from 'lucide-react'
 import { Metadata } from 'next'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const Tags = [
@@ -37,10 +38,12 @@ const ChipColors = [
 // 	const response = await import('@/posts/' + slug + '.tsx')
 // }
 export default function BlogDetails() {
-	const router = useParams<{ slug: string }>()
-	const { slug } = router
-
+	const { slug } = useParams<{ slug: string }>()
+	const router = useRouter()
 	const [DynamicPost, setDynamicPost] = useState(() => () => null)
+	const goBack = () => {
+		router.back()
+	}
 
 	useEffect(() => {
 		if (slug) {
@@ -54,56 +57,19 @@ export default function BlogDetails() {
 
 	return (
 		<>
-			{/* <div className='text-[#e77670] flex cursor-pointer hover:bg-slate-800 hover:rounded-full w-8 h-8'>
-				<MoveLeft className='self-center m-auto' />
-			</div> */}
-			{/* <div className='fixed flex flex-col   items-center left-[4%] bottom-[40%]'>
-				<button className='btn mb-4'>
-					<div className='btn-background-wrapper'>
-						<div className='btn-background btn-background-1'></div>
-						<div className='btn-background btn-background-2'></div>
-						<div className='btn-background btn-background-3'></div>
-					</div>
-
-					<div className='btn-text'>Categories</div>
-				</button>
-				<div className='flex w-72 h-42 flex-wrap items-start '>
-					{Tags.map((tag, index) => (
-						<CustomChip key={index} gradientColors={[tag.color1, tag.color2]}>
-							{tag.name}
-						</CustomChip>
-					))}
-				</div>
-			</div> */}
+			<div
+				onClick={goBack}
+				className='flex gap-2 text-[#929293] text-sm hover:cursor-pointer h-5'
+			>
+				<Undo2 size={'14px'} />
+				<span>Go back</span>
+			</div>
 			<div className='w-1/2 flex flex-col min-h-screen mt-12 mb-12 p-6 b-shadow'>
-				{/* <p className='flex justify-between'>
-					<span>Date: {date}</span> <span> Reading Time: {reading_time} </span>
-					<CustomBold>bold text</CustomBold>
-				</p>
-				<br />
-				<br /> */}
-				{/* <h1 className='text-3xl text-blue-700 p-8 mb-8 '>{title}</h1>
-				 */}
-				{/* <span className='self-center'>
-					<CustomBold gradientColors={['red', 'purple']}> {title}</CustomBold>
-				</span>
-				<Image
-					src={cover}
-					alt=''
-					sizes='100vw'
-					width={0}
-					height={0}
-					className='opacity-60 max-h-80 w-4/5 rounded-md m-auto mt-12 shadow-xl group-hover:scale-105 duration-500 transition-all ease-in-out'
-				></Image> */}
-				{/* <p className='p-8 text-lg'>{content}</p>
-				 */}
-
 				{DynamicPost ? (
 					<DynamicPost />
 				) : (
 					<p className='w-1/2 h-full'>Loading...</p>
 				)}
-				{/* rest of your code */}
 			</div>
 		</>
 	)
