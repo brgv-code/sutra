@@ -49,14 +49,14 @@ const ProjectList = async () => {
 					</div>
 					<div className='flex flex-col justify-between'>
 						<div className='flex justify-end space-x-4 '>
-							<a href={project.url} target='_blank' rel='noopener noreferrer'>
-								<Link />
-							</a>
 							<a
 								href={project.homepage}
 								target='_blank'
 								rel='noopener noreferrer'
 							>
+								<Link />
+							</a>
+							<a href={project.url} target='_blank' rel='noopener noreferrer'>
 								<Github />
 							</a>
 						</div>
