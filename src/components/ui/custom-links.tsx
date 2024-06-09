@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
+import Underline from './blog/underline'
 
 interface CustomLinkProps {
 	href: string
@@ -24,9 +25,9 @@ const CustomLink: React.FC<CustomLinkProps> = ({ href, children }) => {
 			onMouseEnter={() => setShow(false)}
 			onMouseLeave={() => setShow(true)}
 		>
-			<RoughNotation type='underline' color='#dcc42d' show={show}>
+			<Underline underlineColor='#dcc42d' animationDuration={2500} show={show}>
 				{children}
-			</RoughNotation>
+			</Underline>
 		</Link>
 	)
 }
