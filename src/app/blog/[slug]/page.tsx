@@ -59,12 +59,12 @@ export default function BlogDetails() {
 		<>
 			<div
 				onClick={goBack}
-				className='flex gap-2 text-[#929293] text-sm hover:cursor-pointer h-5'
+				className='md:flex gap-2 text-[#929293] text-sm hover:cursor-pointer h-5 hidden'
 			>
 				<Undo2 size={'14px'} />
 				<span>Go back</span>
 			</div>
-			<div className='w-1/2 flex flex-col min-h-screen mt-12 mb-12 p-6 b-shadow'>
+			<div className='md:w-1/2 flex flex-col min-h-screen mt-12 mb-12 p-6 b-shadow sm:w-full'>
 				{DynamicPost ? (
 					<DynamicPost />
 				) : (
