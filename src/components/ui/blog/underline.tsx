@@ -21,16 +21,17 @@ const Underline: React.FC<UnderlineProps> = ({
 	show = true,
 }) => {
 	return (
-		<RoughNotation
-			type='underline'
-			strokeWidth={1}
-			color={underlineColor}
-			show={show}
-			animationDelay={animationDelay}
-			animationDuration={animationDuration}
-		>
-			{children}
-		</RoughNotation>
+		<RoughNotationGroup show={show}>
+			<RoughNotation
+				type='underline'
+				strokeWidth={1}
+				color={underlineColor}
+				animationDelay={animationDelay}
+				animationDuration={animationDuration}
+			>
+				{children}
+			</RoughNotation>
+		</RoughNotationGroup>
 	)
 }
 

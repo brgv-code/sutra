@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 const AboutMe = () => {
 	return (
-		<div className='max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8'>
+		<div className='max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8  b-shadow'>
 			<div className='flex flex-col items-center lg:flex-row lg:space-x-8'>
-				<div className='w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 mb-8 lg:mb-0'>
+				{/* <div className='w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 mb-8 lg:mb-0'>
 					<Image
 						src='/memoji1.svg'
 						alt='Profile Picture'
@@ -13,7 +13,7 @@ const AboutMe = () => {
 						height={192}
 						className='rounded-full object-cover'
 					/>
-				</div>
+				</div> */}
 				<div>
 					Hi I am{' '}
 					<h1 className=' inline-block font-extrabold text-red-600 '>
@@ -21,16 +21,26 @@ const AboutMe = () => {
 					</h1>
 					<p className='mt-4 text-lg '>
 						fullstack dev at Foundamental gmbh, Berlin, Germany where I work on
-						a B2B SAAS product called Loura.
+						a B2B SAAS product, Loura. Before I was a fullstack dev at
+						Fraunhofer IOSB, Karlsruhe where I worked for a pipleline project
+						with VueJS, docker, drawio, influxDB, Grafana, and more. I am
+						enthusiatic about NextJS, Typescript, GraphQL ecosystem -but I am
+						interested in all things tech. I'm a hobby photographer as well and
+						when I am not doing any of the above, I am either reading a book or
+						watching a movie.
 					</p>
 				</div>
 			</div>
 			<div className='mt-8'>
 				<h2 className='text-2xl font-bold '>Work Experience</h2>
 				<ul className='mt-2 text-lg  list-disc list-inside'>
-					<li>[Job Title 1] at [Company 1] (Dates)</li>
-					<li>[Job Title 2] at [Company 2] (Dates)</li>
-					<li>[Job Title 3] at [Company 3] (Dates)</li>
+					<li>
+						Fullstack dev(student) at Foundamental gmBh March 2023 - present
+					</li>
+					<li>
+						Fullstack Dev(student) at Fraunhofer IOSB March 2022 - March 2023
+					</li>
+					<li>Software Engineer at Accenture,India June 2017 - October 2021</li>
 				</ul>
 			</div>
 			<div className='mt-8'>
