@@ -29,7 +29,7 @@ const AboutMe = () => {
 							Fraunhofer IOSB, Karlsruhe where I worked for a pipleline project
 							with VueJS, docker, drawio, influxDB, Grafana, and more. I am
 							enthusiatic about NextJS, Typescript, GraphQL ecosystem -but I am
-							interested in all things tech. I'&apos;'m a hobby photographer as
+							interested in all things tech. I&apos;m a hobby photographer as
 							well and when I am not doing any of the above, I am either reading
 							a book or watching a movie.
 						</p>
