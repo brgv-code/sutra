@@ -5,10 +5,10 @@
 html {
 	color: white;
 	background-color: #0d0d0f;
-
 	::-webkit-scrollbar {
 		display: none;
 	}
+  max-height: 100vh;
 }
 
 :root {

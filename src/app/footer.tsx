@@ -4,7 +4,7 @@ import React from 'react'
 
 const Footer = () => {
 	return (
-		<div>
+		<div className=''>
 			<span className='text-[#f04c51] text-md mx-4'>{'<'}</span>
 			Coded by{' '}
 			<Link href='https://x.com/brgv_dev' target='_blank'>

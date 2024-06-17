@@ -64,7 +64,7 @@ export default function BlogDetails() {
 				<Undo2 size={'14px'} />
 				<span>Go back</span>
 			</div>
-			<div className='md:w-1/2 flex flex-col min-h-screen mt-12 mb-12 p-6 b-shadow sm:w-full'>
+			<div className='md:w-full lg:w-1/2 flex flex-col min-h-screen mt-12 mb-12 p-6 b-shadow'>
 				{DynamicPost ? (
 					<DynamicPost />
 				) : (

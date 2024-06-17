@@ -7,7 +7,7 @@ const AboutMe = () => {
 			<div className='bg-[#831919] w-screen flex justify-center'>
 				This page is under construction
 			</div>
-			<div className='max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8  b-shadow'>
+			<div className='max-w-4xl h-screen mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8  b-shadow'>
 				<div className='flex flex-col items-center lg:flex-row lg:space-x-8'>
 					{/* <div className='w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 mb-8 lg:mb-0'>
 					<Image
