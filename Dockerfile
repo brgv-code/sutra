@@ -2,13 +2,13 @@ FROM node:18-alpine as base
 RUN apk add --no-cache g++ make py3-pip libc6-compat
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN yarn install
 EXPOSE 3000
 
 FROM base as builder
 WORKDIR /app
 COPY . .
-RUN npm run build
+RUN yarn build
 
 FROM base as production
 WORKDIR /app
@@ -25,10 +25,10 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
 
-CMD npm start
+CMD yarn start
 
 FROM base as dev
 ENV NODE_ENV=development
-RUN npm install 
+RUN yarn install 
 COPY . .
-CMD npm run dev
+CMD yarn dev
