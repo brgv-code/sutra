@@ -4,6 +4,8 @@ import { PostLists } from '@/lib/utils'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://bhargav.dev/'),
+
 	title: 'Home',
 }
 export default async function Home() {
