@@ -13,6 +13,7 @@ const fira = Fira_Mono({
 //add dynamic icons for each page
 //TODO: some analytics with splitbee
 export const metadata: Metadata = {
+	metadataBase: new URL('https://bhargav.dev/'),
 	title: {
 		default: 'Sutra | Portfolio',
 		template: '%s | Sutra ',
