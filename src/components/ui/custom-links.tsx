@@ -14,7 +14,13 @@ interface CustomLinkProps {
 	underlineColor?: string
 }
 
-const CustomLink: React.FC<CustomLinkProps> = ({ href, children }) => {
+const CustomLink: React.FC<CustomLinkProps> = ({
+	href,
+	children,
+	fontColor,
+	fontSize,
+	underlineColor,
+}) => {
 	const [show, setShow] = useState(true)
 
 	return (
@@ -25,7 +31,12 @@ const CustomLink: React.FC<CustomLinkProps> = ({ href, children }) => {
 			onMouseEnter={() => setShow(false)}
 			onMouseLeave={() => setShow(true)}
 		>
-			<Underline underlineColor='#dcc42d' animationDuration={2500} show={show}>
+			<Underline
+				underlineColor={underlineColor ?? '#dcc42d'}
+				
+				animationDuration={2500}
+				show={show}
+			>
 				{children}
 			</Underline>
 		</Link>

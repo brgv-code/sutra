@@ -11,6 +11,8 @@ interface UnderlineProps {
 	animationDelay?: number
 	animationDuration?: number
 	show?: boolean
+	fontColor?: string
+	fontSize?: string
 }
 
 const Underline: React.FC<UnderlineProps> = ({
@@ -19,6 +21,8 @@ const Underline: React.FC<UnderlineProps> = ({
 	animationDelay = 0,
 	animationDuration = 1000,
 	show = true,
+	fontColor,
+	fontSize,
 }) => {
 	return (
 		<RoughNotationGroup show={show}>
@@ -29,7 +33,10 @@ const Underline: React.FC<UnderlineProps> = ({
 				animationDelay={animationDelay}
 				animationDuration={animationDuration}
 			>
-				{children}
+				{' '}
+				<span className={`text-${fontColor} text-${fontSize} font-bold`}>
+					{children}
+				</span>
 			</RoughNotation>
 		</RoughNotationGroup>
 	)

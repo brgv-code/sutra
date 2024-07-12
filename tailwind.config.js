@@ -14,6 +14,13 @@ module.exports = {
 	prefix: '',
 	presets: [],
 	theme: {
+		extend: {
+			// listStyleImage: {
+			// 	foundamental: 'url("/work/foundamental.png")',
+			// 	accenture: 'url("/work/accenture.png")',
+			// 	fraunhofer: 'url("/work/fraunhofer.png")',
+			// },
+		},
 		accentColor: ({ theme }) => ({
 			...theme('colors'),
 			auto: 'auto',
@@ -54,6 +61,7 @@ module.exports = {
 				success: '#6fba82',
 			},
 		},
+
 		animation: {
 			none: 'none',
 			spin: 'spin 1s linear infinite',

@@ -8,7 +8,7 @@ html {
 	::-webkit-scrollbar {
 		display: none;
 	}
-  max-height: 100vh;
+	max-height: 100vh;
 }
 
 :root {
@@ -736,4 +736,22 @@ pre code {
 body {
 	text-rendering: optimizelegibility;
 	-webkit-font-smoothing: antialiased;
+}
+/* 
+ul.list-style-image-foundamental {
+	padding-left: 30px;
+	background-image: url('/work/foundamental.png');
+	background-size: 25px 25px;
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	margin-bottom: 10px;
+	position: relative;
+} */
+li > span {
+	padding-left: 30px;
+	padding-top: 10px;
+}
+li > p {
+	padding-left: 30px;
+	padding-top: 10px;
 }
