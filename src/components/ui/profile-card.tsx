@@ -44,8 +44,11 @@ const ProfileSection: React.FC = () => {
 					</Link>
 					<div className='mb-4 md:text-start items-center'>
 						<br />
-						Product focused developer. Bringing <Highlight>Loura</Highlight> to
-						life{' '}
+						Product focused developer. Bringing{' '}
+						<Link href='about'>
+							<Highlight>Loura</Highlight>
+						</Link>{' '}
+						to life{' '}
 						<span className='whitespace-nowrap'>
 							{/* <Link
 								href={'https://www.foundamental.com/people/bhargav-babu'}

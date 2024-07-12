@@ -4,14 +4,14 @@ import CustomHighlight from '../../components/ui/custom-highlight'
 import CustomLink from '@/components/ui/custom-links'
 import CustomListItem from '@/components/ui/custom-list'
 import CustomBold from '@/components/ui/custom-bold'
-import { Flame } from 'lucide-react'
+import { Dot, GitCommitHorizontal } from 'lucide-react'
 
 const AboutMe = () => {
 	return (
 		<>
-			<div className='bg-[#831919] w-screenflex justify-center'>
+			{/* <div className='bg-[#831919] w-screenflex justify-center'>
 				This page is under construction
-			</div>
+			</div> */}
 			<div className='max-w-4xl h-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8  b-shadow'>
 				<div className='flex flex-col items-center lg:flex-row lg:space-x-8 '>
 					{/* <div className='w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 mb-8 lg:mb-0'>
@@ -23,82 +23,155 @@ const AboutMe = () => {
 						className='rounded-full object-cover'
 					/>
 				</div> */}
-					<div className='leading-8'>
-						Hi I am{' '}
-						<h1 className=' inline-block font-extrabold text-red-600 '>
-							Bhargav
-						</h1>
-						,
-						<p className='mt-4 text-md '>
-							I am developer(student) at{' '}
-							<CustomLink href='https://www.foundamental.com/people/bhargav-babu'>
-								Foundamental
-							</CustomLink>{' '}
-							gmbh, Berlin, Germany where I am building an internal{' '}
-							<CustomLink href='https://en.wikipedia.org/wiki/Customer_relationship_management'>
-								CRM
-							</CustomLink>{' '}
-							SAAS <CustomHighlight>Software As A Service</CustomHighlight>{' '}
-							product called {'<'} Loura{'>'}. I am also a student at{' '}
-							<CustomLink href='https://www.tu-ilmenau.de/en/'>
-								TU Ilmenau
-							</CustomLink>{' '}
-							where I am pursuing my masters in{' '}
-							<CustomLink href='https://www.tu-ilmenau.de/en/university/departments/department-of-computer-science-and-automation/study/research-in-computer-systems-engineering-msc'>
-								RCSE
-							</CustomLink>
-							.
-						</p>
-						<p className='mt-4'>
-							{' '}
-							I am currently writing my Master thesis on Docker and Kubernetes.{' '}
-						</p>
-						<p className='mt-4 text-md'>
-							{' '}
-							I am enthusiatic about NextJS, Typescript, GraphQL ecosystem -but
-							I am interested in all things tech. I&apos;m a hobby photographer
-							as well and when I am not doing any of the above, I am either
-							reading a book or watching a movie.
-						</p>
+					<div className=''>
+						<h2 className='text-2xl font-bold '>About</h2>
+
+						<div className='leading-8 py-4 pl-10'>
+							Hi I am{' '}
+							<CustomBold gradientColors={['#4c297b', '#4c297b']}>
+								Bhargav
+							</CustomBold>
+							,
+							<p className='mt-4 text-md '>
+								I am developer(student) at{' '}
+								<CustomLink
+									href='https://www.foundamental.com/people/bhargav-babu'
+									underlineColor='#48F782'
+								>
+									Foundamental gmbH,
+								</CustomLink>{' '}
+								Berlin, Germany where I am building an internal{' '}
+								<CustomLink
+									underlineColor='#48F782'
+									href='https://en.wikipedia.org/wiki/Customer_relationship_management'
+								>
+									CRM
+								</CustomLink>{' '}
+								SAAS product called <CustomBold fontSize='md'>Loura</CustomBold>
+								. I am also a student at{' '}
+								{/* <CustomLink/> href='https://www.tu-ilmenau.de/en/'> */}
+								TU Ilmenau, {/* </CustomLink>{' '} */}
+								where I am pursuing my masters in{' '}
+								<CustomLink
+									underlineColor='#48F782'
+									href='https://www.tu-ilmenau.de/en/university/departments/department-of-computer-science-and-automation/study/research-in-computer-systems-engineering-msc'
+								>
+									RCSE
+								</CustomLink>
+								.
+							</p>
+							<p className='mt-4'>
+								I have a hunger to learn more and create meaningful products. I
+								love my job as a developer, working on software that help people
+								ease their lives. Being an electronics engineer, for the effort
+								I put in to learn and still learning today, I can say am living
+								my dream. Hence, I do not restrict the type of work I do or the
+								technologies I work with. I am always open to learning and
+								exploring new things.
+							</p>
+							<p className='mt-4'>
+								{' '}
+								{/* I am currently writing my Master thesis on Docker and
+								Kubernetes.{' '} */}
+							</p>
+							<p className='mt-4 text-md'>
+								{' '}
+								I am enthusiastic about{' '}
+								<span className='font-bold'>NextJS</span>,{' '}
+								<span className='font-bold'>Typescript</span>,{' '}
+								<span className='font-bold'>GraphQL</span> I have started
+								working with <span className='font-bold'> Python</span> for data
+								science projects at work. I am also learning about{' '}
+								<CustomLink
+									underlineColor='#48F782'
+									href='https://www.edgedb.com/'
+								>
+									Edgedb
+								</CustomLink>{' '}
+								and{' '}
+								<CustomLink underlineColor='#48F782' href='https://n8n.io/'>
+									n8n
+								</CustomLink>{' '}
+								for automation.
+							</p>
+						</div>
 					</div>
 				</div>
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Work Experience</h2>
-					<ul className='mt-2 ml-8 text-md  list-disc list-inside '>
-						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4'>
+
+					<ul className='mt-2 ml-8 text-md  list-inside  list-style-image-foundamental'>
+						<li className='transition-all duration-500  ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4 '>
+							<Image
+								src={'/work/foundamental.png'}
+								alt={''}
+								width={35}
+								height={35}
+								style={{ display: 'inline-block', borderRadius: '50%' }}
+							/>
 							<span className='inline-flex transition-all duration-500 ease-in-out transform hover:translate-x-2 '>
 								<CustomBold fontSize='md'>App Developer</CustomBold>
-								{'  '} <Flame className='mx-4' /> {'  '}Foundamental gmBh {'  '}{' '}
-								<Flame className='mx-4' /> {'  '}
+								{
+									'  '
+								} <GitCommitHorizontal className='mx-4 text-[#6E00FD]' /> {'  '}
+								Foundamental gmBh {'  '}{' '}
+								<GitCommitHorizontal className='mx-4 text-[#6E00FD]' /> {'  '}
 								March 2023 - present
 							</span>
 							<p className='ml-8 transition-all duration-500 ease-in-out p-4 transform hover:translate-x-2 text-[#9ca3af] text-sm leading-relaxed '>
-								My work mainly involves around Loura. I work on the frontend
-								with Nextjs, Typescript, GraphQL, NestJS. Backend with Edgedb.
-								For automation I use n8n hosted on onsite server. Loura is
-								deployed on GCP with Kubernetes. I also work with data science
-								projects using python.
+								My work mainly involves around Loura, internal CRM tool. I work
+								on the frontend with Nextjs, Typescript, GraphQL, NestJS.
+								Backend with Edgedb. For automation I use n8n hosted on onsite
+								server. Loura is deployed on GCP with Kubernetes.
+								<p className='py-2 leading-relaxed'>
+									I use Python for data science related projects which help
+									scrape data for startups and feed into our existing
+									applications.
+								</p>
 							</p>
 						</li>
+					</ul>
+					<ul className='mt-2 ml-8 text-md  list-inside list-image-foundamental'>
 						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4'>
+							<Image
+								src={'/work/fraunhofer.png'}
+								alt={''}
+								width={30}
+								height={30}
+								style={{ display: 'inline-block', borderRadius: '50%' }}
+							/>
 							<span className='inline-flex  '>
-								Fullstack Dev(student) <Flame className='mx-4' /> Fraunhofer
-								IOSB <Flame className='mx-4' /> March 2022 - March 2023
+								Fullstack Dev(student){' '}
+								<GitCommitHorizontal className='mx-4 text-[#1C9074]' />{' '}
+								Fraunhofer IOSB{' '}
+								<GitCommitHorizontal className='mx-4 text-[#1C9074]' /> March
+								2022 - March 2023
 							</span>
 							<p className='ml-8 transition-all duration-500 ease-in-out transform hover:translate-x-2 text-[#9ca3af] leading-relaxed text-sm p-4'>
-								I built the frontend for state gas pipeline data using VueJs
-								with Vite, dynamically rendering drawio diagrams. I created a
+								I worked on the frontend for state gas pipeline data using VueJs
+								with Vite, dynamically rendering drawio diagrams. Created a
 								headless service to process diagrams and map data to SVG parts,
 								and deployed it in a Docker container. Using InfluxDB and
-								Graphana, I enabled real-time data visualization as part of a
+								Graphana, enabling real-time data visualization as part of a
 								larger project to monitor and adjust heat consumption from the
 								pipelines.
 							</p>
 						</li>
+					</ul>
+					<ul className='mt-2 ml-8 text-md  list-inside list-image-accenture'>
 						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4'>
+							<Image
+								src={'/work/accenture.png'}
+								alt={''}
+								width={35}
+								height={35}
+								style={{ display: 'inline-block', borderRadius: '50%' }}
+							/>
 							<span className='inline-flex '>
-								Software Engineer <Flame className='mx-4 text-red-900' />{' '}
-								Accenture,India <Flame className='mx-4 text-green-900' />
+								Software Engineer{' '}
+								<GitCommitHorizontal className='mx-4 text-[#9800FD]' />{' '}
+								Accenture,India{' '}
+								<GitCommitHorizontal className='mx-4 text-[#9800FD]' />
 								June 2017 - October 2021
 							</span>
 							<p className='ml-8 transition-all duration-500 ease-in-out transform hover:translate-x-2 text-[#9ca3af] leading-relaxed text-sm p-4'>
@@ -110,39 +183,73 @@ const AboutMe = () => {
 						</li>
 					</ul>
 				</div>
-				{/* <div className='mt-8'>
-					<h2 className='text-2xl font-bold '>Tech Skills</h2>
-					<p className='mt-2 text-lg '>
-						
-					</p>
-				</div> */}
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Education</h2>
-					<ul className='mt-2 text-lg  list-disc list-inside'>
+					<ul className='mt-2 text-lg  list-disc list-inside pl-10'>
 						<li className=' transition-all duration-500 animate-slow transform hover:translate-x-2 '>
-							<span className='inline-flex  '>
-								Msc in RCSE from TU Ilmenau,Germany
+							<span className='inline-flex  pl-0'>
+								Master in Science (Msc) <Dot className='text-gray-700 ' />{' '}
+								<span className='text-gray-700 text-sm pt-1'>
+									2021 - present
+								</span>
 							</span>
+							<li className='pl-16 py-3 text-gray-300 text-xs list-none hover:translate-x-2 duration-500 ease-in-out'>
+								Technische Universität Ilmenau, Germany
+							</li>
 						</li>
 						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  '>
-							<span className='inline-flex  '>B.E. from NIE,Mysuru,India </span>
+							<span className='inline-flex  pl-0'>
+								Bachelor of Engineering (BE) <Dot className='text-gray-700 ' />{' '}
+								<span className='text-gray-700 text-sm pt-1'>2013 - 2017</span>
+							</span>
+							<li className='pl-16 py-3 text-gray-300 text-xs list-none hover:translate-x-2 duration-500 ease-in-out'>
+								The National Institute of Engineering, Mysuru, India
+							</li>
 						</li>
 					</ul>
 				</div>
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Language Skills</h2>
-					<p className='mt-2 text-lg '>
-						Fluent in English, Kannada, Telugu, Hindi. German(A1)
+					<p className='mt-2 text-lg pl-10 '>
+						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
+							English 🇬🇧 (fluent)
+						</li>
+						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
+							German 🇩🇪 (A1)
+						</li>
+						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
+							Kannada 🇮🇳 (fluent)
+						</li>
+						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
+							Hindi 🇮🇳 (fluent)
+						</li>
+						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
+							Telugu 🇮🇳 (fluent, mothertongue)
+						</li>
 					</p>
 				</div>
-				{/* <div className='mt-8'>
-				<h2 className='text-2xl font-bold '>Hobbies</h2>
-				<ul className='mt-2 text-lg  list-disc list-inside'>
-					<li>[Hobby 1]</li>
-					<li>[Hobby 2]</li>
-					<li>[Hobby 3]</li>
-				</ul>
-			</div> */}
+				<div className='mt-8'>
+					<h2 className='text-2xl font-bold '>Hobbies</h2>
+					<p className='py-4 leading-relaxed pl-10'>
+						{' '}
+						I have been practicing photography from a few years now. I just like
+						the process of filmmaking and capturing pictures. Lately, I haven't
+						had the time to go out and shoot, but I have some footage to edit
+						for my documentary on european cities.
+					</p>
+					<p className='py-2 leading-relaxed pl-10'>
+						Though I used to dread reading, I was more of a visual learner. I am
+						slowly developing a habit of reading. I generally read about tech,
+						biographies and business. My current read is{' '}
+						<CustomLink
+							href={
+								'https://www.goodreads.com/book/show/7904927-mastering-the-vc-game?from_search=true&from_srp=true&qid=Bj3Im1bVwM&rank=1'
+							}
+						>
+							Mastering the VC Game
+						</CustomLink>
+					</p>
+				</div>
 			</div>
 		</>
 	)
