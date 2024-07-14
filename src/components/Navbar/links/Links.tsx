@@ -16,6 +16,12 @@ const links = [
 		text: 'Projects',
 		url: '/projects/',
 	},
+	{
+		id: 4,
+		text: 'Books',
+		url: '/books/',
+	},
+
 	// {
 	// 	id: 4,
 	// 	text: 'Goals',
