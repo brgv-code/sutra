@@ -7,29 +7,18 @@ function books() {
 	return (
 		<div>
 			<h1 className='text-4xl font-bold mb-8'>My Bookshelf</h1>
-			<p>
-				These are some of my fav books I have read over the years. You can
-				checkout my{' '}
-				<span
-					onClick={() =>
-						window.open(
-							'https://www.goodreads.com/review/list/32487262-bhargav',
-							'_blank',
-						)
-					}
-				>
-					<Image
-						src={'/goodreads.svg'}
-						alt='Goodreads'
-						width='40'
-						height='40'
-						className='inline-block cursor-pointer'
-					/>{' '}
-				</span>
-				profile.
-			</p>
-
-			<Bookshelf />
+			Some of my favorites over the years from my{' '}
+			<Image
+				src={'/goodreads.svg'}
+				alt='Goodreads'
+				width='40'
+				height='40'
+				className='inline-block cursor-pointer'
+			/>{' '}
+			profile.
+			<div>
+				<Bookshelf />
+			</div>
 		</div>
 	)
 }
