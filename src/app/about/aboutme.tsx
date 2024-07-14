@@ -79,9 +79,12 @@ const AboutMe = () => {
 								I am enthusiastic about{' '}
 								<span className='font-bold'>NextJS</span>,{' '}
 								<span className='font-bold'>Typescript</span>,{' '}
-								<span className='font-bold'>GraphQL</span> I have started
-								working with <span className='font-bold'> Python</span> for data
-								science projects at work. I am also learning about{' '}
+								<span className='font-bold'>GraphQL</span>. I use{' '}
+								<span className='font-bold'>Jest</span> for API testing and{' '}
+								<span className='font-bold'>Storybook</span> for documentation
+								and frontend tests. I have started working with{' '}
+								<span className='font-bold'> Python</span> for data science
+								projects at work. I am also learning about{' '}
 								<CustomLink
 									underlineColor='#48F782'
 									href='https://www.edgedb.com/'

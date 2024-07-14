@@ -755,3 +755,15 @@ li > p {
 	padding-left: 30px;
 	padding-top: 10px;
 }
+.perspective {
+	perspective: 1000px;
+}
+
+.book-transform {
+	transform-style: preserve-3d;
+	transition: transform 0.3s ease-in-out;
+}
+
+.book-transform:hover {
+	transform: rotateY(-10deg);
+}
