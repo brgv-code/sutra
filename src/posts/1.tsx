@@ -54,7 +54,7 @@ const PostOne = () => (
 							projects, were killing my productivity. As an electron-based
 							application, VS Code can be quite a resource that eats up RAM and
 							CPU.
-							<span className='text-[10px] text-[#272726] p-4'>
+							<span className='text-[10px] text-[#D9C22D] p-4'>
 								<CustomHighlight>See below image</CustomHighlight>
 							</span>
 							Sometimes, the screen takes {'>'} 5 seconds just to save the
@@ -67,7 +67,7 @@ const PostOne = () => (
 								alt={''}
 								loading='lazy'
 								blur-up={true}
-								className='m-auto p-auto w-full my-4'
+								className='m-auto p-auto w-full my-4 rounded-xl border-gray-500 border-2 '
 							/>
 						</li>
 						<li className='mb-4'>
@@ -131,14 +131,14 @@ const PostOne = () => (
 					alt={''}
 					loading='lazy'
 					blur-up={true}
-					className='m-auto p-auto w-full my-4'
+					className='m-auto p-auto w-full my-4 rounded-xl border-gray-500 border-2'
 				/>
 				<div className='px-4 pb-2'>
 					I have the development server running on the top-left corner, and{' '}
 					<CustomLink href='https://github.com/jesseduffield/lazygit'>
 						lazygit
 					</CustomLink>{' '}
-					<span className='text-[10px] text-[#464645] p-4'>
+					<span className='text-[10px] text-[#D9C22D] p-4'>
 						<CustomHighlight>another amazing tool!</CustomHighlight>
 					</span>{' '}
 					on the bottom-left. The right side is for the Neovim editor. I can
@@ -153,7 +153,7 @@ const PostOne = () => (
 					recommend it. It’s a powerful tool that can transform the way you code
 					and help you become a more efficient developer. Give it a try and see
 					for yourself!. <br />
-					<span className='text-[10px] text-[#363635] p-4'>
+					<span className='text-[10px] text-[#D9C22D] p-4'>
 						{' '}
 						<CustomHighlight>
 							I will write a detailed post on how to set up Neovim and Tmux in

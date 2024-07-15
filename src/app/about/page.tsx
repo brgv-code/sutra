@@ -6,11 +6,7 @@ export const metadata: Metadata = {
 	title: 'About',
 }
 const About = () => {
-	return (
-		<div>
-			<AboutMe />
-		</div>
-	)
+	return <AboutMe />
 }
 
 export default About

@@ -32,7 +32,7 @@ const AboutMe = () => {
 								Bhargav
 							</CustomBold>
 							,
-							<p className='mt-4 text-md '>
+							<div className='mt-4 text-md '>
 								I am developer(student) at{' '}
 								<CustomLink
 									href='https://www.foundamental.com/people/bhargav-babu'
@@ -59,8 +59,8 @@ const AboutMe = () => {
 									RCSE
 								</CustomLink>
 								.
-							</p>
-							<p className='mt-4'>
+							</div>
+							<div className='mt-4'>
 								I have a hunger to learn more and create meaningful products. I
 								love my job as a developer, working on software that help people
 								ease their lives. Being an electronics engineer, for the effort
@@ -68,13 +68,13 @@ const AboutMe = () => {
 								my dream. Hence, I do not restrict the type of work I do or the
 								technologies I work with. I am always open to learning and
 								exploring new things.
-							</p>
-							<p className='mt-4'>
+							</div>
+							<div className='mt-4'>
 								{' '}
 								{/* I am currently writing my Master thesis on Docker and
 								Kubernetes.{' '} */}
-							</p>
-							<p className='mt-4 text-md'>
+							</div>
+							<div className='mt-4 text-md'>
 								{' '}
 								I am enthusiastic about{' '}
 								<span className='font-bold'>NextJS</span>,{' '}
@@ -95,8 +95,7 @@ const AboutMe = () => {
 								<CustomLink underlineColor='#48F782' href='https://n8n.io/'>
 									n8n
 								</CustomLink>{' '}
-								for automation.
-							</p>
+							</div>
 						</div>
 					</div>
 				</div>

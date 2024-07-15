@@ -96,7 +96,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 				<div className='flex space-x-4 justify-end'>
 					{/* TODO: fix handlecopying link */}
 					<div
-						className='cursor-pointer z-10 text-[#121215] hover:text-gray-400'
+						className='cursor-pointer z-10 text-[#817d32] hover:text-gray-400'
 						onClick={() => handleLinkCopy}
 					>
 						<Clipboard />
@@ -109,7 +109,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 						)}&via=brgvdev`}
 						target='_blank'
 						onClick={() => console.log('clicked')}
-						className='cursor-pointer hover:text-gray-400 text-[#121215]'
+						className='cursor-pointer hover:text-gray-400 text-[#817d32]'
 					>
 						{/* {/* TODO:add a counter and a tooltip  */}
 						<TwitterIcon />
