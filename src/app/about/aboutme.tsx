@@ -190,8 +190,8 @@ const AboutMe = () => {
 					<ul className='mt-2 text-lg  list-disc list-inside pl-10'>
 						<li className=' transition-all duration-500 animate-slow transform hover:translate-x-2 '>
 							<span className='inline-flex  pl-0'>
-								Master in Science (Msc) <Dot className='text-gray-700 ' />{' '}
-								<span className='text-gray-700 text-sm pt-1'>
+								Master in Science (Msc) <Dot className='text-[#129270]  ' />{' '}
+								<span className='text-[#129270]  text-sm pt-1'>
 									2021 - present
 								</span>
 							</span>
@@ -201,8 +201,10 @@ const AboutMe = () => {
 						</li>
 						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  '>
 							<span className='inline-flex  pl-0'>
-								Bachelor of Engineering (BE) <Dot className='text-gray-700 ' />{' '}
-								<span className='text-gray-700 text-sm pt-1'>2013 - 2017</span>
+								Bachelor of Engineering (BE) <Dot className='text-[#129270] ' />{' '}
+								<span className='text-[#129270]  text-sm pt-1'>
+									2013 - 2017
+								</span>
 							</span>
 							<li className='pl-16 py-3 text-gray-300 text-xs list-none hover:translate-x-2 duration-500 ease-in-out'>
 								The National Institute of Engineering, Mysuru, India
