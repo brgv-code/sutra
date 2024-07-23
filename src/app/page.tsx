@@ -12,7 +12,7 @@ export default async function Home() {
 	// const data = await getAllPublished()
 
 	return (
-		<div className='md:w-1/2 mt-12 w-full h-[90vh]'>
+		<div className='md:w-1/2 mt-12 w-full h-[85vh]'>
 			{/* <HeroSection /> */}
 			<ProfileSection />
 			<div className=' flex  p-5  justify-between w-full'>

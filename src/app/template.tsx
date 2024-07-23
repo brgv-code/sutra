@@ -23,12 +23,10 @@ const Template = ({ children }: { children: React.ReactNode }) => {
 				animate='enter'
 				variants={variants}
 				exit='glow'
-				className='flex min-h-screen justify-center w-full motion-div'
+				className='flex  justify-center w-full motion-div'
 			>
 				{children}
 			</motion.div>
-
-		
 		</AnimatePresence>
 	)
 }
