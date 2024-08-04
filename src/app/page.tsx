@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 }
 export default async function Home() {
 	// const data = await getAllPublished()
-
 	return (
 		<div className='md:w-1/2 mt-12 w-full h-[85vh]'>
 			{/* <HeroSection /> */}

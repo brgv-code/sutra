@@ -1,3 +1,4 @@
+import { BlockContent } from '@/types'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -30,3 +31,34 @@ in VS Code. But lately, It has become slow. Maybe because I use a lot of plugins
 	// 		reading_time: '2m',
 	// 	},
 ]
+
+interface TextItem {
+	type: string
+	text: string
+}
+
+interface NotionBlock {
+	type: string
+	[key: string]: any
+}
+export function extractTextAndType(content: any): BlockContent[] {
+	const blocks: BlockContent[] = []
+
+	if (Array.isArray(content)) {
+		content.forEach((block: any) => {
+			if (block.type && block[block.type]) {
+				const blockContent = block[block.type]
+				if (blockContent.rich_text) {
+					const text = blockContent.rich_text
+						.map((t: any) => t.plain_text)
+						.join('')
+					blocks.push({ type: block.type, text })
+				} else if (blockContent.text) {
+					blocks.push({ type: block.type, text: blockContent.text })
+				}
+			}
+		})
+	}
+
+	return blocks
+}

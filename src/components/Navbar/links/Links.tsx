@@ -21,6 +21,11 @@ const links = [
 		text: 'Books',
 		url: '/books/',
 	},
+	{
+		id: 5,
+		text: 'Contact',
+		url: '/contact/',
+	},
 
 	// {
 	// 	id: 4,

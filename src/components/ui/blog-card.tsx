@@ -51,7 +51,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	// 	}
 	// }
 	const handleLinkCopy = () => {
-		console.log('hey')
 		navigator.clipboard.writeText(`https://bhargav.dev/blog/${id}`)
 		// toast.custom(
 		// 	<ToastNotification
@@ -62,7 +61,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 		// )
 		// toast.success('this working lmao')
 	}
-	console.log(content, 'content')
 	return (
 		<div className='b-shadow rounded p-4 m-4 flex justify-between'>
 			<Link

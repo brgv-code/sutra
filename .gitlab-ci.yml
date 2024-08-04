@@ -1,0 +1,21 @@
+variables:
+  DOCKER_REGISTRY: 716997299090.dkr.ecr.us-east-1.amazonaws.com
+  AWS_DEFAULT_REGION: us-east-1
+  APP_NAME: sutra
+  DOCKER_HOST: tcp://docker:2375
+
+publish:
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  service:
+    - docker:dind
+  before_script: 
+    - amazon-linux-extras install docker
+    - aws --version
+    - docker --version
+  script:
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID .
+    - aws ecr get-login-password | docker login --username AWS \ 
+    --password-stdin $DOCKER_REGISTRY
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
