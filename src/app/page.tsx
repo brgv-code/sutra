@@ -2,6 +2,7 @@ import { BlogCard } from '@/components/ui/blog-card'
 import ProfileSection from '../components/ui/profile-card'
 import { PostLists } from '@/lib/utils'
 import { Metadata } from 'next'
+import Page from './blog/[slug]/page'
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://bhargav.dev/'),
@@ -21,6 +22,7 @@ export default async function Home() {
 
 			<div className=' '>
 				<div className='grid grid-cols-1  px-0'>
+					{/* <Page {...} /> */}
 					{/* {data.map((item, index) => (
 						<BlogCard
 							key={index}
@@ -33,7 +35,7 @@ export default async function Home() {
 							reading_time={item.reading_time.formula.string}
 						></BlogCard>
 					))} */}
-
+					{/* 
 					{PostLists.map((item, index) => (
 						<BlogCard
 							key={index}
@@ -45,7 +47,7 @@ export default async function Home() {
 							reading_time={item.reading_time}
 							tags={item.tags}
 						></BlogCard>
-					))}
+					))} */}
 				</div>
 			</div>
 		</div>

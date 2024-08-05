@@ -1,8 +1,15 @@
+import 'server-only'
 import { Client } from '@notionhq/client'
 import { extractTextAndType } from './utils'
 import { BlockContent } from '@/types'
+import { cache } from 'react'
+import {
+	BlockObjectResponse,
+	LinkToPageBlockObjectResponse,
+	PageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints'
 
-const notion = new Client({
+export const notion = new Client({
 	auth: process.env.NOTION_CMS,
 })
 
@@ -38,138 +45,71 @@ export interface MultiSelectTags {
 	name: string
 	color: string
 }
-function getToday(datestring: string) {
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
-	]
-
-	let date = new Date()
-
-	if (datestring) {
-		date = new Date(datestring)
-	}
-
-	const day = date.getDate()
-	const month = months[date.getMonth()]
-	const year = date.getFullYear()
-	let today = `${month} ${day}, ${year}`
-
-	return today
-}
-
-// const getContent = (content: any) => {
-// 	const text = content.rich_text.map((item: any) => {
-// 		const annotations = getAnnotations(item.annotations)
-// 		return { text: item.text.intro, annotations: annotations }
-// 	})
-
-// 	return text
-// }
-
-const getContent = async (content: Content): Promise<BlockContent[]> => {
-	if (!content.relation[0]?.id) return []
-	const text = await notion.blocks.children.list({
-		block_id: content.relation[0].id,
-	})
-	const n = extractTextAndType(text)
-	return n
-}
-const getAnnotations = (annotations: any) => {
-	const { bold, italic, strikethrough, underline, code } = annotations
-
-	return { bold, italic, strikethrough, underline, code }
-}
-
-const getPageMetaData = (post: any) => {
-	const getTags = (tags: Tags) => {
-		const multiSelectTags = tags.multi_select
-		// const allTags = multiSelectTags.map(tag => {
-		// 	return tag.name
-		// })
-
-		return multiSelectTags
-	}
-
-	return {
-		id: post.id,
-		title: post.properties.Name,
-		slug: post.properties.Slug,
-		tags: getTags(post.properties.Tags),
-		published: post.properties.Published,
-		created: getToday(post.created_time),
-		content: post.properties.Content,
-		cover: post.properties.Cover,
-		words: post.properties.Words,
-		reading_time: post.properties.Reading_time,
-		references: post.properties.References,
-		intro: post.properties.Intro,
-	}
-}
-//set a return type for the function
-
-// export const getNotionData = async () => {
-// 	const databaseId = process.env.DATABASE_ID || ''
-
-// 	const posts = await notion.databases.query({
-// 		database_id: databaseId,
-
-// 		sorts: [
-// 			{
-// 				property: 'Created',
-// 				direction: 'descending',
-// 			},
-// 		],
-// 	})
-
-// 	const allPosts = posts.results
-
-// 	return allPosts.map(async post => {
-// 		const p = getPageMetaData(post)
-// 		// console.log(p, 'content')
-// 		const c = getContent(p.content)
-
-// 		return {
-// 			...p,
-// 			content: c,
-// 		}
-// 	})
-// }
-export const getNotionData = async () => {
-	const databaseId = process.env.DATABASE_ID || ''
-
-	const posts = await notion.databases.query({
-		database_id: databaseId,
-		sorts: [
-			{
-				property: 'Created',
-				direction: 'descending',
+export const getPages = cache(() => {
+	return notion.databases.query({
+		filter: {
+			property: 'Published',
+			select: {
+				equals: 'Yes',
 			},
-		],
+		},
+		database_id: process.env.DATABASE_ID!,
 	})
+})
 
-	const allPosts = posts.results
+type RelatedContent = BlockObjectResponse[]
 
-	const processedPosts = await Promise.all(
-		allPosts.map(async post => {
-			const p = getPageMetaData(post)
-			const c = await getContent(p.content)
-			return {
-				...p,
-				content: c,
-			}
-		}),
-	)
-
-	return processedPosts
+interface EnhancedPageContent extends PageObjectResponse {
+	blocks: BlockObjectResponse[]
+	relatedContent: RelatedContent
 }
+
+export const getRelatedPageContent = cache(
+	async (pageId: string): Promise<RelatedContent> => {
+		const response = await notion.blocks.children.list({ block_id: pageId })
+		return response.results as BlockObjectResponse[]
+	},
+)
+
+export const getPageContent = cache(
+	async (pageId: string): Promise<EnhancedPageContent> => {
+		const page = (await notion.pages.retrieve({
+			page_id: pageId,
+		})) as PageObjectResponse
+		const blocksResponse = await notion.blocks.children.list({
+			block_id: pageId,
+		})
+		const blocks = blocksResponse.results as BlockObjectResponse[]
+		let relatedContent: RelatedContent = []
+
+		if (
+			'Content' in page.properties &&
+			page.properties.Content.type === 'relation'
+		) {
+			const relatedPageId = page.properties.Content.relation[0]?.id
+			if (relatedPageId) {
+				relatedContent = await getRelatedPageContent(relatedPageId)
+			}
+		}
+
+		return {
+			...page,
+			blocks,
+			relatedContent,
+		}
+	},
+)
+
+export const getPageBySlug = cache((slug: string) => {
+	return notion.databases
+		.query({
+			database_id: process.env.DATABASE_ID!,
+			filter: {
+				property: 'Slug',
+				rich_text: {
+					equals: slug,
+				},
+			},
+		})
+		.then(res => res.results[0] as PageObjectResponse | undefined)
+})
