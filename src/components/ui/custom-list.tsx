@@ -14,6 +14,7 @@ const CustomListItem: FC<CustomListItemProps> = ({
 	className,
 }) => {
 	return (
+    <ul className="list-disc list-inside mt-2 ml-4">
 		<li
 			className={clsx(
 				'group transition-all duration-300 ease-in-out transform hover:translate-x-2',
@@ -22,6 +23,7 @@ const CustomListItem: FC<CustomListItemProps> = ({
 		>
 			{children}
 		</li>
+    </ul>
 	)
 }
 

@@ -94,9 +94,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const html = await notionRenderer.render(...allBlocks)
 
 	return (
-		<Post
+       <Post
 			Name={(post.properties.Name as any).title[0].plain_text}
 			content={html}
 		/>
-	)
+
+
+
+
+ 
+
+  )
 }

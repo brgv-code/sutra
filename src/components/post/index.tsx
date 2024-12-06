@@ -1,5 +1,12 @@
 import Image from 'next/image'
-
+import  Heading from '@/components/ui/blog/heading'
+import  Decoration from '@/components/ui/blog/decoration'
+import  CustomHighlight from '@/components/ui/custom-highlight'
+import  Highlight  from '@/components/ui/blog/highlight'
+import  Intro  from '@/components/ui/blog/intro'
+import  CustomLink from '@/components/ui/custom-links'
+import Subheading  from '@/components/ui/blog/subheading'
+import ContentRenderer from '@/components/ui/content-renderer'
 interface PostProps {
 	Name: string
 	// bannerImage: string
@@ -10,10 +17,10 @@ interface PostProps {
 
 export function Post(props: PostProps) {
 	const { Name, content } = props
-
+console.log(content,'content');
 	return (
-		<article className='w-full mb-10 flex flex-col items-center pt-20'>
-			<h1 className='text-6xl font-black text-white mb-8'>{Name}</h1>
+		<div className='container w-1/2 mx-auto'>
+			<Heading >{Name}</Heading>
 			{/* <Image
 				alt='Blog Image'
 				src={bannerImage}
@@ -22,10 +29,7 @@ export function Post(props: PostProps) {
 				height={bannerImageHeight}
 				className='[width: 800px]!'
 			/> */}
-			<div
-				className='text-xl mt-4 max-w-3xl leading-10 prose prose-p:text-white prose-headings:text-white'
-				dangerouslySetInnerHTML={{ __html: content }}
-			></div>
-		</article>
+  <ContentRenderer content={content}/>
+		</div>
 	)
 }

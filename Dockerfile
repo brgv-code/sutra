@@ -1,5 +1,5 @@
 FROM node:18-alpine as base
-RUN apk add --no-cache g++ make py3-pip libc6-compat
+RUN apk add --no-cache  git
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install

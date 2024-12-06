@@ -2,7 +2,6 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: ['https://prod-files-secure.s3.us-west-2.amazonaws.com'],
 		remotePatterns: [
 			{
 				protocol: 'https',
