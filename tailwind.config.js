@@ -15,12 +15,61 @@ module.exports = {
 	presets: [],
 	theme: {
 		extend: {
-			// listStyleImage: {
-			// 	foundamental: 'url("/work/foundamental.png")',
-			// 	accenture: 'url("/work/accenture.png")',
-			// 	fraunhofer: 'url("/work/fraunhofer.png")',
-			// },
+			typography: {
+				DEFAULT: {
+					css: {
+						color: '#9ca3af',
+						maxWidth: 'none',
+						hr: {
+							borderColor: '#374151',
+							marginTop: '2em',
+							marginBottom: '2em',
+						},
+						'h1, h2, h3, h4': {
+							color: '#ffffff',
+							fontWeight: '700',
+							letterSpacing: '-0.025em',
+						},
+						h2: {
+							fontSize: '1.25rem',
+							lineHeight: '1.75rem',
+							marginTop: '3rem',
+							marginBottom: '1.5rem',
+						},
+						strong: {
+							color: '#ffffff',
+							fontWeight: '700',
+						},
+						pre: {
+							backgroundColor: 'rgba(31, 41, 55, 0.5)',
+							color: '#ffffff',
+							borderRadius: '0.5rem',
+							padding: '1rem',
+						},
+						code: {
+							color: '#93c5fd',
+							backgroundColor: 'rgba(31, 41, 55, 0.5)',
+							borderRadius: '0.25rem',
+							padding: '0.25rem',
+							fontFamily: 'inherit',
+						},
+						'code::before': {
+							content: '""',
+						},
+						'code::after': {
+							content: '""',
+						},
+					},
+				},
+			},
 		},
+
+		// listStyleImage: {
+		// 	foundamental: 'url("/work/foundamental.png")',
+		// 	accenture: 'url("/work/accenture.png")',
+		// 	fraunhofer: 'url("/work/fraunhofer.png")',
+		// },
+		// },
 		accentColor: ({ theme }) => ({
 			...theme('colors'),
 			auto: 'auto',
@@ -1129,5 +1178,5 @@ module.exports = {
 			50: '50',
 		},
 	},
-	plugins: [],
+	plugins: [[require('@tailwindcss/typography')]],
 }

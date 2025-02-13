@@ -2,19 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--foreground-rgb: 255, 255, 255;
+	--background-start-rgb: 0, 0, 0;
+	--background-end-rgb: 0, 0, 0;
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: rgb(var(--background-start-rgb));
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.prose h1 {
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: -0.025em;
+}
+/* Improved spacing and typography */
+.prose h2 {
+	letter-spacing: -0.025em;
+}
+
+.prose strong {
+	letter-spacing: -0.025em;
+}
+
+/* Ensure proper spacing between elements */
+.prose > * + * {
+	margin-top: 2rem;
+}
+
+.prose h2 + p {
+	margin-top: 1.5rem !important;
+}
+
+.prose p + h2 {
+	margin-top: 3rem !important;
+}
+
+/* Code block styling */
+pre {
+	margin: 2rem 0 !important;
+	padding: 1rem !important;
+}
+
+pre code {
+	background-color: transparent !important;
+	padding: 0 !important;
+	font-size: 0.9em !important;
+	line-height: 1.75 !important;
+}
+
+/* Custom scrollbar for code blocks */
+pre::-webkit-scrollbar {
+	height: 8px;
+	background-color: #1f2937;
+}
+
+pre::-webkit-scrollbar-thumb {
+	background-color: #4b5563;
+	border-radius: 4px;
+}
+
 html {
 	color: white;
 	/* background-color: #101d34; */
-	background-color: #12121e;
+	/* background-color: #12121e; */
 	::-webkit-scrollbar {
 		display: none;
 	}
 	max-height: 100vh;
 }
-
+/* 
 :root {
 	--direction: 1;
-}
+} */
 
 .motion-div.glow {
 	filter: brightness(1.5);

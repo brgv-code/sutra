@@ -9,6 +9,16 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"remark-rehype": "^10.1.0",
+		"rehype-format": "^4.0.1",
+		"remark-gfm": "^3.0.1",
+		"rehype-slug": "^5.1.0",
+		"gray-matter": "^4.0.3",
+		"remark": "^14.0.2",
+		"remark-html": "^15.0.2",
+		"rehype": "^12.0.1",
+		"rehype-highlight": "^5.0.2",
+		"highlight.js": "^11.7.0",
 		"@notionhq/client": "^2.2.14",
 		"@radix-ui/react-navigation-menu": "^1.1.4",
 		"aos": "^2.3.4",
@@ -33,6 +43,7 @@
 		"zustand": "^4.5.2"
 	},
 	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.9",
 		"@types/aos": "^3.0.7",
 		"@types/node": "^20",
 		"@types/react": "^18",

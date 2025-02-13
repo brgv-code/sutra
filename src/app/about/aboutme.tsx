@@ -49,8 +49,9 @@ const AboutMe = () => {
 								</CustomLink>{' '}
 								SAAS product called <CustomBold fontSize='md'>Loura</CustomBold>
 								. I am also a student at{' '}
-								{/* <CustomLink/> href='https://www.tu-ilmenau.de/en/'> */}
-								TU Ilmenau, {/* </CustomLink>{' '} */}
+								<CustomLink href='https://www.tu-ilmenau.de/en/'>
+									TU Ilmenau,
+								</CustomLink>{' '}
 								where I am pursuing my masters in{' '}
 								<CustomLink
 									underlineColor='#48F782'
@@ -120,7 +121,7 @@ const AboutMe = () => {
 								<GitCommitHorizontal className='mx-4 text-[#6E00FD]' /> {'  '}
 								March 2023 - present
 							</span>
-							<p className='ml-8 transition-all duration-500 ease-in-out p-4 transform hover:translate-x-2 text-[#9ca3af] text-sm leading-relaxed '>
+							<div className='ml-8 transition-all duration-500 ease-in-out p-4 transform hover:translate-x-2 text-[#9ca3af] text-sm leading-relaxed '>
 								My work mainly involves around Loura, internal CRM tool. I work
 								on the frontend with Nextjs, Typescript, GraphQL, NestJS.
 								Backend with Edgedb. For automation I use n8n hosted on onsite
@@ -130,7 +131,7 @@ const AboutMe = () => {
 									scrape data for startups and feed into our existing
 									applications.
 								</p>
-							</p>
+							</div>
 						</li>
 					</ul>
 					<ul className='mt-2 ml-8 text-md  list-inside list-image-foundamental'>
@@ -167,7 +168,12 @@ const AboutMe = () => {
 								alt={''}
 								width={35}
 								height={35}
-								style={{ display: 'inline-block', borderRadius: '50%' }}
+								style={{
+									display: 'inline-block',
+									borderRadius: '50%',
+									width: 'auto',
+									height: 'auto',
+								}}
 							/>
 							<span className='inline-flex '>
 								Software Engineer{' '}
@@ -187,34 +193,32 @@ const AboutMe = () => {
 				</div>
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Education</h2>
-					<ul className='mt-2 text-lg  list-disc list-inside pl-10'>
-						<li className=' transition-all duration-500 animate-slow transform hover:translate-x-2 '>
-							<span className='inline-flex  pl-0'>
-								Master in Science (Msc) <Dot className='text-[#129270]  ' />{' '}
-								<span className='text-[#129270]  text-sm pt-1'>
+					<ul className='mt-2 text-lg list-disc list-inside pl-10'>
+						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2'>
+							<span className='inline-flex pl-0'>
+								Master in Science (Msc) <Dot className='text-[#129270]' />{' '}
+								<span className='text-[#129270] text-sm pt-1'>
 									2021 - present
 								</span>
 							</span>
-							<li className='pl-16 py-3 text-gray-300 text-xs list-none hover:translate-x-2 duration-500 ease-in-out'>
+							<div className='pl-16 py-3 text-gray-300 text-xs'>
 								Technische Universität Ilmenau, Germany
-							</li>
+							</div>
 						</li>
-						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  '>
-							<span className='inline-flex  pl-0'>
-								Bachelor of Engineering (BE) <Dot className='text-[#129270] ' />{' '}
-								<span className='text-[#129270]  text-sm pt-1'>
-									2013 - 2017
-								</span>
+						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2'>
+							<span className='inline-flex pl-0'>
+								Bachelor of Engineering (BE) <Dot className='text-[#129270]' />{' '}
+								<span className='text-[#129270] text-sm pt-1'>2013 - 2017</span>
 							</span>
-							<li className='pl-16 py-3 text-gray-300 text-xs list-none hover:translate-x-2 duration-500 ease-in-out'>
+							<div className='pl-16 py-3 text-gray-300 text-xs'>
 								The National Institute of Engineering, Mysuru, India
-							</li>
+							</div>
 						</li>
 					</ul>
 				</div>
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Language Skills</h2>
-					<p className='mt-2 text-lg pl-10 '>
+					<div className='mt-2 text-lg pl-10 '>
 						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
 							English 🇬🇧 (fluent)
 						</li>
@@ -230,7 +234,7 @@ const AboutMe = () => {
 						<li className='transition-all duration-500 animate-slow transform hover:translate-x-2 py-2'>
 							Telugu 🇮🇳 (fluent, mothertongue)
 						</li>
-					</p>
+					</div>
 				</div>
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Hobbies</h2>
