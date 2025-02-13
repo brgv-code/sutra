@@ -29,7 +29,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${fira.className} `}>
-				<main className='pt-16'>{children}</main>
+				<main>{children}</main>
 			</body>
 		</html>
 	)

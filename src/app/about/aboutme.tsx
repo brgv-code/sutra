@@ -239,11 +239,10 @@ const AboutMe = () => {
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Hobbies</h2>
 					<p className='py-4 leading-relaxed pl-10'>
-						{' '}
 						I have been practicing photography from a few years now. I just like
-						the process of filmmaking and capturing pictures. Lately, I haven't
-						had the time to go out and shoot, but I have some footage to edit
-						for my documentary on european cities.
+						the process of filmmaking and capturing pictures. Lately, I
+						haven`&apos;`t had the time to go out and shoot, but I have some
+						footage to edit for my documentary on european cities.
 					</p>
 					<p className='py-2 leading-relaxed pl-10'>
 						Though I used to dread reading, I was more of a visual learner. I am

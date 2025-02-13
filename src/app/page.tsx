@@ -56,7 +56,7 @@ const Home = () => {
 		}
 		window.addEventListener('mousemove', handleMouseMove)
 		return () => window.removeEventListener('mousemove', handleMouseMove)
-	}, [])
+	}, [mouseX, mouseY])
 
 	const radialGradientPos = useTransform(
 		[smoothX, smoothY],
@@ -96,49 +96,49 @@ const Home = () => {
 			icon: Blocks,
 			bg_color: 'bg-red-400/[10%]',
 			border_color: 'border-red-400/[10%]',
-			text_color: 'text-red-900',
+			text_color: 'text-red-500/[80%]',
 		},
 		{
 			name: 'Next.js',
 			icon: Globe,
 			bg_color: 'bg-purple-400/[10%]',
 			border_color: 'border-purple-400/[10%]',
-			text_color: 'text-purple-900',
+			text_color: 'text-purple-500/[80%]',
 		},
 		{
 			name: 'Node.js',
 			icon: Terminal,
 			bg_color: 'bg-green-400/[10%]',
 			border_color: 'border-green-400/[10%]',
-			text_color: 'text-green-900',
+			text_color: 'text-green-500/[80%]',
 		},
 		{
 			name: 'TypeScript',
 			icon: Code,
 			bg_color: 'bg-blue-400/[10%]',
 			border_color: 'border-blue-400/[10%]',
-			text_color: 'text-blue-900',
+			text_color: 'text-blue-500/[80%]',
 		},
 		{
-			name: 'AWS',
+			name: 'Coolify',
 			icon: Cloud,
-			bg_color: 'bg-orange-400/[10%]',
-			border_color: 'border-orange-400/[10%]',
-			text_color: 'text-orange-900',
+			bg_color: 'bg-stone-400/[10%]',
+			border_color: 'border-stone-400/[10%]',
+			text_color: 'text-stone-500/[80%]',
 		},
 		{
 			name: 'Tailwind',
 			icon: Palette,
-			bg_color: 'bg-sky-400/[10%]',
-			border_color: 'border-sky-400/[10%]',
-			text_color: 'text-sky-900',
+			bg_color: 'bg-amber-400/[10%]',
+			border_color: 'border-amber-400/[10%]',
+			text_color: 'text-amber-500/[80%]',
 		},
 		{
 			name: 'Python',
 			icon: Code,
-			bg_color: 'bg-yellow-400/[10%]',
-			border_color: 'border-yellow-400/[10%]',
-			text_color: 'text-yellow-900',
+			bg_color: 'bg-pink-400/[10%]',
+			border_color: 'border-pink-400/[10%]',
+			text_color: 'text-pink-500/[80%]',
 		},
 	]
 
@@ -206,7 +206,7 @@ const Home = () => {
 			</motion.div>
 		),
 	)
-
+	BentoCard.displayName = 'BentoCard'
 	// const FloatingIcon = ({
 	// 	icon: Icon,
 	// 	delay = 0,
@@ -285,9 +285,9 @@ const Home = () => {
 											ease: 'linear',
 										}}
 									>
-										<Sparkles className='text-yellow-400' size={20} />
+										<Sparkles className='text-green-400' size={20} />
 									</motion.div>
-									<span className='text-yellow-400 text-sm'>
+									<span className='text-green-400 text-sm'>
 										Available for work
 									</span>
 								</motion.div>
@@ -296,13 +296,13 @@ const Home = () => {
 									<span className='bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent'>
 										Bhargav{' '}
 									</span>
-									<motion.span
+									{/* <motion.span
 										className='absolute -top-6 -right-6 text-xs text-gray-500'
 										animate={{ y: [0, -5, 0] }}
 										transition={{ duration: 2, repeat: Infinity }}
 									>
 										Developer
-									</motion.span>
+									</motion.span> */}
 								</h1>
 
 								<div className='text-gray-400 text-lg relative mt-12'>
@@ -320,6 +320,19 @@ const Home = () => {
 										</span>{' '}
 										Ready to code, connect, and create something amazing!
 									</div>
+									<motion.button
+										whileHover={{ x: 5 }}
+										className='flex items-center  gap-1 text-sm text-gray-400 hover:text-white group'
+										onClick={() => router.push('/about')}
+									>
+										Read more
+										<motion.div
+											animate={{ x: [0, 5, 0] }}
+											transition={{ duration: 2, repeat: Infinity }}
+										>
+											<ArrowRight size={16} />
+										</motion.div>
+									</motion.button>
 								</div>
 							</div>
 
@@ -356,6 +369,7 @@ const Home = () => {
 								<motion.button
 									whileHover={{ x: 5 }}
 									className='flex items-center gap-1 text-sm text-gray-400 hover:text-white group'
+									onClick={() => router.push('/projects')}
 								>
 									View all
 									<motion.div
@@ -427,7 +441,8 @@ const Home = () => {
 								</motion.div>
 								<motion.button
 									whileHover={{ scale: 1.1, rotate: 45 }}
-									className='text-gray-400 hover:text-white'
+									className='text-gray-400 cursor-pointer hover:text-white '
+									onClick={() => router.push('/blog')}
 								>
 									<ExternalLink size={16} />
 								</motion.button>
@@ -441,7 +456,7 @@ const Home = () => {
 
 					{/* About Card */}
 
-					<BentoCard
+					{/* <BentoCard
 						onHover={handleHover('about')}
 						gradient
 						className='col-start-4 row-start-2 row-end-5 cursor-pointer'
@@ -461,6 +476,33 @@ const Home = () => {
 							<p className='text-sm text-gray-400'>
 								Passionate developer with 5+ years of experience
 							</p>
+						</div>
+					</BentoCard> */}
+
+					{/* Books card */}
+					<BentoCard
+						onHover={handleHover('books')}
+						gradient
+						onClick={() => router.push('/books')}
+						className='col-start-4 row-start-2 row-end-5 cursor-pointer'
+					>
+						<div className='p-6 h-full '>
+							<div className='flex  items-center justify-between mb-3'>
+								<motion.div
+									animate={{ rotateY: [0, 180, 360] }}
+									transition={{ duration: 4, repeat: Infinity }}
+								>
+									<BookOpen className='text-blue-400' size={20} />
+								</motion.div>
+								<motion.div
+									animate={{ scale: [1, 1.2, 1] }}
+									transition={{ duration: 2, repeat: Infinity }}
+								>
+									<Star className='text-yellow-400' size={16} />
+								</motion.div>
+							</div>
+							<h2 className='font-semibold mb-2'>Books</h2>
+							<p className='text-sm text-gray-400'>The almanack by Naval </p>
 						</div>
 					</BentoCard>
 				</div>
