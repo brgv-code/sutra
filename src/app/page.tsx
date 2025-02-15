@@ -18,6 +18,7 @@ import {
 	Blocks,
 	Cloud,
 	Palette,
+	Rss,
 } from 'lucide-react'
 import Highlight from '@/components/ui/blog/highlight'
 
@@ -117,7 +118,6 @@ const Home = () => {
 		},
 		{ icon: Mail, url: 'mailto:hello@brgv.dev', label: 'Email' },
 	]
-
 	const BentoCard = React.memo(
 		({
 			children,
@@ -342,22 +342,22 @@ const Home = () => {
 						<div className='p-6 h-full'>
 							<div className='flex items-center justify-between mb-3'>
 								<motion.div
-									animate={{ rotateY: [0, 180, 360] }}
-									transition={{ duration: 4, repeat: Infinity }}
+									animate={{ opacity: [1, 0, 1] }}
+									transition={{ duration: 8, repeat: Infinity }}
 								>
-									<BookOpen className='text-blue-400' size={20} />
+									<Rss className='text-blue-400' size={20} />
 								</motion.div>
 								<motion.button
 									whileHover={{ scale: 1.1, rotate: 45 }}
-									className='text-gray-400 cursor-pointer hover:text-white '
+									className='text-gray-400 cursor-pointer z-10 hover:text-white '
 									onClick={() => router.push('/blog')}
 								>
 									<ExternalLink size={16} />
 								</motion.button>
 							</div>
 							<h3 className='font-medium text-sm mb-2'>Latest Post</h3>
-							<p className='text-xs text-gray-400'>
-								The Future of Web Development in 2025
+							<p className='text-xs text-gray-400 '>
+								Building Modern Web Applications with Next.js
 							</p>
 						</div>
 					</BentoCard>
@@ -389,8 +389,8 @@ const Home = () => {
 					<BentoCard
 						onHover={handleHover('books')}
 						gradient
-						onClick={() => router.push('/books')}
-						className='col-start-4 row-start-2 row-end-5 cursor-pointer'
+						// onClick={() => router.push('/books')}
+						className='col-start-4 row-start-2 row-end-5 '
 					>
 						<div className='p-6 h-full '>
 							<div className='flex  items-center justify-between mb-3'>
@@ -400,12 +400,18 @@ const Home = () => {
 								>
 									<BookOpen className='text-blue-400' size={20} />
 								</motion.div>
-								<motion.div
-									animate={{ scale: [1, 1.2, 1] }}
-									transition={{ duration: 2, repeat: Infinity }}
+
+								<motion.button
+									whileHover={{ scale: 1.1, rotate: 45 }}
+									className='text-gray-400 cursor-pointer  z-10 hover:text-white '
+									onClick={() => router.push('/books')}
+									style={{
+										width: 'fit-content',
+										height: 'fit-content',
+									}}
 								>
-									<Star className='text-yellow-400' size={16} />
-								</motion.div>
+									<ExternalLink size={16} />
+								</motion.button>
 							</div>
 							<h2 className='font-semibold mb-2'>Books</h2>
 							<p className='text-sm text-gray-400'>The almanack by Naval </p>
