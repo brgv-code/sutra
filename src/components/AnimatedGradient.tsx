@@ -22,6 +22,31 @@ const gradientMap: Record<string, GradientEntry> = {
 			'bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10',
 		animated: true,
 	},
+	'/blog': {
+		baseGradient:
+			'bg-gradient-to-br from-red-500/10 via-transparent to-cyan-500/10',
+		animated: true,
+	},
+	'/blog/[slug]': {
+		baseGradient:
+			'bg-gradient-to-br from-blue-500/10 via-transparent to-green-500/10',
+		animated: true,
+	},
+	'/about': {
+		baseGradient:
+			'bg-gradient-to-br from-magenta-500/10 via-transparent to-rose-500/10',
+		animated: true,
+	},
+	'/contact': {
+		baseGradient:
+			'bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10',
+		animated: true,
+	},
+	'/book': {
+		baseGradient:
+			'bg-gradient-to-br from-red-500/10 via-transparent to-purple-500/10',
+		animated: true,
+	},
 }
 
 export default function AnimatedGradient() {
@@ -42,7 +67,7 @@ export default function AnimatedGradient() {
 				<motion.div
 					animate={{
 						backgroundPosition: ['0% 0%', '100% 100%'],
-						opacity: [0.1, 0.3, 0.1],
+						opacity: [0.5, 0.4, 0.3],
 					}}
 					transition={{
 						duration: 15,
