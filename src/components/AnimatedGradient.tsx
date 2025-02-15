@@ -7,8 +7,7 @@ type GradientEntry = {
 }
 const gradientMap: Record<string, GradientEntry> = {
 	'/': {
-		baseGradient:
-			'bg-gradient-to-br from-purple-500/10 via-transparent to-emerald-500/10',
+		baseGradient: '',
 		animated: true,
 	},
 	'/projects': {
@@ -62,12 +61,15 @@ export default function AnimatedGradient() {
 
 	return (
 		<div className='fixed inset-0'>
-			<div className={`absolute inset-0 ${baseGradient}`} />
+			<div
+				className={`absolute inset-0 ${baseGradient}`}
+				style={{ zIndex: -1 }}
+			/>
 			{animated && (
 				<motion.div
 					animate={{
 						backgroundPosition: ['0% 0%', '100% 100%'],
-						opacity: [0.5, 0.4, 0.3],
+						opacity: [0.5, 0.3, 0.1],
 					}}
 					transition={{
 						duration: 15,
