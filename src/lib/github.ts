@@ -115,6 +115,7 @@ export interface Project {
 	template?: boolean
 	url: string
 	created_at: Date
+	id: number
 }
 
 export type LanguageUsage = Record<string, number>

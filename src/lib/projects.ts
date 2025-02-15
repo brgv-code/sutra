@@ -50,6 +50,7 @@ export async function fetchProjects(): Promise<Project[] | null> {
 				languages,
 				url: repo.html_url.toLowerCase(),
 				created_at: repo.created_at,
+				id: repo.id,
 			}))
 		})
 		.filter(Boolean)
