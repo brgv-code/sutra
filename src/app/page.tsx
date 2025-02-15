@@ -1,19 +1,7 @@
 'use client'
 
-import React, {
-	useState,
-	useEffect,
-	ReactNode,
-	useMemo,
-	useCallback,
-} from 'react'
-import {
-	motion,
-	AnimatePresence,
-	useMotionValue,
-	useSpring,
-	useTransform,
-} from 'framer-motion'
+import React, { useState, useEffect, ReactNode, useCallback } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import {
 	Github,
 	Twitter,
@@ -22,16 +10,15 @@ import {
 	ArrowRight,
 	BookOpen,
 	Code,
-	User,
 	ExternalLink,
 	Star,
 	Sparkles,
-	Coffee,
 	Globe,
 	Terminal,
 	Blocks,
 	Cloud,
 	Palette,
+	Rss,
 } from 'lucide-react'
 import Highlight from '@/components/ui/blog/highlight'
 
@@ -63,27 +50,6 @@ const Home = () => {
 		([x, y]) => `${x}px ${y}px`,
 	)
 
-	const containerVariants = {
-		hidden: { opacity: 0 },
-		show: {
-			opacity: 1,
-			transition: { staggerChildren: 0.06 },
-		},
-	}
-
-	const cardVariants = {
-		hidden: { opacity: 0, scale: 0.95, y: 20 },
-		show: {
-			opacity: 1,
-			scale: 1,
-			y: 0,
-			transition: {
-				type: 'spring',
-				stiffness: 200,
-				damping: 20,
-			},
-		},
-	}
 	const handleHover = useCallback(
 		(cardName: string) => () => {
 			setHoveredCard(cardName)
@@ -152,7 +118,6 @@ const Home = () => {
 		},
 		{ icon: Mail, url: 'mailto:hello@brgv.dev', label: 'Email' },
 	]
-
 	const BentoCard = React.memo(
 		({
 			children,
@@ -172,7 +137,6 @@ const Home = () => {
 			onClick?: () => void
 		}) => (
 			<motion.div
-				// variants={cardVariants}
 				whileHover={{
 					scale: 1.02,
 					transition: { duration: 0.2 },
@@ -207,34 +171,6 @@ const Home = () => {
 		),
 	)
 	BentoCard.displayName = 'BentoCard'
-	// const FloatingIcon = ({
-	// 	icon: Icon,
-	// 	delay = 0,
-	// }: {
-	// 	icon: React.ElementType
-	// 	delay?: number
-	// }) => (
-	// 	<motion.div
-	// 		initial={{ opacity: 0, y: 20 }}
-	// 		animate={{ opacity: 1, y: 0 }}
-	// 		transition={{ delay }}
-	// 		className='absolute'
-	// 		style={{
-	// 			top: `${Math.random() * 80 + 10}%`,
-	// 			left: `${Math.random() * 80 + 10}%`,
-	// 		}}
-	// 	>
-	// 		<Icon size={16} className='text-gray-600' />
-	// 	</motion.div>
-	// )
-	const iconPositions = useMemo(
-		() => [
-			{ top: 15, left: 85 },
-			{ top: 45, left: 75 },
-			{ top: 25, left: 90 },
-		],
-		[],
-	)
 
 	return (
 		<div className='min-h-screen mt-[5%] text-white overflow-hidden p-6'>
@@ -253,16 +189,12 @@ const Home = () => {
 					className='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1),transparent)] bg-[length:400%_400%]'
 				/>
 			</div>
-
 			<motion.div
-				// variants={containerVariants}
 				initial='hidden'
 				animate='show'
 				className='relative max-w-7xl mx-auto'
 			>
-				{/* Main grid */}
 				<div className='grid grid-cols-4 gap-4 grid-auto-rows-[200px]'>
-					{/* Hero Card - 2x2 */}
 					<BentoCard
 						colspan={2}
 						className=' row-end-5 row-start-1 '
@@ -296,13 +228,6 @@ const Home = () => {
 									<span className='bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent'>
 										Bhargav{' '}
 									</span>
-									{/* <motion.span
-										className='absolute -top-6 -right-6 text-xs text-gray-500'
-										animate={{ y: [0, -5, 0] }}
-										transition={{ duration: 2, repeat: Infinity }}
-									>
-										Developer
-									</motion.span> */}
 								</h1>
 
 								<div className='text-gray-400 text-lg relative mt-12'>
@@ -383,8 +308,8 @@ const Home = () => {
 
 							<div className='grid grid-cols-2 gap-4'>
 								{[
-									{ title: 'AI Analytics', tech: 'Next.js · TS' },
-									{ title: 'Blockchain App', tech: 'React · Web3' },
+									{ title: 'BRGV docs', tech: 'Next.js · TS' },
+									{ title: 'tourHut', tech: 'HTML · CSS' },
 								].map((project, index) => (
 									<motion.div
 										key={project.title}
@@ -401,7 +326,6 @@ const Home = () => {
 						</div>
 					</BentoCard>
 
-					{/* Tech Stack - 2x1 */}
 					<BentoCard onHover={handleHover('tech')} gradient>
 						<div className='p-6 h-full'>
 							<h2 className='font-semibold mb-4'>Technologies</h2>
@@ -425,7 +349,6 @@ const Home = () => {
 						</div>
 					</BentoCard>
 
-					{/* Blog Card */}
 					<BentoCard
 						onHover={handleHover('blog')}
 						gradient
@@ -434,27 +357,25 @@ const Home = () => {
 						<div className='p-6 h-full'>
 							<div className='flex items-center justify-between mb-3'>
 								<motion.div
-									animate={{ rotateY: [0, 180, 360] }}
-									transition={{ duration: 4, repeat: Infinity }}
+									animate={{ opacity: [1, 0, 1] }}
+									transition={{ duration: 8, repeat: Infinity }}
 								>
-									<BookOpen className='text-blue-400' size={20} />
+									<Rss className='text-blue-400' size={20} />
 								</motion.div>
 								<motion.button
 									whileHover={{ scale: 1.1, rotate: 45 }}
-									className='text-gray-400 cursor-pointer hover:text-white '
+									className='text-gray-400 cursor-pointer z-10 hover:text-white '
 									onClick={() => router.push('/blog')}
 								>
 									<ExternalLink size={16} />
 								</motion.button>
 							</div>
 							<h3 className='font-medium text-sm mb-2'>Latest Post</h3>
-							<p className='text-xs text-gray-400'>
-								The Future of Web Development in 2025
+							<p className='text-xs text-gray-400 '>
+								Building Modern Web Applications with Next.js
 							</p>
 						</div>
 					</BentoCard>
-
-					{/* About Card */}
 
 					{/* <BentoCard
 						onHover={handleHover('about')}
@@ -483,8 +404,8 @@ const Home = () => {
 					<BentoCard
 						onHover={handleHover('books')}
 						gradient
-						onClick={() => router.push('/books')}
-						className='col-start-4 row-start-2 row-end-5 cursor-pointer'
+						// onClick={() => router.push('/books')}
+						className='col-start-4 row-start-2 row-end-5 '
 					>
 						<div className='p-6 h-full '>
 							<div className='flex  items-center justify-between mb-3'>
@@ -494,12 +415,18 @@ const Home = () => {
 								>
 									<BookOpen className='text-blue-400' size={20} />
 								</motion.div>
-								<motion.div
-									animate={{ scale: [1, 1.2, 1] }}
-									transition={{ duration: 2, repeat: Infinity }}
+
+								<motion.button
+									whileHover={{ scale: 1.1, rotate: 45 }}
+									className='text-gray-400 cursor-pointer  z-10 hover:text-white '
+									onClick={() => router.push('/books')}
+									style={{
+										width: 'fit-content',
+										height: 'fit-content',
+									}}
 								>
-									<Star className='text-yellow-400' size={16} />
-								</motion.div>
+									<ExternalLink size={16} />
+								</motion.button>
 							</div>
 							<h2 className='font-semibold mb-2'>Books</h2>
 							<p className='text-sm text-gray-400'>The almanack by Naval </p>

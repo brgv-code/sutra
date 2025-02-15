@@ -12,13 +12,12 @@ import rehypeFormat from 'rehype-format'
 
 const root = process.cwd()
 
-// Define the type for the front matter
 type FrontMatter = {
 	title: string
 	date: string
 	description: string
 	slug: string
-	[key: string]: any // Allow for additional properties
+	[key: string]: any
 }
 
 export async function getFiles(type: string) {

@@ -12,7 +12,7 @@ export default async function Blog() {
 	const posts = await getAllFilesFrontMatter('blog')
 
 	return (
-		<div className='bg-black text-white min-h-screen'>
+		<div className='text-white min-h-screen'>
 			<div className='max-w-[800px] mx-auto px-4 py-20'>
 				<h1 className='text-4xl font-bold mb-4'>Blog</h1>
 				<p className='text-gray-400 mb-12'>

@@ -23,7 +23,7 @@ export default async function BlogPost({
 	const post = await getFileBySlug('blog', params.slug)
 
 	return (
-		<div className={`bg-black text-white min-h-screen ${mono.variable}`}>
+		<div className={` text-white min-h-screen ${mono.variable}`}>
 			<article className='max-w-[800px] mx-auto px-4 py-20'>
 				<header className='mb-16'>
 					<h1 className='font-mono text-4xl font-bold mb-4 leading-tight'>
