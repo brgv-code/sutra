@@ -30,7 +30,7 @@ export default async function BlogPost({
 						{post.frontMatter.title}
 					</h1>
 					<time className='text-sm text-gray-400 block'>
-						{post.frontMatter.date}
+						{post.frontMatter.created}
 					</time>
 				</header>
 				<div

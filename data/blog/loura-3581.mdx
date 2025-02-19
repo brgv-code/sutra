@@ -1,0 +1,67 @@
+---
+title: "Adding an Empty State Component for Portfolio, Dealflow, and Reminders"
+created: "2024-10-07"
+tags: ["React", "UI/UX", "Foundamental"]
+description: "Adding an Empty State Component for Portfolio, Dealflow, and Reminders"
+---
+
+
+In this post, I’ll discuss the recent changes I made to implement an empty state component for the Portfolio, Dealflow, and Reminders pages in our application. The goal was to enhance user experience by providing clear feedback when there are no items to display. Here’s a detailed look at what I did, the reasoning behind my approach, and the challenges I faced.
+
+## Overview of Changes
+
+The main change was the addition of an empty state component that displays a message and an icon when there are no items present in the Portfolio, Dealflow, or Reminders sections. This helps users understand that the absence of items is intentional and not a bug.
+
+### Implementing the Empty State in Dealflow
+
+In the `DealflowForTeam` component, I replaced the previous empty state text with a more visually appealing empty state component. Here’s the relevant code snippet:
+```typescript
+ {hasNoResult ? (
+
+<EmptyTextDiv>
+
+<IconWrapper>
+
+<StyledArrowIcon />
+
+</IconWrapper>
+
+<EmptyText> {"No companies found after applying your filters."}</EmptyText>
+
+</EmptyTextDiv>
+
+) : (
+
+<NavigableList navKey="DealflowList" columnSizes={["20%", "40%", "30%", "10%"]}>
+
+<DealFlowList
+```
+
+
+By using `EmptyTextDiv`, `IconWrapper`, and `StyledArrowIcon`, I created a more engaging user interface. The icon adds a visual element that draws attention, while the text clearly communicates the situation to the user. This approach not only improves aesthetics but also enhances usability by providing context.
+
+### Updating Styles for the Empty State
+
+To support the new empty state component, I added several styled components in `styles.ts`. Here’s a brief overview of what I included:
+
+```typescript
+export const EmptyTextDiv = styled("div") display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%; gap: 30px; padding-bottom: 100px;;
+
+export const EmptyText = styled(Typography) color: ${newColorOptions.misc.text.chatInfo}; font-family: ${AEONIK_NAME}, ${AEONIK_FALLBACK}; font-size: 18px; line-height: 28px; text-align: center; font-weight: 500;;
+
+export const IconWrapper = styled("div") position: relative; height: 55px; width: 55px; border-radius: 32px; background-color: ${newColorOptions.misc.inboxIconBackground};;
+```
+
+These styles ensure that the empty state component is visually appealing and consistent with the overall design of the application. The use of flexbox allows for easy centering of the content, making it adaptable to different screen sizes.
+
+## Why This Approach?
+
+The primary goal was to improve user experience by providing clear feedback when there are no items to display. Users often feel confused or frustrated when they see an empty page without any context. By implementing an empty state component, I aimed to reduce confusion and enhance the overall usability of the application.
+
+## Challenges Faced
+
+One challenge was ensuring that the new empty state component integrated seamlessly with existing components. I had to be careful to maintain the overall layout and design while introducing new elements. Additionally, testing the new component across different scenarios took time to ensure it displayed correctly under various conditions.
+
+## Conclusion
+
+Overall, I’m pleased with the addition of the empty state component. It enhances the user experience by providing clear feedback and improving the visual appeal of the application. As always, I welcome any feedback or suggestions from the team. If you have thoughts or ideas, feel free to reach out. Happy coding!

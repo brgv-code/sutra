@@ -1,0 +1,88 @@
+---
+
+title: "User Avatar Fix in Loura"
+
+created: "2024-10-07"
+
+tags: ["GraphQL", "React", "Foundamental"]
+
+description: "User Avatar Fix in Loura"
+
+---
+
+  
+
+
+  
+
+In this post, we’ll take a look at a recent merge request (MR) that addresses an issue with user avatars in the Loura application. The goal of this MR is to ensure that the chat avatars for inactive users are displayed correctly based on their active status.
+
+  
+
+## Overview of the Changes
+
+  
+
+The MR introduces a couple of changes in the GraphQL queries and the React hooks used to load users. Here’s a breakdown of what was modified:
+
+  
+
+### 1. GraphQL Query Update
+
+  
+
+The first significant change is in the GraphQL query used to fetch team users. Previously, the query did not account for the active status of users. The updated query now includes an additional parameter for `active`, allowing us to filter users based on their active status.
+
+  
+
+Here’s the relevant part of the code that was changed:
+
+```graphql
+
+query allTeamUsersQuery($page: Int, $pageSize: Int, $teamId: UUID!, $active: Boolean) {
+users(page: $page, pageSize: $pageSize, teamId: $teamId, active: $active) {
+id
+firstName
+lastName
+}
+}
+```
+
+### 2. Hook Modification
+
+The second change is in the `useLoadUsers` hook. This hook is responsible for loading the users when the component mounts. The modification ensures that when we call the `getTeamUsers` function, we pass the `active` parameter as `false` by default. This means that when the component loads, it will fetch all users, regardless of their active status.
+
+Here’s the updated part of the hook:
+```javascript
+
+const currentTeamIDReactive = useReactiveVar(currentTeamID);
+
+useEffect(() => {
+
+if (!currentTeamIDReactive) return;
+
+if (!isEmpty(userListReactive)) return;
+
+if (getTeamUsersState.loading) return;
+
+getTeamUsers({
+
+variables: { page: 0, pageSize: 50, teamId: currentTeamIDReactive, active: false }
+
+});
+
+}, [currentTeamIDReactive, getTeamUsers, getTeamUsersState.loading, userListReactive]);
+```
+
+## Testing the Changes
+
+To ensure that the changes work as intended, a few tests were conducted:
+
+1. **Inactive Users**: When the `active` parameter is set to `false`, all users are returned. This allows the chat avatars for inactive users to be displayed correctly.
+2. **Active Users**: When the `active` parameter is set to `true`, the chat avatars for inactive users will default to that of the current user.
+
+## Conclusion
+
+This MR is a straightforward yet essential update that improves the user experience in the Loura application. By ensuring that inactive users are represented correctly in the chat, we enhance the overall functionality of the platform.
+
+If you have any questions or feedback about this update, feel free to reach out. Happy coding!

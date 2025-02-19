@@ -1,0 +1,79 @@
+---
+title: "Fixing User Avatar Display in Loura"
+created: "2024-10-07"
+tags: ["GraphQL", "React", "Foundamental"]
+description: "Fixing User Avatar Display in Loura"
+---
+
+
+In this post, I’ll share the changes I made to fix the user avatar display issue in the Loura application. The goal was to ensure that chat avatars for inactive users are displayed correctly. Here’s a detailed look at what I did, the reasoning behind my approach, and some challenges I faced.
+
+## Overview of Changes
+
+The main changes involved updating the GraphQL query and modifying the `useLoadUsers` hook. These adjustments were necessary to ensure that the application could accurately fetch and display user data based on their active status.
+
+### Updating the GraphQL Query
+
+The first step was to modify the GraphQL query that retrieves user data. The original query didn’t consider whether users were active or inactive, which meant that inactive users might not be displayed correctly in the chat. 
+
+I added an `active` parameter to the query:
+```graphql
+
+query allTeamUsersQuery($page: Int, $pageSize: Int, $teamId: UUID!, $active: Boolean) {
+
+users(page: $page, pageSize: $pageSize, teamId: $teamId, active: $active) {
+
+id
+
+firstName
+
+lastName
+
+}
+
+}
+```
+
+By including the `active` parameter, I could filter the users based on their status. This change allows the application to request only the users that match the specified active status, making it easier to manage how users are displayed in the chat.
+
+### Modifying the `useLoadUsers` Hook
+
+Next, I turned my attention to the `useLoadUsers` hook. This hook is responsible for loading user data when the component mounts. I needed to ensure that it could handle the new `active` parameter effectively.
+
+Here’s how I updated the hook:
+```javascript
+
+const currentTeamIDReactive = useReactiveVar(currentTeamID);
+
+useEffect(() => {
+
+if (!currentTeamIDReactive) return;
+
+if (!isEmpty(userListReactive)) return;
+
+if (getTeamUsersState.loading) return;
+
+getTeamUsers({
+
+variables: { page: 0, pageSize: 50, teamId: currentTeamIDReactive, active: false }
+
+});
+
+}, [currentTeamIDReactive, getTeamUsers, getTeamUsersState.loading, userListReactive]);
+```
+
+In this code, I first check if the `currentTeamIDReactive` is available. If it’s not, the hook exits early to avoid unnecessary API calls. Then, I check if the `userListReactive` is already populated. If it is, I don’t want to fetch the data again, as that would be redundant.
+
+The key part here is the call to `getTeamUsers`, where I pass the `active` parameter as `false`. This means that when the component loads, it will fetch all users, regardless of whether they are active or inactive. This approach ensures that the chat can display all users correctly, even if they are not currently active.
+
+## Why This Approach?
+
+The main goal was to enhance the user experience by ensuring that inactive users are represented correctly in the chat. By allowing the application to fetch users based on their active status, I aimed to provide a more accurate and complete view of the team. This flexibility is crucial in applications where user status can change frequently.
+
+## Challenges Faced
+
+One of the challenges I encountered was ensuring that the new query and hook modifications didn’t disrupt existing functionality. I had to be meticulous with the logic to ensure that the application correctly interpreted the active status. Additionally, testing the new behavior took longer than expected, as I wanted to ensure that both active and inactive users were displayed correctly without any issues.
+
+## Conclusion
+
+Overall, I’m satisfied with the changes I made to the user avatar functionality. It feels more robust and user-friendly now. There’s always room for improvement, and I’m looking forward to any feedback from the team. If you have thoughts or suggestions, feel free to reach out. Happy coding!

@@ -1,0 +1,65 @@
+---
+title: Enhancing the Founder Edit Modal
+created: '2024-10-07' 
+tags:
+  - React
+  - UI/UX
+  - Foundamental
+  - Figma
+description: "Enhancing the Founder Edit Modal"
+---
+
+In this post, I’ll discuss the recent updates made to the `FounderModal` component. The goal was to improve the design and functionality of the modal based on the specifications provided in Figma. This enhancement is not just about aesthetics; it’s about creating a more intuitive and user-friendly experience for our users.
+
+## Design Choices and Enhancements
+
+### User-Centric Design
+
+The primary focus of this update was to create a more user-friendly and visually appealing modal. By utilizing Material-UI's `Modal` component, I ensured that the modal behaves consistently across different devices and screen sizes. 
+``` tsx
+
+import { Modal } from '@mui/material';
+
+<Modal open={isOpen} onClose={handleClose}>
+
+<div className="modal-content">
+
+{/ Modal content goes here /}
+
+</div>
+
+</Modal>
+```
+
+
+This choice enhances the user experience by providing a familiar interface that users can easily navigate.
+
+### Visual Consistency
+
+To maintain visual consistency with the rest of the application, I updated the modal's styling. This included adjusting the padding, border radius, and box shadow.
+```tsx
+const StyledModal = styled(Box) 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+```
+
+This ensures that the modal's appearance is cohesive with other UI elements.
+
+### User Interaction
+
+Improving user interaction within the modal was another key focus. I implemented clear button states and hover effects to provide immediate feedback to users.
+```tsx
+
+<Button variant="contained" onClick={handleSubmit}>
+
+Submit
+
+</Button>
+```
+
+This attention to detail helps users understand their actions and enhances the overall usability of the component.
+
+## Conclusion
+
+Overall, the enhancements made to the `FounderModal` component significantly improve the user experience. By focusing on design consistency, user interaction, and accessibility, I believe the modal now better serves its purpose within the application. I welcome any feedback or suggestions from the team. If you have thoughts or ideas, feel free to reach out. Happy coding!
