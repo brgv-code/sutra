@@ -1,0 +1,70 @@
+---
+title: "Streamlining the Also Known As (AKA) Component Layout"
+created: '2024-10-07'
+tags:
+  - React
+  - UI/UX
+  - Foundamental
+description: "Streamlining the Also Known As (AKA) Component Layout"
+---
+
+A small but impactful update was made to our Also Known As component to improve its visual consistency. The change removes unnecessary padding that was creating extra space for companies with AKA entries.
+
+## The Issue
+
+Previously, our `AlsoKnownAsIcon` component had hardcoded padding that was applying the same spacing regardless of whether it was being used for company names or URLs:
+
+```typescript
+export const AlsoKnownAsIcon = styled("div", {
+  shouldForwardProp: (prop) => prop !== "editable" && prop !== "field"
+})<IconProps>`
+  padding: ${({ field }) =>
+    field === "alsoKnownAsNames" ? "12px 8px 0px 6px" : "12px 8px 0px 6px"};
+  position: sticky;
+  bottom: 0;
+  align-self: flex-end;
+`
+```
+
+The conditional padding was redundant since both cases were using the same values (`12px 8px 0px 6px`). Additionally, this extra padding was creating unnecessary space around the AKA entries.
+
+## The Solution
+
+We simplified the component by:
+1. Removing the unnecessary `field` prop from the `AlsoKnownAsIcon` component
+2. Eliminating the redundant padding condition
+3. Keeping the essential positioning properties
+
+Here's the cleaned-up version:
+
+```typescript
+interface IconProps {
+  editable: boolean
+}
+
+export const AlsoKnownAsIcon = styled("div", {
+  shouldForwardProp: (prop) => prop !== "editable" && prop !== "field"
+})<IconProps>`
+  position: sticky;
+  bottom: 0;
+  align-self: flex-end;
+`
+```
+
+The component usage was also simplified:
+
+```typescript
+<AlsoKnownAsIcon editable={false}>
+  <XChevronDownStyled />
+</AlsoKnownAsIcon>
+```
+
+## Impact
+
+This change:
+- Creates a more consistent visual appearance across the application
+- Removes unnecessary code complexity
+- Improves maintainability by eliminating redundant styling logic
+- Provides a cleaner, more compact layout for companies with AKA entries
+
+While this might seem like a minor change, it's these kinds of refinements that contribute to a polished, professional user interface. The removal of unnecessary padding ensures that our AKA component aligns better with our overall design system while maintaining its functionality.

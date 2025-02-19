@@ -1,0 +1,83 @@
+---
+title: "Disabling Sentry in Development"
+created: '2024-10-07'
+tags:
+  - Sentry
+  - Development
+  - Error Tracking
+description: "Disabling Sentry in Development"
+---
+
+We recently made a change to disable Sentry error monitoring and source maps in local development. This prevents unnecessary notifications while ensuring that error tracking remains effective in production.
+
+## Key Changes
+
+### Disabling Sentry in Development
+
+Sentry error reporting has been disabled in local development by adding a condition to the initialization script:
+
+- Prevents unnecessary error notifications during local development.
+- Ensures that Sentry is only enabled in production environments.
+
+### Updating Deprecated Plugins
+
+We replaced deprecated Sentry plugins:
+
+- **`Replay()` → `replayIntegration()`**
+- **`BrowserTracing()` → `browserTracingIntegration()`**
+
+This update ensures compatibility with the latest Sentry API while maintaining proper tracing and error reporting functionality.
+
+### Merging Duplicate Sentry Initialization
+
+Previously, Sentry was being initialized in multiple places. We merged the initialization logic into `sentry.client.config.ts`, streamlining the configuration and reducing redundant code.
+
+## Implementation Details
+
+### Updating `_app.tsx`
+
+The redundant Sentry initialization was removed from `_app.tsx`:
+
+```diff
+-    Sentry.init({
+-      ...SENTRY_CONFIG,
+-      integrations: [new Sentry.BrowserTracing()]
+-    })
+```
+
+Now, Sentry initialization happens centrally in `sentry.client.config.ts`.
+
+### Updating `sentry.client.config.ts`
+
+We replaced the deprecated functions and ensured Sentry is disabled in development:
+
+```typescript
+import * as Sentry from "@sentry/nextjs";
+import { FRONTEND_ENV } from "configs/loura.next.constants";
+import { SENTRY_CONFIG } from "sentry.client.config";
+
+Sentry.init({
+  ...SENTRY_CONFIG,
+  dsn: "https://d7d34627939d3cf0295b2d4136366230@sentry.foundamentals.io/2",
+  integrations: [
+    Sentry.replayIntegration({ maskAllText: true, blockAllMedia: true }),
+    Sentry.browserTracingIntegration()
+  ],
+  enabled: FRONTEND_ENV !== "development"
+});
+```
+
+This ensures that:
+
+- The latest integrations are used.
+- Sentry is only active in non-development environments.
+
+### Updating `next.config.js`
+
+A minor cleanup was performed by removing an unnecessary blank line.
+
+```diff
+-\n //@ts-check
+```
+
+This doesn’t impact functionality but helps maintain clean code.

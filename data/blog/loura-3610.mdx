@@ -1,0 +1,74 @@
+---
+title: "Enhancing User Experience in the Similar Companies Feature"
+created: "2024-10-07"
+tags: ["React", "Apollo", "Foundamental"]
+description: "Enhancing User Experience in the Similar Companies Feature"
+---
+
+
+In this post, I’ll document the recent changes I made to the Similar Companies feature in our application. This MR was primarily focused on improving how users interact with similar companies, specifically allowing them to open these companies in a new tab. Here’s a rundown of what I did, why I chose this approach, and some challenges I faced along the way.
+
+## What I Changed
+
+### 1. Added `ListHeaderWrapper`
+
+I started by importing the `ListHeaderWrapper` component. This was necessary to maintain a consistent look and feel for the list of similar companies. It seemed like a straightforward addition, but it was crucial for keeping the UI clean.
+
+
+### 2. Accessing Current User Settings
+
+Next, I introduced the `currentUser` reactive variable to access user settings. This was a key step because I wanted to give users the option to decide whether they want similar companies to open in a new tab. It felt important to make the feature customizable.
+```javascript
+
+const currentUserReactive = useReactiveVar(currentUser);
+
+const { settings } = currentUserReactive || {};
+```
+
+### 3. Redirect Logic Update
+
+I modified the redirect logic to check the user's settings. This was a bit tricky because I had to ensure that the application correctly interpreted the settings. If the user had opted to open similar companies in a new tab, I needed to make sure that the redirect function handled that properly.
+```javascript
+
+onConfirm={() =>
+
+redirect(
+
+/company/${company.id || company.tracxnId},
+
+Boolean(settings?.similarCompaniesInNewTab)
+
+)
+
+}
+```
+
+### 4. Updating Effect Hook Dependencies
+
+Finally, I updated the dependencies in the effect hook to include the new setting. This was necessary to ensure that the component re-renders when the user changes their preferences. It took a bit of trial and error to get the dependencies right, but I think it’s solid now.
+```javascript
+
+}, [
+
+similarCompaniesReactive,
+
+handleAddSimilarCompanies,
+
+redirect,
+
+settings?.similarCompaniesInNewTab
+
+])
+```
+
+## Why I Took This Approach
+
+The main goal was to enhance user experience by providing flexibility. Users often have different preferences, and allowing them to choose how they interact with similar companies seemed like a logical step. I wanted to avoid hardcoding behaviors that might not suit everyone.
+
+## Challenges Faced
+
+One of the challenges I encountered was ensuring that the new settings were correctly integrated without breaking existing functionality. I had to be careful with the redirect logic, as it could easily lead to confusion if not handled properly. Additionally, testing the new behavior took longer than expected, as I wanted to ensure that both the new tab and same tab behaviors worked seamlessly.
+
+## Conclusion
+
+Overall, I’m pleased with the changes I made to the Similar Companies feature. It feels more user-friendly and adaptable to individual preferences. As always, there’s room for improvement, and I’m looking forward to any feedback from the team. If you have thoughts or suggestions, don’t hesitate to reach out. Happy coding!

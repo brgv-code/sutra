@@ -14,7 +14,7 @@ const root = process.cwd()
 
 type FrontMatter = {
 	title: string
-	date: string
+	created: string
 	description: string
 	slug: string
 	[key: string]: any
@@ -62,7 +62,7 @@ export async function getFileBySlug(type: string, slug: string) {
 			frontMatter: {
 				slug: slug || null,
 				title: 'Error',
-				date: '',
+				created: '',
 				description: 'There was an error loading this content.',
 			} as FrontMatter,
 		}
@@ -89,13 +89,33 @@ export async function getAllFilesFrontMatter(
 			}),
 		)
 
-		return posts
-			.filter((post): post is FrontMatter => Boolean(post.date))
+		const a = posts
+			.filter((post): post is FrontMatter => Boolean(post.created))
 			.sort((a, b) => {
-				return new Date(b.date).getTime() - new Date(a.date).getTime()
+				return new Date(b.created).getTime() - new Date(a.created).getTime()
 			})
+		console.log(a, 'a')
+		return a
 	} catch (error) {
 		console.error('Error getting all files front matter:', error)
 		return []
 	}
+}
+
+export async function pullReadyMarkdownFiles(vaultPath: string): Promise<string[]> {
+	const readyFiles: string[] = []
+	const files = fs.readdirSync(vaultPath)
+
+	for (const file of files) {
+		if (file.endsWith('.md')) {
+			const filePath = path.join(vaultPath, file)
+			const content = fs.readFileSync(filePath, 'utf-8')
+			// Check if the file contains the status "ready"
+			if (content.includes('status: ready')) {
+				readyFiles.push(filePath)
+			}
+		}
+	}
+
+	return readyFiles
 }

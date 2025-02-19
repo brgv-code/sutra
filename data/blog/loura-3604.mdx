@@ -1,0 +1,147 @@
+---
+title: "Implementing Infinite Scroll for Dealflow Portfolio"
+created: '2024-10-07'
+tags:
+  - React
+  - UI/UX
+  - Foundamental
+description: "Implementing Infinite Scroll for Dealflow Portfolio"
+---
+
+
+We recently introduced infinite scroll to the Dealflow Portfolio page using a new `useLoadDealflow` hook. This was a major change and was quite challenging to implement due to the complexity of handling dynamic data fetching while ensuring smooth UI performance.
+
+## Key Challenges
+
+Implementing infinite scroll required significant architectural changes and problem-solving. Some of the major difficulties included:
+
+- **Efficient API Calls**: Making sure that data is fetched only when necessary without overwhelming the backend.
+- **State Management**: Keeping track of loading states for multiple dealflow stages while preventing redundant re-renders.
+- **Handling Edge Cases**: Managing scenarios where data loads incorrectly, users scroll too fast, or there is an API failure.
+- **Performance Optimization**: Ensuring smooth scrolling without excessive lag or blocking UI updates.
+
+We had to rethink how dealflow data was stored and retrieved to maintain a seamless experience.
+
+## Key Changes
+
+### Infinite Scroll Functionality
+
+The core update enables infinite scrolling for dealflow lists, ensuring that:
+
+- Data loads dynamically when users reach the end of a list
+- Each dealflow stage triggers independent API calls
+- API calls are optimized to load only necessary data
+- UI updates seamlessly without excessive re-renders
+
+### UI Improvements
+
+We've made several UI enhancements to support this feature:
+
+- Introduced a `StageContent` component to manage rendering for each dealflow stage
+- Improved visual consistency by restructuring the dealflow layout
+- Ensured loading states are visually represented
+- Optimized event handling for better responsiveness
+
+### Code Architecture Updates
+
+#### State Management
+
+We introduced structured state management for infinite scroll behavior:
+
+```typescript
+const [loadingStates, setLoadingStates] = useState<Record<string, boolean>>({});
+const [sentryRefs, setSentryRefs] = useState<Record<string, IntersectionObserverHookRefCallback>>({});
+```
+
+This helps manage loading indicators and efficiently track scrolling behavior.
+
+#### Data Fetching and API Integration
+
+We implemented a new API call strategy to load dealflow data incrementally:
+
+```typescript
+const fetchDealflowData = useCallback(async (stage: string) => {
+  setLoadingStates((prev) => ({ ...prev, [stage]: true }));
+  try {
+    const { data } = await getDealFlow({ variables: { stage } });
+    return data?.dealflowForTeam || [];
+  } catch (error) {
+    console.error("Failed to fetch dealflow data for stage:", stage, error);
+    return [];
+  } finally {
+    setLoadingStates((prev) => ({ ...prev, [stage]: false }));
+  }
+}, [getDealFlow]);
+```
+
+We had to ensure that errors were handled gracefully, avoiding UI crashes when an API request failed.
+
+### Handling API Calls for Different Dealflow Stages
+
+Previously, all dealflow data was fetched in a single request, making the system inefficient. We introduced a new data structure to manage dealflow stages separately:
+
+```typescript
+const dealflowStageResults = useMemo(() => {
+  const stageResults = {};
+  dealflowEntries.forEach((entry) => {
+    const stage = entry.stage || 'Unknown';
+    if (!stageResults[stage]) stageResults[stage] = [];
+    stageResults[stage].push(entry);
+  });
+  return stageResults;
+}, [dealflowEntries]);
+```
+
+This structure allows the frontend to load data incrementally for each stage, improving performance and user experience.
+
+### Visual Components
+
+The infinite scroll mechanism relies on React Intersection Observers:
+
+```typescript
+useEffect(() => {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      loadMore(stage);
+    }
+  });
+  observer.observe(sentryRefs[stage]);
+  return () => observer.disconnect();
+}, [sentryRefs, stage, loadMore]);
+```
+
+This ensures efficient and responsive data loading. However, configuring the observer correctly was tricky, especially when dealing with dynamic content height.
+
+### Diff Highlights
+
+Significant changes were made to `DealFlowList.tsx`, `StageContent.tsx`, and `useLoadDealflow.ts`. Here’s a key snippet from the diff:
+
+```diff
+-  dealflowEntries: DealflowEntry[] | undefined
++  dealflowStageResults: Record<string, DealflowEntry[] | undefined>
++  loadingStates: Record<string, boolean>
++  sentryRefs: Record<string, IntersectionObserverHookRefCallback>
+```
+
+This change allows the `DealFlowList` component to handle multiple stages independently, improving the way data is loaded and displayed.
+
+## Testing Considerations
+
+We validated the implementation with the following scenarios:
+
+- Ensuring dealflow entries load dynamically on scroll
+- Checking that independent stage-based API calls work correctly
+- Verifying loading indicators display properly
+- Handling API failures without breaking the UI
+- Running `yarn tsc && yarn lint` to confirm clean code
+
+## Next Steps
+
+While this update significantly improves dealflow navigation, potential enhancements include:
+
+- Optimizing API requests for larger datasets
+- Implementing a manual refresh button
+- Further refining UI transitions for a smoother experience
+- Enhancing error handling and retry mechanisms for failed requests
+
+This was one of the more complex features we've tackled, requiring deep changes to both frontend and backend logic. Despite the challenges, this change makes the dealflow experience much smoother, improving efficiency while keeping the UI responsive and intuitive.

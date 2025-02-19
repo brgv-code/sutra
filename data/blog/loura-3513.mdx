@@ -1,0 +1,69 @@
+---
+title: "Adding Personal Profile Components"
+created: "2024-10-07"
+tags: ["React", "UI/UX", "Foundamental"]
+description: "Adding Personal Profile Components"
+---
+
+
+In this post, I’ll cover the recent changes made to add components for the `PersonalProfile`, `MyNotifications`, and `MySettings` sections in our application. The goal was to enhance user interaction and provide a more cohesive experience.
+
+## Design Philosophy
+
+### Modular and Reusable Structure
+
+The design philosophy behind these components was to create a modular and reusable structure that allows for easy management of user settings and notifications. 
+```tsx
+const NotificationWrapper = ({ label, description, onChangeHandler, value }) => {
+
+return (
+
+<div>
+
+<label>{label}</label>
+
+<input type="checkbox" checked={value} onChange={onChangeHandler} />
+
+<p>{description}</p>
+
+</div>
+
+);
+
+};
+```
+
+This modular approach simplifies the codebase and promotes maintainability.
+
+### User-Centric Features
+
+The `NotificationWrapper` component provides a clear interface for users to toggle their notification settings. This approach improves usability and empowers users to customize their experience.
+
+### Integration and Consistency
+
+Integrating these components into the existing `MySettings` section required careful consideration of the overall layout and design. 
+
+```tsx
+
+<MySettings>
+
+<NotificationWrapper
+
+label="Enable Notifications"
+
+description="Receive updates via email."
+
+onChangeHandler={handleToggle}
+
+value={notificationsEnabled}
+
+/>
+
+</MySettings>
+```
+
+This ensures that the new components align with the established design patterns in the application.
+
+## Conclusion
+
+Overall, the addition of the new personal profile components enhances the user experience by providing clear feedback and improving the visual appeal of the application. I welcome any feedback or suggestions from the team. If you have thoughts or ideas, feel free to reach out. Happy coding!
