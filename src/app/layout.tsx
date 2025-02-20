@@ -4,6 +4,7 @@ import './globals.css'
 import AnimatedGradient from '@/components/AnimatedGradient'
 import Navbar from '@/components/Navbar/Navbar'
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 const fira = Fira_Mono({
 	weight: ['400', '500', '700'],
 	subsets: ['latin-ext'],
@@ -36,6 +37,7 @@ export default function RootLayout({
 				<Navbar />
 				<main>{children}</main>
 				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	)
