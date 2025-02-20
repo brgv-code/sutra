@@ -152,7 +152,6 @@ body::before {
 }
 .b-shadow {
 	border: 2px solid;
-	background-color: rgba(39, 39, 25, 0.002);
 	border-radius: 20px;
 	border-color: rgba(255, 255, 255, 0.01);
 	opacity: 1;
@@ -161,9 +160,7 @@ body::before {
 		rgba(255, 255, 255, 0.035) 0px 3px 5.4px -2px inset;
 }
 
-.b-shadow:hover {
-	background-color: rgba(255, 255, 255, 0.001);
-}
+
 
 .contact {
 	border: 2px solid;
