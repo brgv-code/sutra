@@ -3,6 +3,7 @@ import { Fira_Mono } from 'next/font/google'
 import './globals.css'
 import AnimatedGradient from '@/components/AnimatedGradient'
 import Navbar from '@/components/Navbar/Navbar'
+import { Analytics } from "@vercel/analytics/react"
 const fira = Fira_Mono({
 	weight: ['400', '500', '700'],
 	subsets: ['latin-ext'],
@@ -34,6 +35,7 @@ export default function RootLayout({
 				<AnimatedGradient />
 				<Navbar />
 				<main>{children}</main>
+				<Analytics />
 			</body>
 		</html>
 	)
