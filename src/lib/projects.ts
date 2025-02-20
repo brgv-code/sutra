@@ -60,3 +60,36 @@ export async function fetchProjects(): Promise<Project[] | null> {
 	)) as Project[]
 	return projects
 }
+
+export async function fetchReadme(owner: string, repo: string): Promise<string | null> {
+    const url = `https://api.github.com/repos/brgv-code/${repo}/readme`;
+    
+    const response = await fetch(url, {
+        headers: {
+            'Accept': 'application/vnd.github.v3.raw', // To get the raw content of the README
+            ...(process.env.GITHUB_PAT && {
+                'Authorization': `token ${process.env.GITHUB_PAT}`,
+            }),
+        },
+    });
+
+    if (response.status !== 200) {
+        console.error(`Error fetching README: ${response.statusText}`);
+        return null;
+    }
+
+    const readmeContent = await response.text();
+    return readmeContent;
+}
+export async function fetchReadmesForAllProjects(): Promise<{ [repo: string]: string | null }> {
+    const projects = await fetchProjects();
+    if (!projects) return {};
+
+    const readmePromises = projects.map(async (project: { name: string }) => {
+        const readme = await fetchReadme('brgv-code', project.name);
+        return { [project.name]: readme };
+    });
+
+    const readmeResults = await Promise.all(readmePromises);
+    return Object.assign({}, ...readmeResults);
+}

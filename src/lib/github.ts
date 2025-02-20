@@ -116,6 +116,7 @@ export interface Project {
 	url: string
 	created_at: Date
 	id: number
+	readme?: string
 }
 
 export type LanguageUsage = Record<string, number>

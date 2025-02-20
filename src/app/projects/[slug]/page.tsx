@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import { fetchProjects } from '@/lib/projects'
+import { fetchProjects, fetchReadme } from '@/lib/projects'
 import ProjectTechBadge from '@/components/ProjectsTechBadge'
+import { convertMarkdownToHtml } from '@/lib/markdown'
 
 async function getProjects() {
 	const projectsPromise = fetchProjects()
@@ -24,7 +25,10 @@ export default async function ProjectDetail({
 }) {
 	const projects = await getProjects()
 	const project = projects?.find(p => p.name === params.slug)
-
+	if(!project) return
+	const readme = await fetchReadme('brgv-code', project?.name)
+	if(!readme) return
+	const sanitizedReadme = await convertMarkdownToHtml(readme)
 	if (!project) {
 		notFound()
 	}
@@ -47,11 +51,12 @@ export default async function ProjectDetail({
 
 					<div className='relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-6 shadow-xl'>
 						<div className='prose prose-invert max-w-none'>
-							{project.description.split('\n').map((paragraph, i) => (
+								{/* {readme.split('\n').map((paragraph, i) => (
 								<p key={i} className='text-gray-300'>
 									{paragraph}
 								</p>
-							))}
+							))} */}
+							<div dangerouslySetInnerHTML={{ __html: sanitizedReadme }} />
 						</div>
 					</div>
 				</div>

@@ -45,6 +45,9 @@ export default function SearchableBlogList({ posts }: { posts: FrontMatter[] }) 
   }
 
   return (
+    <>
+    <h1 className='text-2xl font-semibold'>Blog</h1>
+    <p className='text-gray-400'>Thoughts on development, design, and more.</p>
     <div className="max-w-4xl mx-auto w-screen">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -87,6 +90,7 @@ export default function SearchableBlogList({ posts }: { posts: FrontMatter[] }) 
       </motion.div>
 
       <div className="w-full px-6">
+
         <AnimatePresence mode="wait">
           {filteredPosts.length === 0 ? (
             <motion.div
@@ -199,5 +203,6 @@ export default function SearchableBlogList({ posts }: { posts: FrontMatter[] }) 
         </AnimatePresence>
       </div>
     </div>
+    </>
   )
 }
