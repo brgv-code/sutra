@@ -22,11 +22,11 @@ const links = [
 		url: '/books/',
 	},
 
-	// {
-	// 	id: 4,
-	// 	text: 'Goals',
-	// 	url: '/goals/',
-	// },
+	{
+		id: 4,
+		text: 'Blog',
+		url: '/blog/',
+	},
 	// {
 	// 	id: 5,
 	// 	text: 'Books',

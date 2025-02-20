@@ -1,9 +1,8 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import { fetchProjects, fetchReadme } from '@/lib/projects'
 import ProjectTechBadge from '@/components/ProjectsTechBadge'
 import { convertMarkdownToHtml } from '@/lib/markdown'
-
+import ProjectLink from '@/components/ProjectLink'
 async function getProjects() {
 	const projectsPromise = fetchProjects()
 	const [projects] = await Promise.all([projectsPromise])
@@ -40,7 +39,7 @@ export default async function ProjectDetail({
 						<h1 className='text-4xl font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent'>
 							{project.name}
 						</h1>
-
+						<ProjectLink githubUrl={project.url} hostedUrl={project.homepage || ''} description={project.description} />
 						<div className='flex flex-wrap gap-2'>
 							{project.languages &&
 								Object.keys(project.languages).map((tech, i) => (

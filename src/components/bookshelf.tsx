@@ -41,7 +41,7 @@ const books = [
 
 const Bookshelf = () => {
 	return (
-		<div className='grid grid-cols-3 gap-4 p-8 b-shadow'>
+		<div className='grid grid-cols-3 gap-4 p-8'>
 			{books.map(book => (
 				<div
 					key={book.id}

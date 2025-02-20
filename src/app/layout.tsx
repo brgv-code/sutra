@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Fira_Mono } from 'next/font/google'
 import './globals.css'
 import AnimatedGradient from '@/components/AnimatedGradient'
+import Navbar from '@/components/Navbar/Navbar'
 const fira = Fira_Mono({
 	weight: ['400', '500', '700'],
 	subsets: ['latin-ext'],
@@ -31,6 +32,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={`${fira.className} `}>
 				<AnimatedGradient />
+				<Navbar />
 				<main>{children}</main>
 			</body>
 		</html>

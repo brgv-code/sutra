@@ -1,18 +1,17 @@
 'use client'
 import Image from 'next/image'
-import CustomHighlight from '../../components/ui/custom-highlight'
 import CustomLink from '@/components/ui/custom-links'
-import CustomListItem from '@/components/ui/custom-list'
 import CustomBold from '@/components/ui/custom-bold'
 import { Dot, GitCommitHorizontal } from 'lucide-react'
 
 const AboutMe = () => {
 	return (
 		<>
+		{/* TODO: animatedgradient needs a fix here */}
 			{/* <div className='bg-[#831919] w-screenflex justify-center'>
 				This page is under construction
 			</div> */}
-			<div className='max-w-4xl h-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8  b-shadow'>
+			<div className='max-w-4xl min-h-screen mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 '>
 				<div className='flex flex-col items-center lg:flex-row lg:space-x-8 '>
 					{/* <div className='w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 mb-8 lg:mb-0'>
 					<Image
@@ -104,7 +103,7 @@ const AboutMe = () => {
 					<h2 className='text-2xl font-bold '>Work Experience</h2>
 
 					<ul className='mt-2 ml-8 text-md  list-inside  list-style-image-foundamental'>
-						<li className='transition-all duration-500  ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4 '>
+						<li className='transition-all duration-500  ease-in-out transform hover:translate-x-2  p-4 mt-4 '>
 							<Image
 								src={'/work/foundamental.png'}
 								alt={''}
@@ -135,7 +134,7 @@ const AboutMe = () => {
 						</li>
 					</ul>
 					<ul className='mt-2 ml-8 text-md  list-inside list-image-foundamental'>
-						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4'>
+						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  p-4 mt-4'>
 							<Image
 								src={'/work/fraunhofer.png'}
 								alt={''}
@@ -162,7 +161,7 @@ const AboutMe = () => {
 						</li>
 					</ul>
 					<ul className='mt-2 ml-8 text-md  list-inside list-image-accenture'>
-						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2 b-shadow p-4 mt-4'>
+						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  p-4 mt-4'>
 							<Image
 								src={'/work/accenture.png'}
 								alt={''}
