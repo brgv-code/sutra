@@ -4,7 +4,6 @@ import { fetchProjects } from '@/lib/projects'
 export default async function Projects() {
 	const response = await fetchProjects()
 	if (!response) return <div>No projects found</div>
-
 	return (
 		<>
 			<div className=' text-white min-h-screen relative'>

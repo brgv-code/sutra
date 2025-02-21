@@ -7,8 +7,8 @@ import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 import Underline from './blog/underline'
 
 interface CustomLinkProps {
-	href: string
-	children: React.ReactNode
+	href?: string
+	children?: React.ReactNode
 	fontSize?: string
 	fontColor?: string
 	underlineColor?: string
@@ -22,18 +22,18 @@ const CustomLink: React.FC<CustomLinkProps> = ({
 	underlineColor,
 }) => {
 	const [show, setShow] = useState(true)
+	const isExternal = href?.startsWith('http')
 
 	return (
 		<Link
-			href={href}
-			target='_blank'
+			href={href ?? ''}
+			target={isExternal ? '_blank' : undefined}
 			className='hover:no-underline'
 			onMouseEnter={() => setShow(false)}
 			onMouseLeave={() => setShow(true)}
 		>
 			<Underline
 				underlineColor={underlineColor ?? '#dcc42d'}
-				
 				animationDuration={2500}
 				show={show}
 			>

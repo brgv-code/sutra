@@ -51,7 +51,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 	// 	}
 	// }
 	const handleLinkCopy = () => {
-		console.log('hey')
 		navigator.clipboard.writeText(`https://bhargav.dev/blog/${id}`)
 		// toast.custom(
 		// 	<ToastNotification

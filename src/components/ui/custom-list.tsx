@@ -3,16 +3,11 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 interface CustomListItemProps {
-	href: string
-	children: React.ReactNode
+	children?: React.ReactNode
 	className?: string
 }
 
-const CustomListItem: FC<CustomListItemProps> = ({
-	href,
-	children,
-	className,
-}) => {
+const CustomListItem: FC<CustomListItemProps> = ({ children, className }) => {
 	return (
 		<li
 			className={clsx(

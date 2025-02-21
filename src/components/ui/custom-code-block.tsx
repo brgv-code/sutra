@@ -3,11 +3,18 @@ import { ClipboardList } from 'lucide-react'
 import React, { useState } from 'react'
 
 interface CodeBlockProps {
-	children: React.ReactNode
+	children?: React.ReactNode
+	className?: string
+	node?: any
+	inline?: boolean
 }
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
-	//TODO: cutom scrollbar
+const CodeBlock: React.FC<CodeBlockProps> = ({
+	children,
+	className,
+	inline,
+}) => {
+	//TODO: custom scrollbar
 	//TODO: check transition on copy button
 	//TODO Tost notification
 	const [toast, setToast] = useState(false)
@@ -38,7 +45,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
 			</div>
 
 			<pre>
-				<code>{children}</code>
+				<code className={className}>{children}</code>
 			</pre>
 		</div>
 	)
