@@ -27,7 +27,7 @@ export async function getFiles(type: string) {
 const createProcessor = unified()
 	.use(remarkParse as unknown as Plugin)
 	.use(remarkGfm as unknown as Plugin)
-	.use(remarkRehype as unknown as Plugin, {
+	.use(remarkRehype as any, {
 		allowDangerousHtml: true,
 		footnoteLabel: 'Footnotes',
 		footnoteBackLabel: 'Back to content',
@@ -35,7 +35,7 @@ const createProcessor = unified()
 	.use(rehypeSlug as unknown as Plugin)
 	.use(rehypeHighlight as unknown as Plugin)
 	.use(rehypeFormat as unknown as Plugin)
-	.use(rehypeStringify as unknown as Plugin, { allowDangerousHtml: true })
+	.use(rehypeStringify as any, { allowDangerousHtml: true })
 
 export async function getFileBySlug(type: string, slug: string) {
 	try {
@@ -43,13 +43,11 @@ export async function getFileBySlug(type: string, slug: string) {
 			path.join(root, 'data', type, `${slug}.mdx`),
 			'utf8',
 		)
-
 		const { data, content } = matter(source)
-
 		const processedContent = await createProcessor().process(content)
-
+		const res = processedContent.toString()
 		return {
-			contentHtml: processedContent.toString(),
+			contentHtml: content,
 			frontMatter: {
 				slug: slug || null,
 				...data,

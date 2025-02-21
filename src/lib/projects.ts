@@ -83,7 +83,7 @@ export async function fetchReadme(
 		console.error(`Error fetching README: ${response.statusText}`)
 		return null
 	}
-
+console.log(response, "response")
 	const readmeContent = await response.text()
 	return readmeContent
 }

@@ -1,6 +1,6 @@
-import React, { Children, FC } from 'react'
-import Link from 'next/link'
+import React, { FC } from 'react'
 import clsx from 'clsx'
+import { Asterisk } from 'lucide-react'
 
 interface CustomListItemProps {
 	children?: React.ReactNode
@@ -10,11 +10,16 @@ interface CustomListItemProps {
 const CustomListItem: FC<CustomListItemProps> = ({ children, className }) => {
 	return (
 		<li
+
 			className={clsx(
-				'group transition-all duration-300 ease-in-out transform hover:translate-x-2',
+				'group transition-all duration-300 ease-in-out  ml-12 my-4 transform hover:translate-x-2',
 				className,
 			)}
 		>
+			<Asterisk
+				className='absolute left-[-1.5em] top-1.5 w-4 h-4 text-purple-500'
+				strokeWidth={1.5}
+			/>
 			{children}
 		</li>
 	)

@@ -1,15 +1,18 @@
 import React from 'react'
+import Underline from './blog/underline'
 
 interface CustomBoldProps {
 	gradientColors?: string[]
 	children?: React.ReactNode
 	fontSize?: string
+	underline?: boolean	
 }
 
 const CustomBold: React.FC<CustomBoldProps> = ({
 	gradientColors,
 	children,
 	fontSize = '3xl',
+	underline = true,
 }) => {
 	const defaultGradientColors = ['#fff', '#fff']
 	const colors = gradientColors || defaultGradientColors
@@ -23,12 +26,14 @@ const CustomBold: React.FC<CustomBoldProps> = ({
 	}
 
 	return (
-		<span
-			className={`text-${fontSize} backdrop-blur-xl rounded-2xl`}
+		<h2
+			className={`text-${fontSize} backdrop-blur-xl rounded-2xl  mt-4`}
 			style={gradientStyle}
 		>
-			{children}
-		</span>
+			{underline && <Underline underlineColor={'#74E193'}  animationDuration={2500}
+				show={true}>{children}</Underline>}
+			{!underline && 	children}
+		</h2>
 	)
 }
 
