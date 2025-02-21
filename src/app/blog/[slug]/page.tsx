@@ -22,7 +22,6 @@ export default async function BlogPost({
 	params: { slug: string }
 }) {
 	const post = await getFileBySlug('blog', params.slug)
-	console.log(post, 'post')
 	return (
 		<div className={` text-white min-h-screen ${mono.variable}`}>
 			<article className='max-w-[800px] mx-auto px-4 py-20'>
@@ -35,6 +34,7 @@ export default async function BlogPost({
 					</time>
 				</header>
 				<MarkdownRenderer
+					className='border border-white/10 rounded-xl p-6 shadow-xl'
 					content={post.contentHtml}
                 />
 			</article> 
