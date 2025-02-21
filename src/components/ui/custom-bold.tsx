@@ -2,7 +2,7 @@ import React from 'react'
 
 interface CustomBoldProps {
 	gradientColors?: string[]
-	children: React.ReactNode
+	children?: React.ReactNode
 	fontSize?: string
 }
 
