@@ -3,11 +3,7 @@ import { fetchProjects, fetchReadme } from '@/lib/projects'
 import ProjectTechBadge from '@/components/ProjectsTechBadge'
 import { convertMarkdownToHtml } from '@/lib/markdown'
 import ProjectLink from '@/components/ProjectLink'
-import ReactMarkdown from 'react-markdown'
-import CodeBlock from '@/components/ui/custom-code-block'
-import CustomListItem from '@/components/ui/custom-list'
-import CustomLink from '@/components/ui/custom-links'
-import MarkdownRenderer from '../../../components/MarkdownRenderer'
+import MarkdownRenderer from '@/components/MarkdownRenderer'
 async function getProjects() {
 	const projectsPromise = fetchProjects()
 	const [projects] = await Promise.all([projectsPromise])
@@ -59,19 +55,9 @@ export default async function ProjectDetail({
 								))}
 						</div>
 					</div>
-
-					{/* <div className='relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-6 shadow-xl'> */}
-					{/* <div className='prose prose-invert max-w-none'> */}
-					{/* {readme.split('\n').map((paragraph, i) => (
-								<p key={i} className='text-gray-300'>
-									{paragraph}
-								</p>
-							))} */}
 					<div className='border border-white/10 rounded-xl p-6 shadow-xl'>
 						<div className='prose prose-invert max-w-none'>
 							<MarkdownRenderer content={readme} />
-							{/* </div> */}
-							{/* </div> */}
 						</div>
 					</div>
 				</div>

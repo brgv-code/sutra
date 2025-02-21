@@ -1,6 +1,7 @@
 'use client'
-import { ClipboardList } from 'lucide-react'
-import React, { useState } from 'react'
+import React from 'react'
+import { CheckCheck, ClipboardList } from 'lucide-react'
+import { useToast } from '../../context/ToastContext'
 
 interface CodeBlockProps {
 	children?: React.ReactNode
@@ -14,15 +15,12 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 	className,
 	inline,
 }) => {
-	//TODO: custom scrollbar
-	//TODO: check transition on copy button
-	//TODO Tost notification
-	const [toast, setToast] = useState(false)
+	const { showToast } = useToast(); 
 
 	const handleCopy = () => {
-		navigator.clipboard.writeText(children?.toString() || '')
-		setToast(true)
-	}
+	  navigator.clipboard.writeText(children?.toString() || "");
+	  showToast("Copied to clipboard", <CheckCheck />); 
+	};
 
 	return (
 		<div className=' border-2 border-gray-200/30 rounded-lg bg-gradient-to-r from-gray-900/50 to-gray-800/50 p-4  overflow-x-auto overflow-visible w-3/4 m-auto group '>

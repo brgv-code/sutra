@@ -5,11 +5,12 @@ import AnimatedGradient from '@/components/AnimatedGradient'
 import Navbar from '@/components/Navbar/Navbar'
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { ToastProvider } from '../context/ToastContext'
 const fira = Fira_Mono({
 	weight: ['400', '500', '700'],
 	subsets: ['latin-ext'],
 })
-//make this dynamic for page wise
+//make this dynamic for page wise	
 //add dynamic icons for each page
 //TODO: some analytics with splitbee
 export const metadata: Metadata = {
@@ -35,7 +36,9 @@ export default function RootLayout({
 			<body className={`${fira.className} `}>
 				<AnimatedGradient />
 				<Navbar />
-				<main>{children}</main>
+				<ToastProvider>
+					<main>{children}</main>
+				</ToastProvider>
 				<Analytics />
 				<SpeedInsights />
 			</body>
