@@ -8,17 +8,29 @@ tags:
 status:
   - Draft
 description: 'Reverting the Temporary Header for Performance Metrics'
+project: loura-ui
 ---
 
-
-In this post, I’ll discuss the recent changes made to revert the temporary `F-Times` header that was included to test the performance runtime of the EdgeQL query. This decision was made after evaluating the necessity of the header in our production environment and ensuring that our application maintains optimal performance without unnecessary overhead.
+In this post, I’ll discuss the recent changes made to revert the temporary
+`F-Times` header that was included to test the performance runtime of the EdgeQL
+query. This decision was made after evaluating the necessity of the header in
+our production environment and ensuring that our application maintains optimal
+performance without unnecessary overhead.
 
 ## Background on Performance Metrics
 
-Performance metrics are crucial for understanding how well our application performs under various conditions. During the testing phase, we introduced the `F-Times` header to log the execution time of specific queries. This allowed us to gather valuable data on query performance and identify potential bottlenecks.
+Performance metrics are crucial for understanding how well our application
+performs under various conditions. During the testing phase, we introduced the
+`F-Times` header to log the execution time of specific queries. This allowed us
+to gather valuable data on query performance and identify potential bottlenecks.
 
-However, after thorough analysis, it became clear that retaining this header in the production environment was unnecessary. The overhead of logging this information could impact performance, and the data collected was not being utilized effectively.
+However, after thorough analysis, it became clear that retaining this header in
+the production environment was unnecessary. The overhead of logging this
+information could impact performance, and the data collected was not being
+utilized effectively.
 
 ## Technical Implementation of the Reversion
 
-The reversion involved removing the code that added the `F-Times` header to the response. Here’s a simplified view of the changes made in the `informationLink.tsx` file:
+The reversion involved removing the code that added the `F-Times` header to the
+response. Here’s a simplified view of the changes made in the
+`informationLink.tsx` file:

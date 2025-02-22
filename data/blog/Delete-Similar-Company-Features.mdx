@@ -1,86 +1,108 @@
 ---
-title: "Adding Delete Capability to Similar Companies Feature"
+title: 'Adding Delete Capability to Similar Companies Feature'
 created: '2024-10-07'
 tags:
   - React
   - Apollo
   - Foundamental
-description: "Adding Delete Capability to Similar Companies Feature"
+description: 'Adding Delete Capability to Similar Companies Feature'
+project: loura-ui
 ---
 
-We recently enhanced our similar companies feature by adding the ability to delete first-order similar companies and made several UI improvements. This update gives users more control over their company relationships while improving the overall user experience.
+We recently enhanced our similar companies feature by adding the ability to
+delete first-order similar companies and made several UI improvements. This
+update gives users more control over their company relationships while improving
+the overall user experience.
 
 ## Key Changes
 
 ### Delete Functionality
-The most significant addition is the ability to delete first-order similar companies. We've implemented this carefully to ensure that:
+
+The most significant addition is the ability to delete first-order similar
+companies. We've implemented this carefully to ensure that:
+
 - Only first-degree similar companies can be deleted
 - Deletion happens one company at a time
 - The UI updates immediately while the backend processes the deletion
 - Users receive feedback via a snackbar notification
 
 ### UI Improvements
+
 We've made several visual enhancements:
+
 - The plus icon no longer appears for first-degree similar companies
 - Updated button hover states for both plus and delete icons
 - Improved the reload button styling with better spacing and color scheme
-- Reorganized the similar companies layout using a new `SimilarCompaniesBox` component
+- Reorganized the similar companies layout using a new `SimilarCompaniesBox`
+  component
 
 ### Code Architecture Updates
 
 #### State Management
+
 We introduced new state management features:
+
 ```typescript
 // New reactive variable for tracking reload state
 export const similarCompanyReload = makeVar<boolean>(false)
 
 // Local state for tracking deleted companies
-const [deletedCompanyIds, setDeletedCompanyIds] = useState<Set<string>>(new Set())
+const [deletedCompanyIds, setDeletedCompanyIds] = useState<Set<string>>(
+	new Set(),
+)
 ```
 
 #### Delete Operation Implementation
+
 We added a new GraphQL mutation for removing similar companies:
+
 ```graphql
 mutation removeSimilarCompany($companyId: UUID!, $similarCompanyId: UUID!) {
-  removeSimilarCompany(companyId: $companyId, similarCompanyId: $similarCompanyId) {
-    id
-  }
+	removeSimilarCompany(
+		companyId: $companyId
+		similarCompanyId: $similarCompanyId
+	) {
+		id
+	}
 }
 ```
 
 The deletion process includes optimistic updates to provide immediate feedback:
+
 ```typescript
 const handleDeleteSimilarCompanies = useCallback(
-  (companyIdGiven: string) => {
-    // Show notification
-    snackState({
-      message: "Deleting similar company",
-      severity: "info",
-      open: true,
-      autoHideDuration: 10000
-    })
+	(companyIdGiven: string) => {
+		// Show notification
+		snackState({
+			message: 'Deleting similar company',
+			severity: 'info',
+			open: true,
+			autoHideDuration: 10000,
+		})
 
-    // Update local state
-    setDeletedCompanyIds((prev) => new Set([...prev, companyIdGiven]))
+		// Update local state
+		setDeletedCompanyIds(prev => new Set([...prev, companyIdGiven]))
 
-    // Filter the companies list
-    if (similarCompaniesReactive) {
-      const filteredCompanies = similarCompaniesReactive.filter(
-        (company) =>
-          company.id !== companyIdGiven && company.tracxnId !== companyIdGiven
-      )
-      similarCompanies(filteredCompanies)
-    }
+		// Filter the companies list
+		if (similarCompaniesReactive) {
+			const filteredCompanies = similarCompaniesReactive.filter(
+				company =>
+					company.id !== companyIdGiven && company.tracxnId !== companyIdGiven,
+			)
+			similarCompanies(filteredCompanies)
+		}
 
-    // Call the backend
-    removeSimilarCompany(companyId, companyIdGiven)
-  },
-  [removeSimilarCompany, companyID, similarCompaniesReactive]
+		// Call the backend
+		removeSimilarCompany(companyId, companyIdGiven)
+	},
+	[removeSimilarCompany, companyID, similarCompaniesReactive],
 )
 ```
 
 ### Visual Components
+
 The delete button appears as a trash icon for first-degree similar companies:
+
 ```typescript
 {degree === 1 ? (
   <DegreeButton
@@ -95,7 +117,9 @@ The delete button appears as a trash icon for first-degree similar companies:
 ```
 
 ## Testing Considerations
+
 The implementation includes several key testing scenarios:
+
 - Verifying that delete operations only work on first-degree similar companies
 - Ensuring the UI updates immediately after deletion
 - Confirming that the backend successfully processes the deletion
@@ -103,10 +127,14 @@ The implementation includes several key testing scenarios:
 - Verifying that the company list updates correctly after deletion
 
 ## Next Steps
-While this update significantly improves the similar companies feature, there are a few potential enhancements we could consider:
+
+While this update significantly improves the similar companies feature, there
+are a few potential enhancements we could consider:
+
 - Batch deletion capability
 - Undo deletion functionality
 - Additional filtering options for similar companies
 - Enhanced visual feedback during deletion operations
 
-These changes provide users with more control over their similar companies while maintaining a clean and intuitive interface.
+These changes provide users with more control over their similar companies while
+maintaining a clean and intuitive interface.

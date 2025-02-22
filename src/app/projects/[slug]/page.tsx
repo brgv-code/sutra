@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { fetchProjects, fetchReadme } from '@/lib/projects'
 import ProjectTechBadge from '@/components/ProjectsTechBadge'
-import { convertMarkdownToHtml } from '@/lib/markdown'
 import ProjectLink from '@/components/ProjectLink'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
 async function getProjects() {
@@ -26,15 +25,12 @@ export default async function ProjectDetail({
 }) {
 	const projects = await getProjects()
 	const project = projects?.find(p => p.name === params.slug)
-	if (!project) return
-	const readme = await fetchReadme('brgv-code', project?.name)
-	if (!readme) return
-	const sanitizedReadme = await convertMarkdownToHtml(readme)
 	if (!project) {
 		notFound()
 	}
-	console.log(sanitizedReadme, 'sanitizedReadme')
-	console.log(readme, 'readme')
+	const readme = await fetchReadme('brgv-code', project?.name)
+	if (!readme) return
+	//TODO: add blog links from mdx files
 	return (
 		<div className='relative text-white min-h-screen'>
 			<div className='max-w-[800px] mx-auto px-4 py-20'>

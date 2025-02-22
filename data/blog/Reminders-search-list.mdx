@@ -1,20 +1,28 @@
 ---
-title: "Enhancing Reminders and Search List with Empty States"
-created: "2024-10-07"
-tags: ["React", "UI/UX", "Foundamental"]
-description: "Enhancing Reminders and Search List with Empty States"
+title: 'Enhancing Reminders and Search List with Empty States'
+created: '2024-10-07'
+tags: ['React', 'UI/UX', 'Foundamental']
+description: 'Enhancing Reminders and Search List with Empty States'
+project: loura-ui
 ---
 
-
-In this post, I’ll cover the changes I made to add empty state components to the Reminders and Search List pages in our application. The goal was to provide users with clear visual feedback when there are no reminders or search results available. Here’s a detailed look at what I did, the reasoning behind my approach, and the challenges I faced.
+In this post, I’ll cover the changes I made to add empty state components to the
+Reminders and Search List pages in our application. The goal was to provide
+users with clear visual feedback when there are no reminders or search results
+available. Here’s a detailed look at what I did, the reasoning behind my
+approach, and the challenges I faced.
 
 ## Overview of Changes
 
-The main change was to implement empty state components that display a message and an icon when there are no reminders or search results. This helps users understand that the absence of items is expected and not an error.
+The main change was to implement empty state components that display a message
+and an icon when there are no reminders or search results. This helps users
+understand that the absence of items is expected and not an error.
 
 ### Implementing Empty States in Reminders
 
-In the `RemindersList` component, I replaced the previous empty state text with a more engaging empty state component. Here’s the relevant code snippet:
+In the `RemindersList` component, I replaced the previous empty state text with
+a more engaging empty state component. Here’s the relevant code snippet:
+
 ```typescript
  if (!remindersLoading && !sortedReminders?.length) {
 
@@ -37,47 +45,59 @@ return (
 }
 ```
 
-This change enhances the user interface by providing a visual cue (the reminder icon) along with a friendly message. It’s important to create a welcoming experience, especially when users might feel discouraged by an empty list.
+This change enhances the user interface by providing a visual cue (the reminder
+icon) along with a friendly message. It’s important to create a welcoming
+experience, especially when users might feel discouraged by an empty list.
 
 ### Updating the Search List Component
 
-Similarly, in the `SearchList` component, I implemented an empty state for when no search results are found:
+Similarly, in the `SearchList` component, I implemented an empty state for when
+no search results are found:
+
 ```tsx
-if (!renderedSearchEntries?.length && sentSearchTermReactive.length) {
+if (!renderedSearchEntries?.length && sentSearchTermReactive.length) {
+	return (
+		<EmptyTextDiv>
+			<IconWrapper>
+				<StyledSearchIcon />
+			</IconWrapper>
 
-return (
-
-<EmptyTextDiv>
-
-<IconWrapper>
-
-<StyledSearchIcon />
-
-</IconWrapper>
-
-<EmptyText> {"search query did not return any results"}</EmptyText>
-
-</EmptyTextDiv>
-
-);
-
+			<EmptyText> {'search query did not return any results'}</EmptyText>
+		</EmptyTextDiv>
+	)
 }
 ```
 
-This approach provides users with immediate feedback about their search query, helping them understand that the lack of results is due to their input rather than a malfunction in the application.
+This approach provides users with immediate feedback about their search query,
+helping them understand that the lack of results is due to their input rather
+than a malfunction in the application.
 
 ### Styling the Empty State Components
 
-To support these new empty state components, I reused the styled components created earlier. This consistency in design helps maintain a cohesive look across different parts of the application.
+To support these new empty state components, I reused the styled components
+created earlier. This consistency in design helps maintain a cohesive look
+across different parts of the application.
 
 ## Why This Approach?
 
-The main goal was to enhance user experience by providing clear feedback when there are no reminders or search results. Users often feel lost when they encounter empty states without context. By implementing these empty state components, I aimed to reduce confusion and improve the overall usability of the application.
+The main goal was to enhance user experience by providing clear feedback when
+there are no reminders or search results. Users often feel lost when they
+encounter empty states without context. By implementing these empty state
+components, I aimed to reduce confusion and improve the overall usability of the
+application.
 
 ## Challenges Faced
 
-One challenge was ensuring that the new empty state components integrated well with existing functionality. I had to be careful to maintain the overall layout and design while introducing new elements. Additionally, testing the new components across different scenarios took time to ensure they displayed correctly under various conditions.
+One challenge was ensuring that the new empty state components integrated well
+with existing functionality. I had to be careful to maintain the overall layout
+and design while introducing new elements. Additionally, testing the new
+components across different scenarios took time to ensure they displayed
+correctly under various conditions.
 
 ## Conclusion
 
-Overall, I’m satisfied with the addition of empty state components in the Reminders and Search List pages. They enhance the user experience by providing clear feedback and improving the visual appeal of the application. As always, I welcome any feedback or suggestions from the team. If you have thoughts or ideas, feel free to reach out. Happy coding!
+Overall, I’m satisfied with the addition of empty state components in the
+Reminders and Search List pages. They enhance the user experience by providing
+clear feedback and improving the visual appeal of the application. As always, I
+welcome any feedback or suggestions from the team. If you have thoughts or
+ideas, feel free to reach out. Happy coding!

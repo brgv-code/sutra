@@ -10,140 +10,172 @@ tags:
 status:
   - Draft
 description: 'Implementing the New Login Page as a Storybook Component'
+project: loura-ui
 ---
 
-
-In this post, I’ll discuss the recent changes made to implement a new login page for our application, specifically focusing on creating a Storybook component for it. The goal was to create a user-friendly interface that facilitates easy access for users while ensuring security and responsiveness. Additionally, using Storybook allows us to develop and showcase UI components in isolation, making it easier to test and iterate on designs.
+In this post, I’ll discuss the recent changes made to implement a new login page
+for our application, specifically focusing on creating a Storybook component for
+it. The goal was to create a user-friendly interface that facilitates easy
+access for users while ensuring security and responsiveness. Additionally, using
+Storybook allows us to develop and showcase UI components in isolation, making
+it easier to test and iterate on designs.
 
 ## What is Storybook?
 
-[Storybook](https://storybook.js.org/) is an open-source tool for developing UI components in isolation for React, Vue, Angular, and other frameworks. It allows developers to create components independently, document them, and visualize different states of each component. This is particularly useful for building complex UIs, as it helps ensure that components are reusable and maintainable.
+[Storybook](https://storybook.js.org/) is an open-source tool for developing UI
+components in isolation for React, Vue, Angular, and other frameworks. It allows
+developers to create components independently, document them, and visualize
+different states of each component. This is particularly useful for building
+complex UIs, as it helps ensure that components are reusable and maintainable.
 
-For more information on how to get started with Storybook, you can refer to the official documentation:
+For more information on how to get started with Storybook, you can refer to the
+official documentation:
+
 - [Storybook Documentation](https://storybook.js.org/docs/react/get-started/introduction)
 - [Storybook for React](https://storybook.js.org/docs/react/get-started/introduction)
-
 
 ## Design Considerations
 
 ### Simplicity and Clarity
 
-The design of the new login page was centered around simplicity and clarity. A clean layout with well-defined input fields and buttons minimizes user friction during the login process. The choice to use Material-UI components allowed for a responsive design that adapts to various screen sizes, ensuring accessibility for all users.
+The design of the new login page was centered around simplicity and clarity. A
+clean layout with well-defined input fields and buttons minimizes user friction
+during the login process. The choice to use Material-UI components allowed for a
+responsive design that adapts to various screen sizes, ensuring accessibility
+for all users.
 
-The login form includes fields for email and password, along with a submit button. Here’s a simplified version of the form:
+The login form includes fields for email and password, along with a submit
+button. Here’s a simplified version of the form:
 
 ```tsx
+const LoginForm = () => {
+	const handleSubmit = event => {
+		event.preventDefault()
 
+		// Handle login logic
+	}
 
-const LoginForm = () => {
+	return (
+		<form onSubmit={handleSubmit}>
+			<input type='email' placeholder='Email' required />
 
-const handleSubmit = (event) => {
+			<input type='password' placeholder='Password' required />
 
-event.preventDefault();
-
-// Handle login logic
-
-};
-
-return (
-
-<form onSubmit={handleSubmit}>
-
-<input type="email" placeholder="Email" required />
-
-<input type="password" placeholder="Password" required />
-
-<button type="submit">Login</button>
-
-</form>
-
-);
-
-};
-```
-
-This clean layout not only enhances usability but also aligns with our branding, creating a cohesive experience for users.
-
-### User Feedback Mechanisms
-
-Incorporating user feedback mechanisms was a key aspect of the design. I implemented error handling to provide users with clear messages if their login attempts failed. This feedback is essential for guiding users through the authentication process and reducing frustration.
-
-For instance, if a user enters incorrect credentials, a clear error message appears:
-```tsx
-
-if (loginError) {
-
-return <p className="error-message">Invalid credentials, please try again.</p>;
-
+			<button type='submit'>Login</button>
+		</form>
+	)
 }
 ```
 
-This immediate feedback helps users understand what went wrong and encourages them to try again, improving overall user satisfaction.
+This clean layout not only enhances usability but also aligns with our branding,
+creating a cohesive experience for users.
+
+### User Feedback Mechanisms
+
+Incorporating user feedback mechanisms was a key aspect of the design. I
+implemented error handling to provide users with clear messages if their login
+attempts failed. This feedback is essential for guiding users through the
+authentication process and reducing frustration.
+
+For instance, if a user enters incorrect credentials, a clear error message
+appears:
+
+```tsx
+if (loginError) {
+	return <p className='error-message'>Invalid credentials, please try again.</p>
+}
+```
+
+This immediate feedback helps users understand what went wrong and encourages
+them to try again, improving overall user satisfaction.
 
 ### Visual Appeal and Branding
 
-The visual appeal of the login page was enhanced through thoughtful use of color and typography. By aligning the design with the overall branding of the application, I aimed to create a cohesive experience that resonates with users. The use of styled components allowed for easy customization while maintaining consistency across the application.
+The visual appeal of the login page was enhanced through thoughtful use of color
+and typography. By aligning the design with the overall branding of the
+application, I aimed to create a cohesive experience that resonates with users.
+The use of styled components allowed for easy customization while maintaining
+consistency across the application.
 
-For example, I used a consistent color scheme that reflects our brand identity, ensuring that the login page feels like a natural extension of the application. The logo is prominently displayed at the top of the form, reinforcing brand recognition.
+For example, I used a consistent color scheme that reflects our brand identity,
+ensuring that the login page feels like a natural extension of the application.
+The logo is prominently displayed at the top of the form, reinforcing brand
+recognition.
 
 ### Security Considerations
 
-Security is paramount in any login interface. I implemented measures such as input validation and secure password handling to protect user data. Additionally, I ensured that the application adheres to best practices for authentication, including the use of HTTPS and secure cookie management.
+Security is paramount in any login interface. I implemented measures such as
+input validation and secure password handling to protect user data.
+Additionally, I ensured that the application adheres to best practices for
+authentication, including the use of HTTPS and secure cookie management.
 
 ## Creating the Storybook Component
 
-To facilitate the development and testing of the login page, I created a Storybook component. This allows us to visualize the login form in different states, such as loading, error, and success. Here’s how I set up the Storybook for the login component:
+To facilitate the development and testing of the login page, I created a
+Storybook component. This allows us to visualize the login form in different
+states, such as loading, error, and success. Here’s how I set up the Storybook
+for the login component:
 
-1. **Install Storybook**: If you haven't already, you can set up Storybook in your project using the following command:
+1. **Install Storybook**: If you haven't already, you can set up Storybook in
+   your project using the following command:
 
    ```bash
    npx sb init
    ```
 
-2. **Create the Story**: I created a new file for the login component story, which showcases different states of the login form.
+2. **Create the Story**: I created a new file for the login component story,
+   which showcases different states of the login form.
+
 ```tsx
-  
 // src/stories/Login.stories.js
 
-import React from 'react';
+import React from 'react'
 
-import { LoginForm } from '../components/LoginForm';
+import { LoginForm } from '../components/LoginForm'
 
-export default {
+export default {
+	title: 'Login/LoginForm',
 
-title: 'Login/LoginForm',
+	component: LoginForm,
+}
 
-component: LoginForm,
+const Template = args => <LoginForm {...args} />
 
-};
+export const Default = Template.bind({})
 
-const Template = (args) => <LoginForm {...args} />;
+Default.args = {
+	// Default props for the login form
+}
 
-export const Default = Template.bind({});
+export const ErrorState = Template.bind({})
 
-Default.args = {
-
-// Default props for the login form
-
-};
-
-export const ErrorState = Template.bind({});
-
-ErrorState.args = {
-
-loginError: true,
-
-};
+ErrorState.args = {
+	loginError: true,
+}
 ```
 
-This setup allows us to visualize how the login form behaves under different conditions, making it easier to identify issues and iterate on the design.
+This setup allows us to visualize how the login form behaves under different
+conditions, making it easier to identify issues and iterate on the design.
 
 ## User Testing and Iteration
 
-After implementing the new login page and creating the Storybook component, I conducted user testing sessions to gather feedback on its usability. Users found the new design to be intuitive and appreciated the clear error messages. However, some users suggested adding a "Remember Me" checkbox to streamline the login process for returning users.
+After implementing the new login page and creating the Storybook component, I
+conducted user testing sessions to gather feedback on its usability. Users found
+the new design to be intuitive and appreciated the clear error messages.
+However, some users suggested adding a "Remember Me" checkbox to streamline the
+login process for returning users.
 
-In response to this feedback, I plan to implement the "Remember Me" feature, which will allow users to stay logged in on their devices. This enhancement will further improve the user experience by reducing the number of steps required to access the application.
+In response to this feedback, I plan to implement the "Remember Me" feature,
+which will allow users to stay logged in on their devices. This enhancement will
+further improve the user experience by reducing the number of steps required to
+access the application.
 
 ## Conclusion
 
-Overall, I’m pleased with the implementation of the new login page as a Storybook component. It enhances the user experience by providing a clear and organized interface for authentication while allowing for easy testing and iteration. By focusing on simplicity, user feedback, and visual appeal, I believe this new design will significantly improve user satisfaction. I welcome any feedback or suggestions from the team. If you have thoughts or ideas, feel free to reach out. Happy coding!D
+Overall, I’m pleased with the implementation of the new login page as a
+Storybook component. It enhances the user experience by providing a clear and
+organized interface for authentication while allowing for easy testing and
+iteration. By focusing on simplicity, user feedback, and visual appeal, I
+believe this new design will significantly improve user satisfaction. I welcome
+any feedback or suggestions from the team. If you have thoughts or ideas, feel
+free to reach out. Happy coding!D
