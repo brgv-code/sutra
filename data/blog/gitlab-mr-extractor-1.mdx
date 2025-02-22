@@ -1,0 +1,105 @@
+---
+title: 'Building a GitLab Merge Request Analyzer: The Why and How (Part 1)'
+created: '2025-02-22'
+description:
+  'Building a GitLab Merge Request Analyzer: The Why and How (Part 1)'
+tags:
+  - GitLab
+  - TypeScript
+  - Code Analysis
+  - Automation
+  - Code Reviews
+---
+
+# Building a GitLab Merge Request Analyzer: The Why and How (Part 1)
+
+Last month, I was drowning in code reviews. As a lead developer at my company, I
+review about 20-30 merge requests daily. While GitLab's interface is great, I
+needed more - I wanted to analyze patterns, track changes over time, and most
+importantly, save my sanity.
+
+That's when I decided to build `gitlab-mr-extractor`, a TypeScript library that
+helps you extract and analyze merge request data. In this series, I'll walk you
+through why I built it, how it works, and how you can use it to make your code
+review process better.
+
+## The Problem
+
+Let me paint you a picture of my typical day before building this tool:
+
+1. Open GitLab
+2. Click through 20+ merge requests
+3. Try to remember which ones had similar patterns
+4. Manually track recurring issues
+5. Repeat the next day
+
+It was... not fun 🤦‍♂️
+
+I needed answers to questions like:
+
+- Which files are changed most often?
+- What types of changes are we making?
+- Are we following our coding patterns?
+- How can I automate some of these reviews?
+
+## The Solution
+
+Enter `gitlab-mr-extractor`. At its core, it's a simple idea:
+
+6. Fetch merge request data from GitLab
+7. Parse the diffs and changes
+8. Save them in a format that's easy to analyze
+9. Generate reports that actually make sense
+
+Here's a quick example of what it can do:
+
+```typescript
+import { GitLabMergeRequestExtractor } from 'gitlab-mr-extractor'
+
+const extractor = new GitLabMergeRequestExtractor({
+	baseUrl: 'https://gitlab.com',
+
+	privateToken: process.env.GITLAB_TOKEN,
+
+	projectId: 'your-project-id',
+})
+
+const mergeRequests = await extractor.extractMergeRequests()
+```
+
+This simple piece of code gets you all the merge request data, including:
+
+- Complete diff information
+- Change patterns
+- File modifications
+- Author details
+- Timestamps
+
+## Why TypeScript?
+
+I chose TypeScript for a few reasons:
+
+1. Type safety (duh!)
+2. Better IDE support
+3. Easier to maintain
+4. Great for parsing complex data structures
+
+Plus, the GitLab API responses are pretty complex. Having proper types makes it
+much easier to work with the data.
+
+## What's Next?
+
+In Part 2 of this series, we'll dive deep into:
+
+- The architecture of the library
+- How the diff parser works (it's pretty neat!)
+- Handling GitLab's API pagination
+- Error handling patterns that won't make you cry
+
+Stay tuned for Part 2 where we'll get our hands dirty with some actual code!
+
+---
+
+_This is Part 1 of a multi-part series on building and using
+gitlab-mr-extractor.
+[Continue to Part 2: Deep Dive into the Code](/blog/gitlab-mr-extractor-2)_
