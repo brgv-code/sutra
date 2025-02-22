@@ -1,0 +1,254 @@
+---
+title:
+  'Deep Dive into GitLab MR Extractor: Architecture and Implementation (Part 2)'
+created: '2025-02-22'
+description:
+  'Deep Dive into GitLab MR Extractor: Architecture and Implementation (Part 2)'
+tags:
+  - GitLab
+  - TypeScript
+  - Code Analysis
+  - Automation
+  - Code Reviews
+---
+
+# Deep Dive into GitLab MR Extractor: Architecture and Implementation (Part 2)
+
+After explaining why I built this tool in Part 1, let's get into the
+nitty-gritty of how it actually works. Fair warning: this post contains actual
+code and technical details. Grab your coffee.
+
+## The Architecture
+
+The library is built around three main components:
+
+1. GitLab Client: Handles all API communications
+2. Diff Parser: Processes the raw diff data
+3. Merge Request Fetcher: Orchestrates the whole process
+
+Here's what the flow looks like:
+
+```typescript
+// 1. Initialize the client
+
+const client = new GitLabClient({
+	baseUrl: 'https://gitlab.com',
+
+	privateToken: 'your-token',
+
+	projectId: '12345',
+})
+
+// 2. Create a fetcher
+
+const fetcher = new MergeRequestFetcher(client)
+
+// 3. Get the data
+
+const mergeRequests = await fetcher.fetchAllMerged()
+```
+
+## The GitLab Client
+
+The client is pretty straightforward. It's a wrapper around Axios that handles
+the GitLab API:
+
+```typescript
+
+export class GitLabClient {
+
+private readonly axiosInstance: AxiosInstance;
+
+constructor(private config: GitLabConfig) {
+
+this.axiosInstance = axios.create({
+
+baseURL: config.baseUrl,
+
+headers: {
+
+'PRIVATE-TOKEN': config.privateToken
+
+}
+
+});
+
+}
+
+async getMergedMergeRequests(page = 1): Promise<ApiResponse<any[]>> {
+
+return this.axiosInstance.get(
+
+/api/v4/projects/${this.config.projectId}/merge_requests,
+
+{
+
+params: {
+
+state: 'merged',
+
+page,
+
+per_page: 100
+}});
+}}
+```
+
+Nothing fancy here. Just basic API calls with proper error handling and
+pagination support.
+
+## The Diff Parser (The Cool Part)
+
+This is where things get interesting. The diff parser takes raw Git diff output
+and turns it into structured data. Here's a simplified version:
+
+```typescript
+export class DiffParser {
+	private static readonly DIFF_LINE_REGEX = /^([+-])(.)/
+
+	public static parse(rawDiff: string): DiffChange[] {
+		const changes: DiffChange[] = []
+
+		let lineNumber = 0
+
+		const lines = rawDiff.split('\n')
+
+		for (const line of lines) {
+			if (!line) continue
+
+			// Skip diff headers
+
+			if (line.match(/^[+-] [^\s]/)) {
+				continue
+			}
+
+			// Count unchanged lines
+
+			if (line.startsWith(' ')) {
+				lineNumber++
+
+				continue
+			}
+
+			const match = this.DIFF_LINE_REGEX.exec(line)
+
+			if (!match) {
+				lineNumber++
+
+				continue
+			}
+
+			const [, marker, content] = match
+
+			changes.push({
+				type: marker === '+' ? 'add' : 'delete',
+
+				lineNumber: ++lineNumber,
+
+				content: content,
+			})
+		}
+
+		return changes
+	}
+}
+```
+
+The parser handles:
+
+- Added lines (starting with +)
+
+- Deleted lines (starting with -)
+
+- Context lines (starting with space)
+
+- Special cases like empty lines and diff headers
+
+## Error Handling
+
+One thing I learned the hard way: GitLab's API can be...unpredictable. So I
+built a custom error system:
+
+```typescript
+export class GitLabApiError extends Error {
+	constructor(
+		message: string,
+
+		public status?: number,
+	) {
+		super(message)
+
+		this.name = 'GitLabApiError'
+	}
+}
+
+export class DiffParsingError extends Error {
+	constructor(message: string) {
+		super(message)
+
+		this.name = 'DiffParsingError'
+	}
+}
+```
+
+This makes error handling much cleaner:
+
+```typescript
+try {
+	const mergeRequests = await fetcher.fetchAllMerged()
+} catch (error) {
+	if (error instanceof GitLabApiError) {
+		console.error('API Error:', error.status)
+	} else if (error instanceof DiffParsingError) {
+		console.error('Diff Parsing Failed:', error.message)
+	}
+}
+```
+
+## Testing
+
+I'm a big fan of testing, so I added comprehensive tests using Jest:
+
+```typescript
+describe('DiffParser', () => {
+	it('should parse added lines', () => {
+		const diff = '+new line\n regular line\n+another new line'
+
+		const changes = DiffParser.parse(diff)
+
+		expect(changes).toHaveLength(2)
+
+		expect(changes[0].type).toBe('add')
+
+		expect(changes[0].content).toBe('new line')
+	})
+
+	// More tests...
+})
+```
+
+## What I Learned
+
+Building this parser taught me a few things:
+
+1. Git diffs are more complex than they look
+2. Regular expressions are both powerful and dangerous
+3. Type safety in TypeScript is a lifesaver
+4. Good error handling makes debugging much easier
+
+## Coming Up Next
+
+In Part 3, we'll look at:
+
+- Advanced usage patterns
+- Real-world examples
+- Performance optimizations
+- Future features (spoiler: AI-powered diff analysis!)
+
+Stay tuned!
+
+---
+
+_This is Part 2 of a multi-part series on building gitlab-mr-extractor.
+[Read Part 1](/blog/gitlab-mr-extractor-1) or
+[Continue to Part 3](/blog/gitlab-mr-extractor-3)_

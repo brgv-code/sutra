@@ -1,0 +1,230 @@
+---
+title:
+  'Advanced Usage and Future Features: GitLab MR Extractor Deep Dive (Part 3)'
+created: '2025-02-22'
+description:
+  'Advanced Usage and Future Features: GitLab MR Extractor Deep Dive (Part 3)'
+tags:
+  - GitLab
+  - TypeScript
+  - Code Analysis
+  - Automation
+  - Code Reviews
+---
+
+# Advanced Usage and Future Features: GitLab MR Extractor Deep Dive (Part 3)
+
+Welcome to the final part of our series on `gitlab-mr-extractor`. In Parts 1 and
+2, we covered the why and how. Now, let's look at some advanced usage patterns
+and what's coming next.
+
+## Advanced Usage Patterns
+
+### 1. Analyzing Change Patterns
+
+One cool thing you can do is analyze what kind of changes are happening in your
+codebase:
+
+```typescript
+const extractor = new GitLabMergeRequestExtractor({
+	baseUrl: 'https://gitlab.com',
+
+	privateToken: process.env.GITLAB_TOKEN,
+
+	projectId: 'your-project-id',
+})
+
+// Get all merge requests
+
+const mergeRequests = await extractor.extractMergeRequests()
+
+// Analyze changes by file type
+
+const changesByFileType = mergeRequests.reduce((acc, mr) => {
+	mr.changes.forEach(change => {
+		const extension = change.new_path.split('.').pop() || 'unknown'
+
+		acc[extension] = (acc[extension] || 0) + change.changes.length
+	})
+
+	return acc
+}, {})
+
+console.log('Changes by file type:', changesByFileType)
+```
+
+### 2. Custom Export Formats
+
+The library supports JSON and CSV out of the box, but you can create custom
+exporters:
+
+```typescript
+class CustomExporter {
+	static export(mergeRequests) {
+		return mergeRequests.map(mr => ({
+			id: mr.iid,
+
+			title: mr.title,
+
+			changes: mr.changes.reduce(
+				(total, change) => total + change.changes.length,
+				0,
+			),
+
+			author: mr.author.name,
+
+			merged_at: new Date(mr.merged_at).toLocaleDateString(),
+		}))
+	}
+}
+
+const data = CustomExporter.export(mergeRequests)
+```
+
+###  3. Filtering and Searching
+
+Need to find specific changes? No problem:
+
+```typescript
+// Find all changes to package.json files
+
+const packageChanges = mergeRequests.filter(mr =>
+	mr.changes.some(change => change.new_path.includes('package.json')),
+)
+
+// Find security-related changes
+
+const securityChanges = mergeRequests.filter(
+	mr =>
+		mr.title.toLowerCase().includes('security') ||
+		mr.description.toLowerCase().includes('security'),
+)
+```
+
+## Real-World Use Cases
+
+### 1. Code Review Automation
+
+Here's how we use it to automate parts of our review process:
+
+```typescript
+async function analyzeCodeChanges(mergeRequest) {
+	const riskyPatterns = ['eval(', 'process.env', 'sudo', 'chmod']
+
+	const riskyChanges = mergeRequest.changes.filter(change =>
+		change.changes.some(c =>
+			riskyPatterns.some(pattern => c.content.includes(pattern)),
+		),
+	)
+
+	return {
+		id: mergeRequest.iid,
+
+		riskyChanges,
+
+		needsSecurityReview: riskyChanges.length > 0,
+	}
+}
+```
+
+### 2. Documentation Updates
+
+We also use it to keep our docs up to date:
+
+```typescript
+function checkDocumentationNeeds(mergeRequest) {
+	const codeChanges = mergeRequest.changes.filter(
+		c => !c.new_path.includes('docs/'),
+	)
+
+	const docChanges = mergeRequest.changes.filter(c =>
+		c.new_path.includes('docs/'),
+	)
+
+	return {
+		needsDocs: codeChanges.length > 0 && docChanges.length === 0,
+
+		changedFiles: codeChanges.map(c => c.new_path),
+	}
+}
+```
+
+## Future Features
+
+Here's what's coming in the next releases:
+
+### 1. AI-Powered Analysis
+
+```typescript
+// Coming in v2.0
+
+class AIAnalyzer {
+	async analyzeDiff(diff: string) {
+		return {
+			complexity: await this.calculateComplexity(diff),
+
+			suggestedReviewers: await this.findBestReviewers(diff),
+
+			securityRisks: await this.assessSecurityRisks(diff),
+		}
+	}
+}
+```
+
+### 2. Real-time Webhooks
+
+```typescript
+// Coming in v1.5
+
+class MergeRequestWebhook {
+	onNewMergeRequest(callback: (mr: MergeRequest) => void) {
+		// Real-time notifications for new MRs
+	}
+}
+```
+
+### 3. Custom Rules Engine
+
+```typescript
+// Coming in v1.4
+
+class RulesEngine {
+	addRule(rule: Rule) {
+		this.rules.push(rule)
+	}
+
+	async evaluate(mergeRequest: MergeRequest) {
+		return Promise.all(this.rules.map(rule => rule.evaluate(mergeRequest)))
+	}
+}
+```
+
+## Contributing
+
+Want to help build these features? Here's how:
+
+1. Check out our [GitHub repo](https://github.com/brgv-code/gitlab-mr-extractor)
+2. Look at the [issues](https://github.com/brgv-code/gitlab-mr-extractor/issues)
+   page
+3. Pick something that interests you
+4. Submit a PR!
+
+## What's Next?
+
+While this concludes our blog series, development continues! Here's what you can
+do:
+
+1. Try out the library: `npm install gitlab-mr-extractor`
+2. Star us on GitHub
+3. Report bugs or feature requests
+4. Join our community
+
+Thanks for reading this series! If you have questions or want to contribute,
+find me on [GitHub](https://github.com/brgv-code) or
+[Twitter](https://twitter.com/brgvdev).
+
+---
+
+_This is Part 3 of a series on gitlab-mr-extractor.
+[Read Part 1](/blog/gitlab-mr-extractor-1) or
+[Part 2](/blog/gitlab-mr-extractor-2)_
