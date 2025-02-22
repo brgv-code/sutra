@@ -1,22 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkGfm from 'remark-gfm'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypeHighlight from 'rehype-highlight'
-import rehypeSlug from 'rehype-slug'
-import rehypeFormat from 'rehype-format'
-import { Plugin } from 'unified'
+
 const root = process.cwd()
 
-type FrontMatter = {
+export type FrontMatter = {
 	title: string
 	created: string
 	description: string
 	slug: string
+	project: string
+	tags?: string[]
 	[key: string]: any
 }
 
@@ -24,18 +18,6 @@ export async function getFiles(type: string) {
 	const files = fs.readdirSync(path.join(root, 'data', type))
 	return files.filter(file => file.endsWith('.mdx'))
 }
-const createProcessor = unified()
-	.use(remarkParse as unknown as Plugin)
-	.use(remarkGfm as unknown as Plugin)
-	.use(remarkRehype as any, {
-		allowDangerousHtml: true,
-		footnoteLabel: 'Footnotes',
-		footnoteBackLabel: 'Back to content',
-	})
-	.use(rehypeSlug as unknown as Plugin)
-	.use(rehypeHighlight as unknown as Plugin)
-	.use(rehypeFormat as unknown as Plugin)
-	.use(rehypeStringify as any, { allowDangerousHtml: true })
 
 export async function getFileBySlug(type: string, slug: string) {
 	try {
@@ -44,8 +26,7 @@ export async function getFileBySlug(type: string, slug: string) {
 			'utf8',
 		)
 		const { data, content } = matter(source)
-		const processedContent = await createProcessor().process(content)
-		const res = processedContent.toString()
+
 		return {
 			contentHtml: content,
 			frontMatter: {
@@ -62,6 +43,7 @@ export async function getFileBySlug(type: string, slug: string) {
 				title: 'Error',
 				created: '',
 				description: 'There was an error loading this content.',
+				project: '',
 			} as FrontMatter,
 		}
 	}

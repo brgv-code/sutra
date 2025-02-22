@@ -23,7 +23,9 @@ export default async function BlogPost({
 	params: { slug: string }
 }) {
 	const post = await getFileBySlug('blog', params.slug)
-	if (!post) return notFound()
+	if (!post) {
+		notFound()
+	}
 	return (
 		<div className={` text-white min-h-screen ${mono.variable}`}>
 			<article className='max-w-[800px] mx-auto px-4 py-20'>
