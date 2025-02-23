@@ -15,15 +15,17 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 	className,
 	inline,
 }) => {
-	const { showToast } = useToast(); 
+	const { showToast } = useToast()
 
 	const handleCopy = () => {
-	  navigator.clipboard.writeText(children?.toString() || "");
-	  showToast("Copied to clipboard", <CheckCheck />); 
-	};
+		const codeElement = document.querySelector('code[class*="language-"]')
+		const textContent = codeElement?.textContent || ''
+		navigator.clipboard.writeText(textContent)
+		showToast('Copied to clipboard', <CheckCheck />)
+	}
 
 	return (
-		<div className=' border-2 border-gray-200/30 rounded-lg bg-gradient-to-r from-gray-900/50 to-gray-800/50 p-4  overflow-x-auto overflow-visible w-3/4 m-auto group '>
+		<div className=' border-2 border-gray-200/30 rounded-lg bg-gradient-to-r from-gray-900/50 to-gray-800/50 p-4 w-3/4 m-auto group '>
 			<div className='flex justify-between'>
 				<div className='flex items-start gap-2 mb-4'>
 					{' '}
