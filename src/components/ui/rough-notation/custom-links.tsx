@@ -1,24 +1,17 @@
-// components/CustomLink.tsx
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import classNames from 'classnames'
-import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
-import Underline from './blog/underline'
+import Underline from '../blog/underline'
 
 interface CustomLinkProps {
 	href?: string
 	children?: React.ReactNode
-	fontSize?: string
-	fontColor?: string
 	underlineColor?: string
 }
 
 const CustomLink: React.FC<CustomLinkProps> = ({
 	href,
 	children,
-	fontColor,
-	fontSize,
 	underlineColor,
 }) => {
 	const [show, setShow] = useState(true)

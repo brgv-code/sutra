@@ -1,13 +1,13 @@
 'use client'
 import Image from 'next/image'
-import CustomLink from '@/components/ui/custom-links'
-import CustomBold from '@/components/ui/custom-bold'
+import CustomLink from '@/components/ui/rough-notation/custom-links'
+import CustomBold from '@/components/ui/rough-notation/custom-bold'
 import { Dot, GitCommitHorizontal } from 'lucide-react'
 
 const AboutMe = () => {
 	return (
 		<>
-		{/* TODO: animatedgradient needs a fix here */}
+			{/* TODO: animatedgradient needs a fix here */}
 			{/* <div className='bg-[#831919] w-screenflex justify-center'>
 				This page is under construction
 			</div> */}

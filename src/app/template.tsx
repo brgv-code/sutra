@@ -1,6 +1,6 @@
 // components/Layout.js
 'use client'
-import RotatingText from '@/components/ui/rotating-text'
+import RotatingText from '@/components/ui/archive/rotating-text'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -27,8 +27,6 @@ const Template = ({ children }: { children: React.ReactNode }) => {
 			>
 				{children}
 			</motion.div>
-
-		
 		</AnimatePresence>
 	)
 }

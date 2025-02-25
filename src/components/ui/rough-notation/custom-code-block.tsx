@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { CheckCheck, ClipboardList } from 'lucide-react'
-import { useToast } from '../../context/ToastContext'
+import { useToast } from '../../../context/ToastContext'
 
 interface CodeBlockProps {
 	children?: React.ReactNode
