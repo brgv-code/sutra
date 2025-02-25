@@ -36,7 +36,7 @@ const gradientMap: Record<string, GradientEntry> = {
 			'bg-gradient-to-br from-magenta-500/15 via-transparent to-rose-500/15',
 		animated: true,
 	},
-	
+
 	'/contact': {
 		baseGradient:
 			'bg-gradient-to-br from-cyan-500/15 via-transparent to-purple-500/15',

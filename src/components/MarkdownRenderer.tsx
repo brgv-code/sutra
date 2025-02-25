@@ -1,12 +1,12 @@
 // components/MarkdownRenderer.tsx
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import CustomLink from '@/components/ui/custom-links'
-import CustomListItem from '@/components/ui/custom-list'
-import CustomBold from './ui/custom-bold'
+import CustomLink from '@/components/ui/rough-notation/custom-links'
+import CustomListItem from '@/components/ui/rough-notation/custom-list'
+import CustomBold from './ui/rough-notation/custom-bold'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import CodeBlock from './ui/custom-code-block'
+import CodeBlock from './ui/rough-notation/custom-code-block'
 interface CodeProps {
 	children?: React.ReactNode
 	className?: string

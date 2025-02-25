@@ -1,6 +1,6 @@
 import React from 'react'
-import CustomBold from '../custom-bold'
-import CustomLink from '../custom-links'
+import CustomBold from '../rough-notation/custom-bold'
+import CustomLink from '../rough-notation/custom-links'
 import Underline from './underline'
 interface HeadingProps {
 	children: React.ReactNode

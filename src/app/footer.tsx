@@ -1,4 +1,4 @@
-import CustomBold from '@/components/ui/custom-bold'
+import CustomBold from '@/components/ui/rough-notation/custom-bold'
 import Link from 'next/link'
 import React from 'react'
 
