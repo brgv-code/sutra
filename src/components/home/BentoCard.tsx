@@ -29,13 +29,13 @@ const BentoCard: React.FC<BentoCardProps> = ({
 			onHoverEnd={() => setHoveredCard(null)}
 			className={`
         relative overflow-hidden group
-        rounded-3xl bg-gray-900
+        rounded-3xl 
         backdrop-blur-xl border border-gray-900/50
         hover:border-gray-700 transition-all duration-300
-        ${gradient ? 'md:hover:bg-gradient-to-br md:hover:from-black/[20%] md:hover:to-gray-900/[40%]' : ''}
+        ${gradient ? 'sm:hover:bg-gradient-to-br sm:hover:from-black/[20%] sm:hover:to-gray-900/[40%]' : ''}
         ${className}
-        ${colspan > 1 ? `md:col-span-${colspan} col-span-full` : ''}
-        ${rowspan > 1 ? `md:row-span-${rowspan}` : ''}
+        ${colspan > 1 ? `sm:col-span-${colspan} col-span-full` : ''}
+        ${rowspan > 1 ? `sm:row-span-${rowspan}` : ''}
       `}
 		>
 			<motion.div

@@ -3,6 +3,7 @@ import 'highlight.js/styles/github-dark.css'
 import { Space_Mono } from 'next/font/google'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
 import { notFound } from 'next/navigation'
+import BackButton from '@/components/ui/BackButton'
 
 const mono = Space_Mono({
 	weight: ['400', '700'],
@@ -28,9 +29,10 @@ export default async function BlogPost({
 	}
 	return (
 		<div className={` text-white min-h-screen ${mono.variable}`}>
-			<article className='max-w-[800px] mx-auto px-4 py-20'>
-				<header className='mb-16'>
-					<h1 className='font-mono text-4xl font-bold mb-4 leading-tight'>
+			<article className='max-w-[800px] mx-auto px-4 py-8 sm:py-16'>
+				<BackButton className='mb-6' />
+				<header className='mb-8 sm:mb-12'>
+					<h1 className='font-mono text-2xl sm:text-4xl font-bold mb-4 leading-tight'>
 						{post.frontMatter.title}
 					</h1>
 					<time className='text-sm text-gray-400 block'>
@@ -38,7 +40,7 @@ export default async function BlogPost({
 					</time>
 				</header>
 				<MarkdownRenderer
-					className='border border-white/10 rounded-xl p-6 shadow-xl'
+					className='border border-white/10 rounded-xl p-4 sm:p-6 shadow-xl text-sm sm:text-base'
 					content={post.contentHtml}
 				/>
 			</article>

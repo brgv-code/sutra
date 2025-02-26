@@ -67,7 +67,7 @@ const AnimatedGradient = memo(function AnimatedGradient() {
 	const { baseGradient, animated } = gradientMap[gradientKey]
 
 	return (
-		<div className='fixed inset-0'>
+		<div className='fixed inset-0 hidden md:block'>
 			<div
 				className={`absolute inset-0 ${baseGradient}`}
 				style={{ zIndex: -1 }}

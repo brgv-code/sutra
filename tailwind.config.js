@@ -74,13 +74,6 @@ module.exports = {
 				},
 			},
 		},
-
-		// listStyleImage: {
-		// 	foundamental: 'url("/work/foundamental.png")',
-		// 	accenture: 'url("/work/accenture.png")',
-		// 	fraunhofer: 'url("/work/fraunhofer.png")',
-		// },
-		// },
 		accentColor: ({ theme }) => ({
 			...theme('colors'),
 			auto: 'auto',
@@ -944,7 +937,7 @@ module.exports = {
 		},
 		screens: {
 			sm: '640px',
-			md: '968px',
+			md: '768px',
 			lg: '1024px',
 			xl: '1280px',
 			'2xl': '1536px',
