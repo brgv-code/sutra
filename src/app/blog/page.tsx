@@ -7,14 +7,14 @@ type FrontMatter = {
 	created: string
 	description: string
 	slug: string
-	tags?: string[]	
+	tags?: string[]
 }
 
 export default async function Blog() {
 	const posts = await getAllFilesFrontMatter('blog')
 
 	return (
-		<div className='max-w-4xl mx-auto px-6 py-12 '>
+		<div className='max-w-4xl mx-auto px-4 py-8 sm:px-6 sm:py-12'>
 			<SearchableBlogList posts={posts} />
 		</div>
 	)
