@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Code, ArrowRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { latestProjects } from '@/data/projects'
+import { latestProjects } from '../../../data/projects'
 
 const ProjectsCard: React.FC = () => {
 	const router = useRouter()

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Highlight from '@/components/ui/blog/highlight'
 import CustomLink from '@/components/ui/rough-notation/custom-links'
-import { socialLinks } from '@/data/socialLinks'
+import { socialLinks } from '../../../data/socialLinks'
 
 const HeroCard: React.FC = () => {
 	const router = useRouter()

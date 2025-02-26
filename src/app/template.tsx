@@ -1,10 +1,5 @@
-// components/Layout.js
 'use client'
-import RotatingText from '@/components/ui/archive/rotating-text'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import Footer from './footer'
 const variants = {
 	hidden: { opacity: 0, filter: 'blur(10px)' },
 	glow: { filter: 'brightness(1.5)', transition: { duration: 0.75 } },

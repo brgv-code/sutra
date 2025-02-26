@@ -27,11 +27,14 @@ const AboutMe = () => {
 
 						<div className='leading-8 py-4 pl-10'>
 							Hi I am{' '}
-							<CustomBold gradientColors={['#4c297b', '#4c297b']}>
+							<CustomBold
+								className='inline-block'
+								gradientColors={['#4c297b', '#4c297b']}
+							>
 								Bhargav
 							</CustomBold>
 							,
-							<div className='mt-4 text-md '>
+							<div className='mt-4 text-md'>
 								I am developer(student) at{' '}
 								<CustomLink
 									href='https://www.foundamental.com/people/bhargav-babu'
@@ -39,15 +42,12 @@ const AboutMe = () => {
 								>
 									Foundamental gmbH,
 								</CustomLink>{' '}
-								Berlin, Germany where I am building an internal{' '}
-								<CustomLink
-									underlineColor='#48F782'
-									href='https://en.wikipedia.org/wiki/Customer_relationship_management'
-								>
-									CRM
-								</CustomLink>{' '}
-								SAAS product called <CustomBold fontSize='md'>Loura</CustomBold>
-								. I am also a student at{' '}
+								Berlin, Germany where I am building an internal CRM SAAS product
+								called{' '}
+								<CustomBold className='inline-block' fontSize='md'>
+									Loura
+								</CustomBold>
+								. Simultaneously, I am completing my masters thesis in DevOps at{' '}
 								<CustomLink href='https://www.tu-ilmenau.de/en/'>
 									TU Ilmenau,
 								</CustomLink>{' '}
@@ -63,11 +63,11 @@ const AboutMe = () => {
 							<div className='mt-4'>
 								I have a hunger to learn more and create meaningful products. I
 								love my job as a developer, working on software that help people
-								ease their lives. Being an electronics engineer, for the effort
-								I put in to learn and still learning today, I can say am living
-								my dream. Hence, I do not restrict the type of work I do or the
-								technologies I work with. I am always open to learning and
-								exploring new things.
+								ease their lives.Coming from an electronics engineering
+								background, for the effort I put in to learn web development and
+								still learning today, I can say am living my dream. Hence, I do
+								not restrict the type of work I do or the technologies I work
+								with. I am always open to learning and exploring new things.
 							</div>
 							<div className='mt-4'>
 								{' '}
@@ -102,7 +102,7 @@ const AboutMe = () => {
 				<div className='mt-8'>
 					<h2 className='text-2xl font-bold '>Work Experience</h2>
 
-					<ul className='mt-2 ml-8 text-md  list-inside  list-style-image-foundamental'>
+					<ul className='mt-2 ml-8 text-md list-inside  list-style-image-foundamental'>
 						<li className='transition-all duration-500  ease-in-out transform hover:translate-x-2  p-4 mt-4 '>
 							<Image
 								src={'/work/foundamental.png'}
@@ -111,8 +111,8 @@ const AboutMe = () => {
 								height={35}
 								style={{ display: 'inline-block', borderRadius: '50%' }}
 							/>
-							<span className='inline-flex transition-all duration-500 ease-in-out transform hover:translate-x-2 '>
-								<CustomBold fontSize='md'>App Developer</CustomBold>
+							<span className='inline-flex '>
+								App Developer
 								{
 									'  '
 								} <GitCommitHorizontal className='mx-4 text-[#6E00FD]' /> {'  '}
@@ -120,7 +120,7 @@ const AboutMe = () => {
 								<GitCommitHorizontal className='mx-4 text-[#6E00FD]' /> {'  '}
 								March 2023 - present
 							</span>
-							<div className='ml-8 transition-all duration-500 ease-in-out p-4 transform hover:translate-x-2 text-[#9ca3af] text-sm leading-relaxed '>
+							<div className='ml-8  text-[#9ca3af] text-sm leading-relaxed '>
 								My work mainly involves around Loura, internal CRM tool. I work
 								on the frontend with Nextjs, Typescript, GraphQL, NestJS.
 								Backend with Edgedb. For automation I use n8n hosted on onsite
@@ -133,7 +133,7 @@ const AboutMe = () => {
 							</div>
 						</li>
 					</ul>
-					<ul className='mt-2 ml-8 text-md  list-inside list-image-foundamental'>
+					<ul className='mt-2 ml-8 text-md list-inside list-image-foundamental'>
 						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  p-4 mt-4'>
 							<Image
 								src={'/work/fraunhofer.png'}
@@ -160,7 +160,7 @@ const AboutMe = () => {
 							</p>
 						</li>
 					</ul>
-					<ul className='mt-2 ml-8 text-md  list-inside list-image-accenture'>
+					<ul className='mt-2 ml-8 text-md list-inside list-image-accenture'>
 						<li className='transition-all duration-500 ease-in-out transform hover:translate-x-2  p-4 mt-4'>
 							<Image
 								src={'/work/accenture.png'}

@@ -11,4 +11,3 @@ export const socialLinks: SocialLink[] = [
 	},
 	{ icon: Mail, url: 'mailto:hello@brgv.dev', label: 'Email' },
 ]
-

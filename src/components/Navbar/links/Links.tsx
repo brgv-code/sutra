@@ -1,4 +1,7 @@
+'use client'
+import { memo } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const links = [
 	{
@@ -21,7 +24,6 @@ const links = [
 		text: 'Books',
 		url: '/books/',
 	},
-
 	{
 		id: 5,
 		text: 'Blog',
@@ -43,20 +45,27 @@ const links = [
 	// 	text: 'Notes',
 	// 	url: '/notes/',
 	// },
-]
+] as const
 
-function Links() {
+const Links = memo(function Links() {
+	const pathname = usePathname()
+
 	return (
-		<div>
-			{links.map(link => {
-				const { id, url, text } = link
-				return (
-					<Link href={url} key={id} className='px-2'>
-						{text}
-					</Link>
-				)
-			})}
-		</div>
+		<nav className='flex gap-2' role='navigation' aria-label='Main'>
+			{links.map(({ id, url, text }) => (
+				<Link
+					href={url}
+					key={id}
+					className={`px-2 transition-opacity hover:opacity-80 ${
+						pathname === url ? 'font-bold' : ''
+					}`}
+					aria-current={pathname === url ? 'page' : undefined}
+				>
+					{text}
+				</Link>
+			))}
+		</nav>
 	)
-}
+})
+
 export default Links

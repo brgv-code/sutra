@@ -1,4 +1,3 @@
-// components/MarkdownRenderer.tsx
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import CustomLink from '@/components/ui/rough-notation/custom-links'
@@ -7,6 +6,8 @@ import CustomBold from './ui/rough-notation/custom-bold'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import CodeBlock from './ui/rough-notation/custom-code-block'
+import MermaidDiagram from './MermaidDiagram'
+
 interface CodeProps {
 	children?: React.ReactNode
 	className?: string
@@ -37,6 +38,11 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 		li: (props: any) => <CustomListItem {...props} />,
 		code({ node, inline, className, children, ...props }: any) {
 			const match = /language-(\w+)/.exec(className || '')
+
+			if (!inline && match && match[1] === 'mermaid') {
+				return <MermaidDiagram chart={String(children).trim()} />
+			}
+
 			return !inline && match ? (
 				<CodeBlock className='m-auto w-full'>
 					<SyntaxHighlighter

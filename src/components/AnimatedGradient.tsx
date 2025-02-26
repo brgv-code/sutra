@@ -1,10 +1,13 @@
 'use client'
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+
 type GradientEntry = {
 	baseGradient: string
 	animated: boolean
 }
+
 const gradientMap: Record<string, GradientEntry> = {
 	'/': {
 		baseGradient: '',
@@ -49,16 +52,19 @@ const gradientMap: Record<string, GradientEntry> = {
 	},
 }
 
-export default function AnimatedGradient() {
+const AnimatedGradient = memo(function AnimatedGradient() {
 	const pathname = usePathname()
-	const gradientKey = Object.keys(gradientMap).find(path => {
-		if (path.includes('[slug]')) {
-			const pattern = path.replace('[slug]', '.*')
-			return new RegExp(`^${pattern}$`).test(pathname)
-		}
-		return path === pathname
-	})
-	const { baseGradient, animated } = gradientMap[gradientKey || '/']
+
+	const gradientKey =
+		Object.keys(gradientMap).find(path => {
+			if (path.includes('[slug]')) {
+				const pattern = path.replace('[slug]', '.*')
+				return new RegExp(`^${pattern}$`).test(pathname || '')
+			}
+			return path === pathname
+		}) || '/'
+
+	const { baseGradient, animated } = gradientMap[gradientKey]
 
 	return (
 		<div className='fixed inset-0'>
@@ -68,12 +74,12 @@ export default function AnimatedGradient() {
 			/>
 			{animated && (
 				<motion.div
+					initial={{ opacity: 0 }}
 					animate={{
-						backgroundPosition: ['0% 0%', '100% 100%'],
-						opacity: [0.5, 0.3, 0.1],
+						opacity: [0.3, 0.1, 0.3],
 					}}
 					transition={{
-						duration: 15,
+						duration: 20,
 						repeat: Infinity,
 						repeatType: 'reverse',
 					}}
@@ -82,4 +88,6 @@ export default function AnimatedGradient() {
 			)}
 		</div>
 	)
-}
+})
+
+export default AnimatedGradient
