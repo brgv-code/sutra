@@ -21,11 +21,11 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
 	const pathname = usePathname()
 
 	const getToastColor = () => {
-		if (pathname.startsWith('/blog'))
+		if (pathname?.startsWith('/blog'))
 			return ' border-green-500/50 bg-green-500/20 border'
-		if (pathname.startsWith('/projects'))
+		if (pathname?.startsWith('/projects'))
 			return ' border-purple-500/50 bg-purple-500/20 border'
-		if (pathname.startsWith('/about'))
+		if (pathname?.startsWith('/about'))
 			return ' border-teal-500/50 bg-teal-500/20 border'
 		return ' border-black bg-black/20 border'
 	}

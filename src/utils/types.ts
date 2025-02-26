@@ -1,4 +1,3 @@
-// utils/types.ts
 import { LucideIcon } from 'lucide-react'
 import { ReactNode } from 'react'
 import { MotionValue } from 'framer-motion'

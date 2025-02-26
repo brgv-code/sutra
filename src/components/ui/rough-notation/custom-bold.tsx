@@ -6,6 +6,7 @@ interface CustomBoldProps {
 	children?: React.ReactNode
 	fontSize?: string
 	underline?: boolean
+	className?: string
 }
 
 const CustomBold: React.FC<CustomBoldProps> = ({
@@ -13,6 +14,7 @@ const CustomBold: React.FC<CustomBoldProps> = ({
 	children,
 	fontSize = '3xl',
 	underline = true,
+	className,
 }) => {
 	const defaultGradientColors = ['#fff', '#fff']
 	const colors = gradientColors || defaultGradientColors
@@ -27,7 +29,7 @@ const CustomBold: React.FC<CustomBoldProps> = ({
 
 	return (
 		<h2
-			className={`text-${fontSize} backdrop-blur-xl rounded-2xl  mt-4`}
+			className={`text-${fontSize} backdrop-blur-xl rounded-2xl  mt-4 ${className}`}
 			style={gradientStyle}
 		>
 			{underline && (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { technologies } from '@/data/technologies'
+import { technologies } from '../../../data/technologies'
 
 const TechnologiesCard: React.FC = () => {
 	return (

@@ -91,7 +91,6 @@ export async function pullReadyMarkdownFiles(
 		if (file.endsWith('.md')) {
 			const filePath = path.join(vaultPath, file)
 			const content = fs.readFileSync(filePath, 'utf-8')
-			// Check if the file contains the status "ready"
 			if (content.includes('status: ready')) {
 				readyFiles.push(filePath)
 			}
