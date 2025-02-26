@@ -3,6 +3,8 @@ import { fetchProjects, fetchReadme } from '@/lib/projects'
 import ProjectTechBadge from '@/components/ProjectsTechBadge'
 import ProjectLink from '@/components/ProjectLink'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
+import BackButton from '@/components/ui/BackButton'
+
 async function getProjects() {
 	const projectsPromise = fetchProjects()
 	const [projects] = await Promise.all([projectsPromise])
@@ -17,6 +19,7 @@ export async function generateStaticParams() {
 		})) || []
 	)
 }
+//TODO: fix mobile screens for here and the blog page
 
 export default async function ProjectDetail({
 	params,
@@ -33,10 +36,11 @@ export default async function ProjectDetail({
 	//TODO: add blog links from mdx files
 	return (
 		<div className='relative text-white min-h-screen'>
-			<div className='max-w-[800px] mx-auto px-4 py-20'>
-				<div className='space-y-8'>
+			<div className='max-w-[800px] mx-auto px-4 py-8 sm:py-16 w-full md:px-24'>
+				<BackButton className='mb-6' />
+				<div className='space-y-6 sm:space-y-8'>
 					<div className='space-y-4'>
-						<h1 className='text-4xl font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent'>
+						<h1 className='text-2xl sm:text-4xl font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent'>
 							{project.name}
 						</h1>
 						<ProjectLink
@@ -51,8 +55,9 @@ export default async function ProjectDetail({
 								))}
 						</div>
 					</div>
-					<div className='border border-white/10 rounded-xl p-6 shadow-xl'>
-						<div className='prose prose-invert max-w-none'>
+					<div>
+						<h2 className='text-xl sm:text-2xl font-semibold mb-4'>README</h2>
+						<div className='border border-white/10 rounded-xl p-4 sm:p-6 text-sm sm:text-base'>
 							<MarkdownRenderer content={readme} />
 						</div>
 					</div>
