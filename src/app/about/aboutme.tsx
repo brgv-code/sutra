@@ -25,7 +25,7 @@ const AboutMe = () => {
 					<div className=''>
 						<h2 className='text-2xl font-bold '>About</h2>
 
-						<div className='leading-8 py-4 pl-10'>
+						<div className='leading-relaxed py-4 pl-4 sm:pl-10 text-sm sm:text-base'>
 							Hi I am{' '}
 							<CustomBold
 								className='inline-block'
@@ -34,7 +34,7 @@ const AboutMe = () => {
 								Bhargav
 							</CustomBold>
 							,
-							<div className='mt-4 text-md'>
+							<div className='mt-4 text-sm sm:text-base'>
 								I am developer(student) at{' '}
 								<CustomLink
 									href='https://www.foundamental.com/people/bhargav-babu'
@@ -74,7 +74,7 @@ const AboutMe = () => {
 								{/* I am currently writing my Master thesis on Docker and
 								Kubernetes.{' '} */}
 							</div>
-							<div className='mt-4 text-md'>
+							<div className='mt-4 text-sm sm:text-base'>
 								{' '}
 								I am enthusiastic about{' '}
 								<span className='font-bold'>NextJS</span>,{' '}

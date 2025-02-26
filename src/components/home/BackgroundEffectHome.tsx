@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const BackgroundEffect: React.FC = () => {
 	return (
-		<div className='fixed inset-0'>
+		<div className='fixed inset-0 hidden md:block'>
 			<div className='absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-emerald-500/10' />
 			<motion.div
 				animate={{
