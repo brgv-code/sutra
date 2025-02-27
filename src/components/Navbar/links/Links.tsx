@@ -56,7 +56,7 @@ const Links = memo(function Links({ onLinkClick }: LinksProps) {
 
 	return (
 		<nav
-			className='flex sm:flex-row flex-col gap-6 sm:gap-2'
+			className='flex sm:flex-row flex-col gap-6 sm:gap-2 '
 			role='navigation'
 			aria-label='Main'
 		>
@@ -64,7 +64,7 @@ const Links = memo(function Links({ onLinkClick }: LinksProps) {
 				<Link
 					href={url}
 					key={id}
-					className={`px-2 py-2 text-lg sm:text-base transition-opacity hover:opacity-80 ${
+					className={`px-2 py-2 text-lg sm:text-base ${
 						pathname === url ? 'font-bold' : ''
 					}`}
 					aria-current={pathname === url ? 'page' : undefined}

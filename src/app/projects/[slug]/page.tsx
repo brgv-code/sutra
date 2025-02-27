@@ -3,7 +3,7 @@ import { fetchProjects, fetchReadme } from '@/lib/projects'
 import ProjectTechBadge from '@/components/ProjectsTechBadge'
 import ProjectLink from '@/components/ProjectLink'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
-import BackButton from '@/components/ui/BackButton'
+import BackButton from '@/components/BackButton'
 
 async function getProjects() {
 	const projectsPromise = fetchProjects()
@@ -36,7 +36,7 @@ export default async function ProjectDetail({
 	//TODO: add blog links from mdx files
 	return (
 		<div className='relative text-white min-h-screen'>
-			<div className='max-w-[800px] mx-auto px-4 py-8 sm:py-16 w-full md:px-24'>
+			<div className='mx-auto px-4 py-8 sm:py-16 sm:w-[1/2] w-[60%] '>
 				<BackButton className='mb-6' />
 				<div className='space-y-6 sm:space-y-8'>
 					<div className='space-y-4'>

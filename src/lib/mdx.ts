@@ -16,7 +16,7 @@ export type FrontMatter = {
 
 export async function getFiles(type: string) {
 	const files = fs.readdirSync(path.join(root, 'data', type))
-	return files.filter(file => file.endsWith('.mdx'))
+	return files.filter(file => file.endsWith('.mdx') || file.endsWith('.md'))
 }
 
 export async function getFileBySlug(type: string, slug: string) {
@@ -26,7 +26,6 @@ export async function getFileBySlug(type: string, slug: string) {
 			'utf8',
 		)
 		const { data, content } = matter(source)
-
 		return {
 			contentHtml: content,
 			frontMatter: {
@@ -62,9 +61,12 @@ export async function getAllFilesFrontMatter(
 					'utf8',
 				)
 				const { data } = matter(source)
+				if (data.created instanceof Date) {
+					data.created = data.created.toISOString().split('T')[0]
+				}
 				return {
 					...(data as FrontMatter),
-					slug: file.replace('.mdx', ''),
+					slug: file.replace(/\.(mdx|md)$/, ''),
 				}
 			}),
 		)
@@ -72,7 +74,9 @@ export async function getAllFilesFrontMatter(
 		const a = posts
 			.filter((post): post is FrontMatter => Boolean(post.created))
 			.sort((a, b) => {
-				return new Date(b.created).getTime() - new Date(a.created).getTime()
+				const dateA = new Date(a.created).getTime()
+				const dateB = new Date(b.created).getTime()
+				return dateB - dateA
 			})
 		return a
 	} catch (error) {
