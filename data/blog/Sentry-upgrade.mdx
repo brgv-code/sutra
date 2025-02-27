@@ -7,6 +7,8 @@ tags:
   - Error Tracking
 description: 'Disabling Sentry in Development'
 project: loura-ui
+slug: 'Sentry-upgrade'
+status: 'archive'
 ---
 
 We recently made a change to disable Sentry error monitoring and source maps in
@@ -79,13 +81,5 @@ This ensures that:
 
 - The latest integrations are used.
 - Sentry is only active in non-development environments.
-
-### Updating `next.config.js`
-
-A minor cleanup was performed by removing an unnecessary blank line.
-
-```diff
--\n //@ts-check
-```
 
 This doesn’t impact functionality but helps maintain clean code.

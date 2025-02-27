@@ -160,8 +160,6 @@ body::before {
 		rgba(255, 255, 255, 0.035) 0px 3px 5.4px -2px inset;
 }
 
-
-
 .contact {
 	border: 2px solid;
 	background-color: rgba(255, 255, 255, 0.002);
@@ -829,4 +827,75 @@ li > p {
 
 .book-transform:hover {
 	transform: rotateY(-10deg);
+}
+
+/* Add these styles to your globals.css file */
+
+.markdown-content {
+	@apply max-w-full break-words;
+}
+
+.markdown-content pre {
+	@apply w-full overflow-x-auto my-4 rounded-lg;
+	/* Enable horizontal scrolling with visible scrollbar */
+	scrollbar-width: thin;
+}
+
+/* Style the scrollbar for webkit browsers */
+.markdown-content pre::-webkit-scrollbar {
+	@apply h-2;
+}
+
+.markdown-content pre::-webkit-scrollbar-track {
+	@apply bg-gray-800 rounded-b-lg;
+}
+
+.markdown-content pre::-webkit-scrollbar-thumb {
+	@apply bg-gray-600 rounded-full;
+}
+
+/* Preserve whitespace in code blocks but allow scrolling */
+.markdown-content pre code {
+	@apply whitespace-pre;
+	width: max-content;
+}
+
+/* Ensure other elements don't overflow */
+.markdown-content img,
+.markdown-content video {
+	@apply max-w-full h-auto;
+}
+
+.markdown-content table {
+	@apply block w-full overflow-x-auto;
+}
+
+/* Handle inline code differently than block code */
+.markdown-content p code {
+	@apply break-words whitespace-normal;
+}
+
+/* Add styles for the reading progress bar */
+.reading-progress {
+	--progress-color: #ffdd00;
+	--progress-gradient: linear-gradient(90deg, #ffdd00, #ffa500, #ff8c00);
+	--progress-glow: 0 0 10px rgba(255, 221, 0, 0.7);
+}
+
+.reading-progress::-webkit-progress-bar {
+	background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+	background-image: var(--progress-gradient);
+	box-shadow: var(--progress-glow);
+	border-radius: 0 4px 4px 0;
+	transition: width 200ms ease-out;
+}
+
+.reading-progress::-moz-progress-bar {
+	background-image: var(--progress-gradient);
+	box-shadow: var(--progress-glow);
+	border-radius: 0 4px 4px 0;
+	transition: width 200ms ease-out;
 }

@@ -11,7 +11,6 @@ export default function ProjectCard({ project }: { project: Project }) {
 	const springConfig = { damping: 25, stiffness: 150 }
 	const smoothX = useSpring(mouseX, springConfig)
 	const smoothY = useSpring(mouseY, springConfig)
-
 	useEffect(() => {
 		const handleMouseMove = (e: MouseEvent) => {
 			mouseX.set(e.clientX)
