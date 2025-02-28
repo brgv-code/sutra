@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import CustomLink from '@/components/ui/rough-notation/custom-links'
 import CustomListItem from '@/components/ui/rough-notation/custom-list'
 import CustomBold from './ui/rough-notation/custom-bold'
@@ -36,6 +37,36 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 		h3: (props: any) => <CustomBold fontSize='xl' {...props} />,
 		a: (props: any) => <CustomLink {...props} />,
 		li: (props: any) => <CustomListItem {...props} />,
+		table: (props: any) => (
+			<div className='overflow-x-auto my-4'>
+				<table
+					className='min-w-full border-collapse border border-gray-700'
+					{...props}
+				/>
+			</div>
+		),
+		thead: (props: any) => <thead className='bg-gray-800' {...props} />,
+		tbody: (props: any) => <tbody className='bg-gray-900' {...props} />,
+		tr: (props: any) => <tr className='border-b border-gray-700' {...props} />,
+		th: (props: any) => (
+			<th
+				className='px-4 py-2 text-left font-bold border-r border-gray-700 last:border-r-0'
+				{...props}
+			/>
+		),
+		td: (props: any) => (
+			<td
+				className='px-4 py-2 border-r border-gray-700 last:border-r-0'
+				{...props}
+			/>
+		),
+		img: (props: any) => (
+			<img
+				{...props}
+				className='inline-block mr-1 mb-0 align-middle'
+				style={{ display: 'inline-block' }}
+			/>
+		),
 		code({ node, inline, className, children, ...props }: any) {
 			const match = /language-(\w+)/.exec(className || '')
 
@@ -77,7 +108,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 
 	return (
 		<div className={`prose prose-invert max-w-none ${className}`}>
-			<ReactMarkdown components={components}>{content}</ReactMarkdown>
+			<ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
+				{content}
+			</ReactMarkdown>
 		</div>
 	)
 }
