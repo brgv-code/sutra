@@ -51,7 +51,7 @@ export default function RootLayout({
 				<AnimatedGradient />
 				<Navbar />
 				<ToastProvider>
-					<main className='md:px-24  px-4'>{children}</main>
+					<main >{children}</main>
 				</ToastProvider>
 				<Analytics />
 				<SpeedInsights />

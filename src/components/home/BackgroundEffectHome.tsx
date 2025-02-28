@@ -15,7 +15,7 @@ const BackgroundEffect: React.FC = () => {
 					repeat: Infinity,
 					repeatType: 'reverse',
 				}}
-				className='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1),transparent)] bg-[length:400%_400%]'
+				className='absolute w-full h-full inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1),transparent)] bg-[length:400%_400%]'
 			/>
 		</div>
 	)
