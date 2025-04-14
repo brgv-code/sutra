@@ -61,7 +61,9 @@ export async function fetchProjects(): Promise<Project[] | null> {
 	const projects = (await Promise.all(projectPromises).then(results =>
 		results.filter(Boolean),
 	)) as Project[]
-	return projects
+	return projects.sort((a, b) => {
+		return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+	})
 }
 
 export async function fetchReadme(
