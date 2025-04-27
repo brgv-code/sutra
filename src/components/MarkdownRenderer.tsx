@@ -30,11 +30,36 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 	className = '',
 }) => {
 	const components = {
-		h1: (props: any) => <CustomBold {...props} />,
-		h2: (props: any) => (
-			<CustomBold fontSize='2xl' underline={false} {...props} />
-		),
-		h3: (props: any) => <CustomBold fontSize='xl' {...props} />,
+		h1: (props: any) => {
+			const id =
+				typeof props.children === 'string'
+					? props.children
+							.toLowerCase()
+							.replace(/\s+/g, '-')
+							.replace(/[^\w-]/g, '')
+					: ''
+			return <CustomBold id={id} {...props} />
+		},
+		h2: (props: any) => {
+			const id =
+				typeof props.children === 'string'
+					? props.children
+							.toLowerCase()
+							.replace(/\s+/g, '-')
+							.replace(/[^\w-]/g, '')
+					: ''
+			return <CustomBold id={id} fontSize='2xl' underline={false} {...props} />
+		},
+		h3: (props: any) => {
+			const id =
+				typeof props.children === 'string'
+					? props.children
+							.toLowerCase()
+							.replace(/\s+/g, '-')
+							.replace(/[^\w-]/g, '')
+					: ''
+			return <CustomBold id={id} fontSize='xl' {...props} />
+		},
 		a: (props: any) => <CustomLink {...props} />,
 		li: (props: any) => <CustomListItem {...props} />,
 		table: (props: any) => (
@@ -107,7 +132,10 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 	}
 
 	return (
-		<div className={`prose prose-invert max-w-none ${className}`}>
+		<div
+			className={`prose prose-invert max-w-none ${className}`}
+			data-testid='markdown-renderer'
+		>
 			<ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
 				{content}
 			</ReactMarkdown>

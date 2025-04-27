@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import SearchableBlogList from '@/components/SearchableBlogList'
 

@@ -46,8 +46,8 @@ export default function SearchableBlogList({
 
 	return (
 		<>
-			<h1 className='text-2xl font-semibold'>Blog</h1>
-			<p className='text-gray-400'>
+			<h1 className='sm:m-2 text-2xl font-semibold'>Blog</h1>
+			<p className='sm:m-2 text-gray-400'>
 				Thoughts on development, design, and more.
 			</p>
 			<div className='max-w-4xl mx-auto w-screen'>

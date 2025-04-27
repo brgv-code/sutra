@@ -1,9 +1,11 @@
-import { getFileBySlug, getFiles } from '@/lib/mdx'
+import { getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 import 'highlight.js/styles/github-dark.css'
 import { Space_Mono } from 'next/font/google'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
 import { notFound } from 'next/navigation'
 import BackButton from '@/components/BackButton'
+import TableOfContents from '@/components/ui/TableOfContents'
+import RecommendedPosts from '@/components/ui/RecommendedPosts'
 
 const mono = Space_Mono({
 	weight: ['400', '700'],
@@ -24,15 +26,44 @@ export default async function BlogPost({
 	params: { slug: string }
 }) {
 	const post = await getFileBySlug('blog', params.slug)
+	const allPosts = await getAllFilesFrontMatter('blog')
+
+	const relatedPosts = allPosts
+		.filter((p: { slug: string }) => p.slug !== params.slug)
+		.filter(p => {
+			if (post?.frontMatter.tags && p.tags) {
+				return post.frontMatter.tags.some(tag => p.tags?.includes(tag))
+			}
+			return false
+		})
+		.slice(0, 3)
+
+	if (relatedPosts.length < 3) {
+		const recentPosts = allPosts
+			.filter((p: { slug: string }) => p.slug !== params.slug)
+			.filter(
+				(p: { slug: any }) =>
+					!relatedPosts.some((rp: { slug: any }) => rp.slug === p.slug),
+			)
+			.slice(0, 3 - relatedPosts.length)
+
+		relatedPosts.push(...recentPosts)
+	}
 	if (!post) {
 		notFound()
 	}
 	return (
-		<div
-			className={`text-white min-h-screen ${mono.variable} overflow-x-hidden`}
-		>
-			<div className='w-full flex justify-center'>
-				<article className='w-full md:w-3/5 px-4 md:px-8 py-8 md:py-16'>
+		<div className='w-full flex justify-center'>
+			<div className=' max-w-8xl flex top-0  flex-col md:flex-row px-4 gap-6 md:gap-8 py-8 relative'>
+				<div className='md:order-1 hidden md:block'>
+					<aside className='sticky top-[20dvh]'>
+						<div className='border border-white/10 rounded-xl  p-4 shadow-xl bg-gray-900/40 backdrop-blur-sm'>
+							<TableOfContents content={post.contentHtml} />
+						</div>
+					</aside>
+				</div>
+				{/* Main Content */}
+				<article className='w-[90dvw] md:w-3/5 order-1 md:order-2 px-0 md:px-4 py-0 md:py-8  '>
 					<BackButton className='mb-6' />
 					<header className='mb-8 md:mb-12'>
 						<h1 className='font-mono text-2xl md:text-4xl font-bold mb-4 leading-tight break-words'>
@@ -42,7 +73,6 @@ export default async function BlogPost({
 							{post.frontMatter.created}
 						</time>
 					</header>
-					{/* Add tags here with styling similar to technology cards component */}
 
 					<div className='flex flex-wrap gap-2 mb-4'>
 						{post.frontMatter.tags?.map(tag => (
@@ -54,13 +84,22 @@ export default async function BlogPost({
 							</span>
 						))}
 					</div>
-					<div className='w-full overflow-hidden'>
+					<div className=' overflow-hidden'>
 						<MarkdownRenderer
-							className={`border border-white/10 rounded-xl p-5 md:p-6 shadow-xl text-sm md:text-base `}
+							className='border border-white/10 rounded-xl p-5 md:p-6 shadow-xl text-sm md:text-base'
 							content={post.contentHtml}
 						/>
 					</div>
 				</article>
+
+				<div className='md:w-1/5 md:order-3 md:right-8 '>
+					<aside className=' hidden md:block sticky top-[20dvh]'>
+						{' '}
+						<div className='border  border-white/10 rounded-xl p-4 shadow-xl bg-gray-900/40 backdrop-blur-sm'>
+							<RecommendedPosts posts={relatedPosts} />
+						</div>
+					</aside>
+				</div>
 			</div>
 		</div>
 	)

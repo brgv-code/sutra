@@ -138,11 +138,11 @@ height.
 Significant changes were made to `DealFlowList.tsx`, `StageContent.tsx`, and
 `useLoadDealflow.ts`. Here’s a key snippet from the diff:
 
-```diff
--  dealflowEntries: DealflowEntry[] | undefined
-+  dealflowStageResults: Record<string, DealflowEntry[] | undefined>
-+  loadingStates: Record<string, boolean>
-+  sentryRefs: Record<string, IntersectionObserverHookRefCallback>
+```tsx
+- dealflowEntries: DealflowEntry[] | undefined
+* dealflowStageResults: Record<string, DealflowEntry[] | undefined>
+* loadingStates: Record<string, boolean>
+* sentryRefs: Record<string, IntersectionObserverHookRefCallback>
 ```
 
 This change allows the `DealFlowList` component to handle multiple stages
