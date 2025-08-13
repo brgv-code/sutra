@@ -1,0 +1,310 @@
+---
+title:
+  'From One-Way Blog to Interactive Community: Why I Chose Giscus for Developer
+  Comments'
+created: '2025-08-13'
+description:' Github powered comments: Why Giscus just works'
+tags:
+  - Github
+  - Giscus
+  - Developer Blog
+  - Comments System
+  - React
+  - Next.js
+  - Portfolio Website
+
+project: sutra
+---
+
+# From One-Way Blog to Interactive Community: Why I Chose Giscus for Developer Comments
+
+## The Problem: When Your Blog Becomes a Dead End
+
+After building the core features of my [portfolio](https://bhargav.dev) website
+markdown support, different sections, clean design, I had to stop working on the
+project to focus on work and my university thesis. But one thing always stuck in
+my mind: **I didn't want my blog to be one-directional**.
+
+You know the feeling. People read your content, and if they want to discuss
+something, they have to hunt down your email, search for your social media
+handles, or just... give up. It happend with me with most of the personal blogs
+I read and I got a few queries like that, and it feel good me every time.
+
+I wanted my blog to be interactive. I wanted people to discuss the content,
+whether I was right or wrong, if something could be done better. Most
+importantly, I wanted every individual post to have its own discussion,
+abstracted from others.
+
+## My First Attempt: The Custom Solution Trap
+
+Without any research (rookie mistake), I spun up a PostgreSQL database instance
+and started building a comment component from scratch. User authentication,
+comment storage, moderation, spam prevention, the whole nine yards.
+
+Then reality hit. Work deadlines, thesis pressure, and the complexity of
+building a robust comment system made me abandon the project entirely.
+
+Sound familiar? Here's what I was signing up for:
+
+- **Database management**: Comments, users, sessions, replies
+- **Authentication system**: User registration, login, password resets
+- **Spam prevention**: Manual moderation, filtering algorithms
+- **Security concerns**: SQL injection, XSS attacks, data breaches
+- **Backup strategies**: What happens when the database fails?
+- **Scaling issues**: What if a post goes viral?
+
+For a simple portfolio blog, this was overkill.
+
+## The Discovery: How TkDodo's Blog Changed Everything
+
+Fast forward to recently. I was reading
+[TkDodo's excellent blog on React Query](https://tkdodo.eu/blog/react-query-selectors-supercharged),
+diving deep into React Query Selectors, when I scrolled to the comments section.
+
+![[images/Screenshot 2025-08-13 at 14.05.20.png]] I liked how the comments
+looked clean, professional, and integrated seamlessly with the design. But I
+didn't see any sign-in buttons on the blog, registration forms, or the typical
+comment system bloat. Yet there were active discussions, threaded replies, and
+what looked like real developer engagement.
+
+Questions immediately popped into my head:
+
+- How is he handling data transfer?
+- How are user profiles enabled without a sign-in function?
+- Where is this data being stored?
+
+Then I saw it: "powered by giscus" written in small letters at the bottom.
+
+Following the trail led me to the
+[giscus GitHub page](https://github.com/giscus/giscus), and it checked all my
+boxes. But I'm a thorough developer, so I researched the alternatives.
+
+## Why Giscus Over the Alternatives
+
+Utterences and Discus were the alternatives that I could find. I wasn't the only
+developer facing this decision. Jake Lee documented
+his [migration from Utterances to Giscus](https://blog.jakelee.co.uk/migrating-from-utterances-to-giscus-comments/),
+highlighting that giscus uses GitHub Discussions instead of Issues and supports
+threaded replies. Rob
+Hyndman [migrated from Disqus](https://robjhyndman.com/hyndsight/disqus2giscus.html) citing
+giscus's lightweight nature and lack of tracking. As the creator of giscus
+writes in his blog GitHub Discussions are designed specifically for
+conversations, making them the natural choice for blog comments. As per a custom
+solution goes, I wanted to finish my project and not reinvent the wheel by
+building a comment system from scratch.
+
+## Implementation: From Idea to Working Comments
+
+Here's exactly how I implemented giscus on my portfolio:
+
+### Step 1: Repository Setup
+
+1. **Enable GitHub Discussions** on your repository:
+   - Go to `https://github.com/your-username/your-repo/settings`
+   - Scroll to "Features" section
+   - Check "Discussions" ![[images/Screenshot 2025-08-13 at 14.13.30.png]]
+1. **Create a comment category** (optional but recommended):
+   - Go to your repository's Discussions tab
+   - Create a new category called "Blog Comments"
+   - Set it as the default for new discussions
+
+### Step 2: Giscus Configuration
+
+1. **Install the Giscus app** on your repository:
+
+   - Visit [giscus.app](https://giscus.app)
+   - Connect your GitHub account
+   - Select your repository
+
+2. **Configure your preferences**:
+
+   ```
+   Repository: your-username/your-repo
+   Page ↔️ Discussions Mapping: Discussion title contains page pathname
+   Discussion Category: Blog Comments (or General)
+   Features: ✅ Enable reactions, ✅ Emit discussion metadata
+   Theme: Choose based on your site design
+   ```
+
+3. **Copy the generated script tag** - you'll need this for integration.
+
+### Step 3: React Component Implementation (15 minutes)
+
+Giscus also has a react component which you can just plug into your project
+along with teh correct environment variables or the setup script. Here's the
+React component I built for my Next.js portfolio:
+
+```tsx
+'use client'
+
+import Giscus from '@giscus/react'
+
+interface GiscusCommentsProps {
+	slug: string
+
+	title: string
+
+	className?: string
+}
+
+export default function GiscusComments({
+	slug,
+	title,
+	className = '',
+}: GiscusCommentsProps) {
+	return (
+		<section
+			className={`comments-section mt-8 md:mt-12 ${className}`}
+			aria-label={`Comments for ${title}`}
+		>
+			<div className='border border-white/10 rounded-xl p-5 md:p-6 shadow-xl bg-gray-900/40 backdrop-blur-sm'>
+				<div className='mb-4'>
+					<h3 className='text-xl font-mono font-bold text-white mb-2'>
+						💬 Comments
+					</h3>
+				</div>
+
+				<Giscus
+					id='comments'
+					repo={
+						(process.env.NEXT_PUBLIC_GISCUS_REPO as `${string}/${string}`) ||
+						'brgv-code/sutra'
+					}
+					repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID || ''}
+					category={process.env.NEXT_PUBLIC_GISCUS_CATEGORY || 'Announcements'}
+					categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID || ''}
+					mapping='pathname'
+					strict='0'
+					reactionsEnabled='1'
+					emitMetadata='1'
+					inputPosition='bottom'
+					theme='transparent_dark'
+					lang='en'
+					loading='lazy'
+				/>
+			</div>
+		</section>
+	)
+}
+```
+
+### Step 4: Environment Variables
+
+Create a `.env.local` file with your giscus configuration:
+
+```env
+NEXT_PUBLIC_GISCUS_REPO=your-username/your-repo
+NEXT_PUBLIC_GISCUS_REPO_ID=your_repo_id_from_giscus_app
+NEXT_PUBLIC_GISCUS_CATEGORY=Blog Comments
+NEXT_PUBLIC_GISCUS_CATEGORY_ID=your_category_id_from_giscus_app
+```
+
+You can get these values from the [giscus.app](https://giscus.app) configuration
+page.
+
+### Step 5: Integration with Blog Posts
+
+In your blog post component:
+
+```tsx
+import GiscusComments from '@/components/GiscusComments'
+
+export default function BlogPost({ params }: { params: { slug: string } }) {
+	const post = getPostBySlug(params.slug)
+
+	return (
+		<article className='max-w-4xl mx-auto px-4 py-8'>
+			<header className='mb-8'>
+				<h1 className='text-3xl font-bold mb-4'>{post.title}</h1>
+				<time className='text-gray-600'>{post.date}</time>
+			</header>
+
+			<div
+				className='prose dark:prose-invert max-w-none'
+				dangerouslySetInnerHTML={{ __html: post.content }}
+			/>
+
+			{/* Comments Section */}
+			<GiscusComments slug={params.slug} title={post.title} className='mt-12' />
+		</article>
+	)
+}
+```
+
+## What I Learned: The Benefits in Practice
+
+![[images/Screenshot 2025-08-12 at 21.33.28.png]] After implementing giscus,
+here's what actually happened:
+
+### For Readers
+
+- **Zero friction**: No new accounts to create
+- **Familiar interface**: GitHub's discussion UI they already know
+- **Professional identity**: Comments tied to their GitHub profile
+- **Rich formatting**: Full markdown support with syntax highlighting
+- **Proper notifications**: GitHub's notification system actually works
+
+### For Me as a Developer
+
+- **Zero maintenance**: No database to manage or backup
+- **Built-in moderation**: GitHub's spam detection and user blocking
+- **Version controlled comments**: All discussions backed up in Git
+- **Professional discussions**: Higher quality conversations from verified
+  developers
+- **No vendor lock-in**: If I ever want to migrate, all data stays in my repo
+
+### Performance Impact
+
+- **Lazy loading**: Comments only load when users scroll to them
+- **Small bundle**: Minimal JavaScript footprint
+- **CDN delivery**: Served from GitHub's global infrastructure
+- **No database queries**: Zero impact on my site's response time
+
+## Common Issues and Solutions
+
+### Issue 1: "Discussion Not Found"
+
+**Problem**: Category mismatch between giscus config and GitHub repository.
+
+**Solution**: Double-check that your category name in environment variables
+exactly matches what you created in GitHub Discussions.
+
+### Issue 2: Comments Not Loading
+
+**Troubleshooting checklist**:
+
+- [ ] Repository is public
+- [ ] Discussions are enabled in repository settings
+- [ ] Giscus app is installed on your repository
+- [ ] Environment variables are correctly set
+- [ ] No console errors in browser dev tools
+
+### Issue 3: Theme Not Matching
+
+**Problem**: Giscus theme doesn't match your site's dark/light mode.
+
+**Solution**: Use `preferred_color_scheme` for automatic theme switching, or
+implement dynamic theme changing:
+
+```tsx
+// Dynamic theme switching
+const theme = isDarkMode ? 'dark' : 'light'
+script.setAttribute('data-theme', theme)
+```
+
+## Final Thoughts
+
+What started as a need for basic interactivity turned into discovering the
+perfect solution for developer blogs. Giscus eliminates all the complexity of
+traditional comment systems while providing a superior experience for both
+readers and content creators.
+
+If you're building a developer blog and want comments that your audience will
+actually use, give giscus a try. Your future self (and your readers) will thank
+you.
+
+---
+
+_This implementation powers the comment system on this very blog. Try it out by
+leaving a comment below - no new accounts needed if you're already signed into
+GitHub!_

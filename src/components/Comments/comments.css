@@ -1,0 +1,151 @@
+/* Giscus Theme Customization for Sutra Blog */
+.giscus-container {
+	color-scheme: dark;
+}
+
+/* Main container styling */
+.giscus {
+	--color-prettylights-syntax-comment: #8b949e;
+	--color-prettylights-syntax-constant: #79c0ff;
+	--color-prettylights-syntax-entity: #d2a8ff;
+	--color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+	--color-prettylights-syntax-entity-tag: #7ee787;
+	--color-prettylights-syntax-keyword: #ff7b72;
+	--color-prettylights-syntax-string: #a5d6ff;
+	--color-prettylights-syntax-variable: #ffa657;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+	--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+	--color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+	--color-prettylights-syntax-carriage-return-text: #f0f6fc;
+	--color-prettylights-syntax-carriage-return-bg: #b62324;
+	--color-prettylights-syntax-string-regexp: #7ee787;
+	--color-prettylights-syntax-markup-list: #f2cc60;
+	--color-prettylights-syntax-markup-heading: #1f6feb;
+	--color-prettylights-syntax-markup-italic: #c9d1d9;
+	--color-prettylights-syntax-markup-bold: #c9d1d9;
+	--color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+	--color-prettylights-syntax-markup-deleted-bg: #67060c;
+	--color-prettylights-syntax-markup-inserted-text: #aff5b4;
+	--color-prettylights-syntax-markup-inserted-bg: #033a16;
+	--color-prettylights-syntax-markup-changed-text: #ffdfb6;
+	--color-prettylights-syntax-markup-changed-bg: #5a1e02;
+	--color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+	--color-prettylights-syntax-markup-ignored-bg: #1158c7;
+	--color-prettylights-syntax-meta-diff-range: #d2a8ff;
+	--color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+	--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+	--color-fg-default: #c9d1d9;
+	--color-fg-muted: #8b949e;
+	--color-fg-subtle: #6e7681;
+	--color-canvas-default: transparent;
+	--color-canvas-subtle: rgba(255, 255, 255, 0.05);
+	--color-border-default: rgba(255, 255, 255, 0.1);
+	--color-border-muted: rgba(255, 255, 255, 0.05);
+	--color-neutral-muted: rgba(110, 118, 129, 0.4);
+	--color-accent-fg: #58a6ff;
+	--color-accent-emphasis: #1f6feb;
+	--color-attention-subtle: rgba(187, 128, 9, 0.15);
+	--color-danger-fg: #f85149;
+}
+
+/* Comment form styling */
+.giscus .gsc-comment-box {
+	background: rgba(31, 41, 55, 0.5) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	border-radius: 0.75rem !important;
+}
+
+.giscus .gsc-comment-box-textarea {
+	background: transparent !important;
+	color: #c9d1d9 !important;
+	font-family: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono',
+		Consolas, 'Courier New', monospace !important;
+}
+
+/* Comment styling */
+.giscus .gsc-comment {
+	background: rgba(31, 41, 55, 0.3) !important;
+	border: 1px solid rgba(255, 255, 255, 0.05) !important;
+	border-radius: 0.75rem !important;
+	margin-bottom: 1rem !important;
+}
+
+.giscus .gsc-comment-header {
+	padding: 1rem 1rem 0.5rem 1rem !important;
+}
+
+.giscus .gsc-comment-content {
+	padding: 0.5rem 1rem 1rem 1rem !important;
+	color: #c9d1d9 !important;
+}
+
+/* Avatar styling */
+.giscus .gsc-comment-author-avatar {
+	border-radius: 50% !important;
+	border: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Button styling */
+.giscus .gsc-comment-box-buttons .gsc-comment-box-button,
+.giscus .gsc-reply-box-buttons .gsc-reply-box-button {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+	border: none !important;
+	border-radius: 0.5rem !important;
+	color: white !important;
+	font-weight: 600 !important;
+	transition: all 0.2s ease !important;
+}
+
+.giscus .gsc-comment-box-buttons .gsc-comment-box-button:hover,
+.giscus .gsc-reply-box-buttons .gsc-reply-box-button:hover {
+	transform: translateY(-1px) !important;
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Loading state */
+.giscus .gsc-loading {
+	color: #8b949e !important;
+}
+
+/* Reaction buttons */
+.giscus .gsc-reactions-button {
+	background: rgba(255, 255, 255, 0.05) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	border-radius: 1rem !important;
+	color: #c9d1d9 !important;
+	transition: all 0.2s ease !important;
+}
+
+.giscus .gsc-reactions-button:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+	transform: translateY(-1px) !important;
+}
+
+/* Sign in button */
+.giscus .gsc-comment-box-signin {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+	border: none !important;
+	border-radius: 0.75rem !important;
+	color: white !important;
+	font-weight: 600 !important;
+	padding: 0.75rem 1.5rem !important;
+	transition: all 0.2s ease !important;
+}
+
+.giscus .gsc-comment-box-signin:hover {
+	transform: translateY(-1px) !important;
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.giscus .gsc-comment {
+		margin-bottom: 0.75rem !important;
+	}
+
+	.giscus .gsc-comment-header,
+	.giscus .gsc-comment-content {
+		padding: 0.75rem !important;
+	}
+}
