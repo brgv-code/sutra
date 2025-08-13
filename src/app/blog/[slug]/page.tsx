@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation'
 import BackButton from '@/components/BackButton'
 import TableOfContents from '@/components/ui/TableOfContents'
 import RecommendedPosts from '@/components/ui/RecommendedPosts'
+import GiscusComments from '@/components/Comments/GiscusComments'
+import '@/components/Comments/comments.css'
 
 const mono = Space_Mono({
 	weight: ['400', '700'],
@@ -90,6 +92,9 @@ export default async function BlogPost({
 							content={post.contentHtml}
 						/>
 					</div>
+
+					{/* Comments Section */}
+					<GiscusComments slug={params.slug} title={post.frontMatter.title} />
 				</article>
 
 				<div className='md:w-1/5 md:order-3 md:right-8 '>
