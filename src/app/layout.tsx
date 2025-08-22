@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import dynamicImport from 'next/dynamic'
-import { Fira_Mono } from 'next/font/google'
+import { Fira_Mono, Nunito } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ToastProvider } from '@/context/ToastContext'
@@ -18,7 +18,7 @@ const Navbar = dynamicImport(() => import('@/components/Navbar/Navbar'), {
 	ssr: false,
 })
 
-const fira = Fira_Mono({
+const fira = Nunito({
 	weight: ['400', '500', '700'],
 	subsets: ['latin-ext'],
 	display: 'swap',
@@ -51,7 +51,7 @@ export default function RootLayout({
 				<AnimatedGradient />
 				<Navbar />
 				<ToastProvider>
-					<main >{children}</main>
+					<main>{children}</main>
 				</ToastProvider>
 				<Analytics />
 				<SpeedInsights />
