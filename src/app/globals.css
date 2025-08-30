@@ -866,6 +866,16 @@ li > p {
 	@apply max-w-full h-auto;
 }
 
+/* Enhanced video styling */
+.video-container {
+	@apply w-full flex justify-center;
+}
+
+.video-container video {
+	@apply rounded-lg shadow-lg max-w-full;
+	background: #000;
+}
+
 .markdown-content table {
 	@apply block w-full overflow-x-auto;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import CustomLink from '@/components/ui/rough-notation/custom-links'
 import CustomListItem from '@/components/ui/rough-notation/custom-list'
 import CustomBold from './ui/rough-notation/custom-bold'
@@ -29,6 +30,11 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 	content,
 	className = '',
 }) => {
+	const processedContent = content.replace(
+		/(https:\/\/github\.com\/(user-attachments\/assets|[^\/]+\/[^\/]+\/assets)\/[a-f0-9-]+)/g,
+		'<video src="$1" controls class="w-full max-w-4xl rounded-lg shadow-lg my-6 block mx-auto" preload="metadata" playsInline>Your browser does not support the video tag.</video>',
+	)
+
 	const components = {
 		h1: (props: any) => {
 			const id =
@@ -86,11 +92,30 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 			/>
 		),
 		img: (props: any) => (
+			//need to update to Image component
 			<img
 				{...props}
+				alt={props.alt || ''}
 				className='inline-block mr-1 mb-0 align-middle'
 				style={{ display: 'inline-block' }}
 			/>
+		),
+		video: (props: any) => (
+			<video
+				{...props}
+				controls
+				className='w-full max-w-4xl rounded-lg shadow-lg my-6'
+				style={{ display: 'block', margin: '0 auto' }}
+				preload='metadata'
+				playsInline
+			>
+				Your browser does not support the video tag.
+				{props.src && (
+					<a href={props.src} target='_blank' rel='noopener noreferrer'>
+						View video
+					</a>
+				)}
+			</video>
 		),
 		code({ node, inline, className, children, ...props }: any) {
 			const match = /language-(\w+)/.exec(className || '')
@@ -136,8 +161,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 			className={`prose prose-invert max-w-none ${className}`}
 			data-testid='markdown-renderer'
 		>
-			<ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
-				{content}
+			<ReactMarkdown
+				components={components}
+				remarkPlugins={[remarkGfm]}
+				rehypePlugins={[rehypeRaw]}
+			>
+				{processedContent}
 			</ReactMarkdown>
 		</div>
 	)

@@ -5,6 +5,7 @@ export async function fetchProjects(): Promise<Project[] | null> {
 		'https://api.github.com/users/brgv-code/repos?per_page=100&page=1',
 		{
 			headers: {
+				'User-Agent': 'sutra-blog-app',
 				...(process.env.GITHUB_PAT && {
 					authorization: `token ${process.env.GITHUB_PAT}`,
 				}),
@@ -75,6 +76,7 @@ export async function fetchReadme(
 	const response = await fetch(url, {
 		headers: {
 			Accept: 'application/vnd.github.v3.raw',
+			'User-Agent': 'sutra-blog-app',
 			...(process.env.GITHUB_PAT && {
 				Authorization: `token ${process.env.GITHUB_PAT}`,
 			}),
