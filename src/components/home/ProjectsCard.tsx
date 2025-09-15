@@ -1,53 +1,53 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Code, ArrowRight } from 'lucide-react'
+import { Code, ExternalLink } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { latestProjects } from '../../../data/projects'
+import type { Project } from '@/types'
 
-const ProjectsCard: React.FC = () => {
+type Props = {
+	projects: Project[] | null
+}
+
+export default function ProjectsCard({ projects }: Props) {
 	const router = useRouter()
+	const list = (projects ?? []).slice(0, 3)
 
 	return (
 		<div className='p-4 md:p-6 h-full flex flex-col'>
-			<div className='flex items-center justify-between mb-4'>
-				<div className='flex items-center gap-2'>
-					<motion.div
-						animate={{ rotate: [0, 10, 0] }}
-						transition={{ duration: 2, repeat: Infinity }}
-					>
-						<Code className='text-purple-400' size={20} />
-					</motion.div>
-					<h2 className='font-semibold'>Latest Projects</h2>
-				</div>
+			<div className='flex items-center justify-between mb-3'>
+				<motion.div
+					animate={{ rotate: [0, 10, 0] }}
+					transition={{ duration: 2, repeat: Infinity }}
+				>
+					<Code className='text-purple-400' size={20} />
+				</motion.div>
 				<motion.button
-					whileHover={{ x: 5 }}
-					className='flex items-center gap-1 text-sm text-gray-400 hover:text-white group'
+					whileHover={{ scale: 1.1, rotate: 45 }}
+					className='text-gray-400 z-10 cursor-pointer hover:text-white'
 					onClick={() => router.push('/projects')}
 				>
-					View all
-					<motion.div
-						animate={{ x: [0, 5, 0] }}
-						transition={{ duration: 2, repeat: Infinity }}
-					>
-						<ArrowRight size={16} />
-					</motion.div>
+					<ExternalLink size={16} />
 				</motion.button>
 			</div>
 
-			<div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-				{latestProjects.map(project => (
-					<motion.div
-						key={project.title}
-						whileHover={{ scale: 1.02 }}
-						className='p-4 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/20 transition-all duration-300'
+			<h3 className='font-medium text-sm mb-3'>Latest Projects</h3>
+
+			<div className='flex-1 space-y-2 z-10'>
+				{list.map(project => (
+					<div
+						key={project.id}
+						className='p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-black/20 hover:scale-[1.02] hover:translate-x-1'
+						onClick={() => router.push(`/projects/${project.name}`)}
 					>
-						<h3 className='text-sm font-medium mb-1'>{project.title}</h3>
-						<p className='text-xs text-gray-400'>{project.tech}</p>
-					</motion.div>
+						<h4 className='text-xs font-medium text-gray-200 mb-1 line-clamp-1'>
+							{project.name}
+						</h4>
+						<p className='text-xs text-gray-400 line-clamp-2'>
+							{project.description}
+						</p>
+					</div>
 				))}
 			</div>
 		</div>
 	)
 }
-
-export default ProjectsCard

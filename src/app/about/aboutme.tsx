@@ -12,90 +12,88 @@ const AboutMe = () => {
 				This page is under construction
 			</div> */}
 			<div className='max-w-4xl min-h-screen mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:py-16 lg:px-8'>
-				<div className='flex flex-col items-center lg:flex-row lg:space-x-8'>
-					{/* <div className='w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 mb-8 lg:mb-0'>
-					<Image
-						src='/memoji1.svg'
-						alt='Profile Picture'
-						width={192}
-						height={192}
-						className='rounded-full object-cover'
-					/>
-				</div> */}
-					<div className='w-full'>
-						<h2 className='text-xl sm:text-2xl font-bold'>About</h2>
+				<div className='flex justify-center mb-8'>
+					<div className='w-40 h-40 lg:w-48 lg:h-48 relative'>
+						<Image
+							src='/CV_BHARGAV.PNG'
+							alt='Bhargav - Product focused developer'
+							fill
+							className='rounded-full object-cover object-top border-4 border-gray-700/30 shadow-lg'
+						/>
+					</div>
+				</div>
 
-						<div className='leading-relaxed py-3 sm:py-4 pl-2 sm:pl-10 text-sm sm:text-base'>
-							Hi I am{' '}
-							<CustomBold
-								className='inline-block'
-								gradientColors={['#4c297b', '#4c297b']}
+				<div className='w-full'>
+					<h2 className='text-xl sm:text-2xl font-bold'>About</h2>
+					<div className='leading-relaxed py-3 sm:py-4 pl-2 sm:pl-10 text-sm sm:text-base'>
+						Hi I am{' '}
+						<CustomBold
+							className='inline-block'
+							gradientColors={['#4c297b', '#4c297b']}
+						>
+							Bhargav
+						</CustomBold>
+						,
+						<div className='mt-3 sm:mt-4 text-sm sm:text-base'>
+							I am a developer and graduate student who previously worked at{' '}
+							<CustomLink
+								href='https://www.foundamental.com/'
+								underlineColor='#48F782'
 							>
-								Bhargav
+								Foundamental gmbH,
+							</CustomLink>{' '}
+							Berlin, Germany where I built an internal CRM SAAS product called{' '}
+							<CustomBold className='inline-block' fontSize='md'>
+								Loura
 							</CustomBold>
-							,
-							<div className='mt-3 sm:mt-4 text-sm sm:text-base'>
-								I am developer(student) at{' '}
-								<CustomLink
-									href='https://www.foundamental.com/people/bhargav-babu'
-									underlineColor='#48F782'
-								>
-									Foundamental gmbH,
-								</CustomLink>{' '}
-								Berlin, Germany where I am building an internal CRM SAAS product
-								called{' '}
-								<CustomBold className='inline-block' fontSize='md'>
-									Loura
-								</CustomBold>
-								. Simultaneously, I am completing my masters thesis in DevOps at{' '}
-								<CustomLink href='https://www.tu-ilmenau.de/en/'>
-									TU Ilmenau,
-								</CustomLink>{' '}
-								where I am pursuing my masters in{' '}
-								<CustomLink
-									underlineColor='#48F782'
-									href='https://www.tu-ilmenau.de/en/university/departments/department-of-computer-science-and-automation/study/research-in-computer-systems-engineering-msc'
-								>
-									RCSE
-								</CustomLink>
-								.
-							</div>
-							<div className='mt-3 sm:mt-4'>
-								I have a hunger to learn more and create meaningful products. I
-								love my job as a developer, working on software that help people
-								ease their lives. Coming from an electronics engineering
-								background, for the effort I put in to learn web development and
-								still learning today, I can say am living my dream. Hence, I do
-								not restrict the type of work I do or the technologies I work
-								with. I am always open to learning and exploring new things.
-							</div>
-							<div className='mt-3 sm:mt-4 text-sm sm:text-base'>
-								{' '}
-								{/* I am currently writing my Master thesis on Docker and
-								Kubernetes.{' '} */}
-							</div>
-							<div className='mt-3 sm:mt-4 text-sm sm:text-base'>
-								{' '}
-								I am enthusiastic about{' '}
-								<span className='font-bold'>NextJS</span>,{' '}
-								<span className='font-bold'>Typescript</span>,{' '}
-								<span className='font-bold'>GraphQL</span>. I use{' '}
-								<span className='font-bold'>Jest</span> for API testing and{' '}
-								<span className='font-bold'>Storybook</span> for documentation
-								and frontend tests. I have started working with{' '}
-								<span className='font-bold'> Python</span> for data science
-								projects at work. I am also learning about{' '}
-								<CustomLink
-									underlineColor='#48F782'
-									href='https://www.edgedb.com/'
-								>
-									Edgedb
-								</CustomLink>{' '}
-								and{' '}
-								<CustomLink underlineColor='#48F782' href='https://n8n.io/'>
-									n8n
-								</CustomLink>{' '}
-							</div>
+							. I am currently completing my masters thesis in DevOps at{' '}
+							<CustomLink href='https://www.tu-ilmenau.de/en/'>
+								TU Ilmenau,
+							</CustomLink>{' '}
+							where I am pursuing my masters in{' '}
+							<CustomLink
+								underlineColor='#48F782'
+								href='https://www.tu-ilmenau.de/en/university/departments/department-of-computer-science-and-automation/study/research-in-computer-systems-engineering-msc'
+							>
+								RCSE
+							</CustomLink>
+							.
+						</div>
+						<div className='mt-3 sm:mt-4'>
+							I have a hunger to learn more and create meaningful products. I
+							love my job as a developer, working on software that help people
+							ease their lives. Coming from an electronics engineering
+							background, for the effort I put in to learn web development and
+							still learning today, I can say am living my dream. Hence, I do
+							not restrict the type of work I do or the technologies I work
+							with. I am always open to learning and exploring new things.
+						</div>
+						<div className='mt-3 sm:mt-4 text-sm sm:text-base'>
+							{' '}
+							{/* I am currently writing my Master thesis on Docker and
+							Kubernetes.{' '} */}
+						</div>
+						<div className='mt-3 sm:mt-4 text-sm sm:text-base'>
+							{' '}
+							I am enthusiastic about <span className='font-bold'>
+								NextJS
+							</span>, <span className='font-bold'>Typescript</span>,{' '}
+							<span className='font-bold'>GraphQL</span>. I use{' '}
+							<span className='font-bold'>Jest</span> for API testing and{' '}
+							<span className='font-bold'>Storybook</span> for documentation and
+							frontend tests. I have started working with{' '}
+							<span className='font-bold'> Python</span> for data science
+							projects at work. I am also learning about{' '}
+							<CustomLink
+								underlineColor='#48F782'
+								href='https://www.edgedb.com/'
+							>
+								Edgedb
+							</CustomLink>{' '}
+							and{' '}
+							<CustomLink underlineColor='#48F782' href='https://n8n.io/'>
+								n8n
+							</CustomLink>{' '}
 						</div>
 					</div>
 				</div>
@@ -119,10 +117,10 @@ const AboutMe = () => {
 										<GitCommitHorizontal className='mx-2 sm:mx-4 text-[#6E00FD]' />
 										Foundamental gmBh
 										<GitCommitHorizontal className='mx-2 sm:mx-4 text-[#6E00FD]' />
-										March 2023 - present
+										March 2023 - March 2025
 									</div>
 									<div className='text-xs text-gray-400 mt-1 sm:hidden'>
-										Foundamental gmBh | March 2023 - present
+										Foundamental gmBh | March 2023 - March 2025
 									</div>
 								</span>
 							</div>

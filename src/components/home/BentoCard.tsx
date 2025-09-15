@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
 import { BentoCardProps } from '@/utils/types'
-import { HomeContext } from './HomeContext'
+import { HomeContext } from '../../context/HomeContext'
 
 const BentoCard: React.FC<BentoCardProps> = ({
 	children,
