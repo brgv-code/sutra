@@ -9914,12 +9914,7 @@ stringify-entities@^4.0.0:
     character-entities-html4 "^2.0.0"
     character-entities-legacy "^3.0.0"
 
-strip-ansi-cjs@6.0.1:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi-cjs/-/strip-ansi-cjs-8.0.0.tgz#76d90a591aa708eb8b5c95c205ad2757ada599d9"
-  integrity sha512-32gkt3BeWEaDWScWe6w75HZX3dgTwM6SCzYZOJqnQWwGIugHHj5+u/TSzZUbcEsg8v0dpVljHNHcUJ+1dmVRqw==
-
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@6.0.1, strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
