@@ -9,12 +9,6 @@ import RecommendedPosts from '@/components/ui/RecommendedPosts'
 import GiscusComments from '@/components/Comments/GiscusComments'
 import '@/components/Comments/comments.css'
 
-const mono = Space_Mono({
-	weight: ['400', '700'],
-	subsets: ['latin'],
-	variable: '--font-mono',
-})
-
 export async function generateStaticParams() {
 	const posts = await getFiles('blog')
 	return posts.map((post: string) => ({

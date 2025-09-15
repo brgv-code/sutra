@@ -32,33 +32,21 @@ const HeroCard: React.FC = () => {
 					<span className='text-green-400 text-sm'>Available for work</span>
 				</motion.div>
 
-				<h1 className='text-3xl md:text-5xl font-bold mb-4 relative'>
+				<h1 className='text-3xl md:text-5xl font-bold mb-6 relative'>
 					<span className='bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent'>
 						Bhargav{' '}
 					</span>
 				</h1>
 
-				<div className='text-gray-400 text-base md:text-lg relative mt-8 md:mt-12'>
-					<div className='mb-4 md:text-start items-center'>
-						Product focused developer. Bringing{' '}
-						<Link href='about'>
-							<Highlight>Loura</Highlight>
-						</Link>{' '}
-						to life{' '}
-						<span className='whitespace-nowrap'>
-							@
-							<CustomLink href='https://www.foundamental.com/people/bhargav-babu'>
-								Foundamental
-							</CustomLink>
-						</span>{' '}
-						Ready to code, connect, and create something amazing!
-					</div>
+				<div className='text-gray-400 text-base md:text-lg mb-6'>
+					Product focused developer turning coffee into code with{' '}
+					<Highlight>Sutra</Highlight> and bringing ideas to life.{' '}
 					<motion.button
 						whileHover={{ x: 5 }}
-						className='flex items-center gap-1 text-sm text-gray-400 hover:text-white group'
+						className='inline-flex items-center gap-1 text-sm text-gray-400 hover:text-white group ml-2'
 						onClick={() => router.push('/about')}
 					>
-						Read more
+						See my journey
 						<motion.div
 							animate={{ x: [0, 5, 0] }}
 							transition={{ duration: 2, repeat: Infinity }}
