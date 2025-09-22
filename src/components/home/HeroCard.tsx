@@ -43,7 +43,7 @@ const HeroCard: React.FC = () => {
 					<Highlight>Sutra</Highlight> and bringing ideas to life.{' '}
 					<motion.button
 						whileHover={{ x: 5 }}
-						className='inline-flex items-center gap-1 text-sm text-gray-400 hover:text-white group ml-2'
+						className='inline-flex items-center gap-1 text-sm text-yellow-400  group ml-2'
 						onClick={() => router.push('/about')}
 					>
 						See my journey
@@ -64,7 +64,7 @@ const HeroCard: React.FC = () => {
 						href={link.url}
 						whileHover={{ scale: 1.1, y: -2 }}
 						whileTap={{ scale: 0.95 }}
-						className='p-2 rounded-xl bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700/50 transition-colors'
+						className='p-2 rounded-xl bg-gray-800/50 hover:text-yellow-400 text-gray-400  hover:bg-gray-700/50 transition-colors'
 						aria-label={link.label}
 						target='_blank'
 						rel='noopener noreferrer'
