@@ -36,13 +36,13 @@ export default function ProjectsCard({ projects }: Props) {
 				{list.map(project => (
 					<div
 						key={project.id}
-						className='p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-black/20 hover:scale-[1.02] hover:translate-x-1'
+						className='p-3 rounded-lg cursor-pointer group/item transition-all duration-200 hover:bg-black/20 hover:scale-[1.02] hover:translate-x-1'
 						onClick={() => router.push(`/projects/${project.name}`)}
 					>
-						<h4 className='text-xs font-medium text-gray-200 mb-1 line-clamp-1'>
+						<h4 className='text-xs font-medium text-gray-200 mb-1 group-hover/item:text-yellow-400 line-clamp-1'>
 							{project.name}
 						</h4>
-						<p className='text-xs text-gray-400 line-clamp-2'>
+						<p className='text-xs text-gray-400 line-clamp-2 group-hover/item:text-yellow-400'>
 							{project.description}
 						</p>
 					</div>

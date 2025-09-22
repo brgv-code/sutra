@@ -31,17 +31,17 @@ export default function BlogCard({
 
 			<h3 className='font-medium text-sm mb-3'>Latest Posts</h3>
 
-			<div className='flex-1 space-y-2 z-10'>
+			<div className='flex-1 space-y-2  z-10 group'>
 				{latestPosts.map(post => (
 					<div
 						key={post.slug}
-						className='p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-black/20 hover:scale-[1.02] hover:translate-x-1'
+						className='p-3 rounded-lg  cursor-pointer group/item  transition-all duration-200 hover:bg-black/20 hover:scale-[1.02] hover:translate-x-1'
 						onClick={() => router.push(`/blog/${post.slug}`)}
 					>
-						<h4 className='text-xs font-medium text-gray-200 mb-1 line-clamp-1'>
+						<h4 className='text-xs font-medium text-gray-200 mb-1 line-clamp-1 group-hover/item:text-yellow-400 '>
 							{post.title}
 						</h4>
-						<p className='text-xs text-gray-400 line-clamp-2'>
+						<p className='text-xs text-gray-400 line-clamp-2 group-hover/item:text-yellow-400'>
 							{'Read more...'}
 						</p>
 					</div>
